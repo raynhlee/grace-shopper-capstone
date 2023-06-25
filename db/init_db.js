@@ -31,7 +31,7 @@ async function buildTables() {
       description TEXT NOT NULL,
       image VARCHAR(255),
       price DECIMAL(5,2) NOT NULL,
-      stock INTEGER,
+      stock INTEGER
     );
 
     CREATE TABLE orders (
