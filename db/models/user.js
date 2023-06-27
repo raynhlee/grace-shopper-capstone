@@ -3,7 +3,16 @@ const client = require('../client');
 const bcrypt = require('bcrypt')
 
 async function getAllUsers() {
-  /* this adapter should fetch a list of users from your db */
+  try {
+    const allUsers = await client.query(`
+    SELECT *
+    FROM users
+    
+    `);
+    return allUsers;
+  } catch(error){
+    console.error(error)
+  }
 }
 
 async function createUser({username, password, email}){
