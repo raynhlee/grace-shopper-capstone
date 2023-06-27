@@ -92,6 +92,7 @@ async function populateInitialData() {
     const users = await Promise.all(
       usersToCreate.map(createUser)
     );
+    console.log("users ", users);
 
     console.log("Finished creating users!");
 
@@ -159,7 +160,8 @@ async function populateInitialData() {
   const products = await Promise.all(
     productsToCreate.map(createProduct)
   );
-  console.log("Product: ", products);
+  console.log("products: ", products);
+  
   console.log("Finished Creating Products!");
 
   console.log("Starting to create orders...");
