@@ -4,6 +4,10 @@ const {
   // for example, User
 } = require('./');
 
+const {
+  createProduct,
+} = require('./models/product');
+
 async function buildTables() {
   try {
     client.connect();
@@ -159,7 +163,7 @@ async function populateInitialData() {
   const products = await Promise.all(
     productsToCreate.map(createProduct)
   );
-
+  console.log("Product: ", products);
   console.log("Finished Creating Products!");
 
   console.log("Starting to create orders...");
