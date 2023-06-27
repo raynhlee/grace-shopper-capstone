@@ -70,23 +70,21 @@ async function getUser({username, password}){
   } catch (error){
     console.error(error)
   }
+}
 
-  async function getUserById(userId){
-    try {
-      const {rows: [user]} = await client.query(`
-      SELECT *
-      FROM users
-      WHERE id=$1;
-      `, [userId]);
+async function getUserById(userId){
+  try {
+    const {rows: [user]} = await client.query(`
+    SELECT *
+    FROM users
+    WHERE id=$1;
+    `, [userId]);
 
-      delete user.password
-      return user;
-    } catch (error){
-      console.error(error)
-    }
+    delete user.password
+    return user;
+  } catch (error){
+    console.error(error)
   }
-
-
 }
 
 
