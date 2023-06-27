@@ -94,5 +94,9 @@ async function getUser({username, password}){
 module.exports = {
   // add your database adapter fns here
   getAllUsers,
+  createUser,
+  getUserByUsername,
+  getUser,
+  getUserById
 };
 
