@@ -17,6 +17,16 @@ async function createReview({creatorId, productId, description}){
 }
 
 async function getAllReviews(){
+    try {
+        const allReviews = await client.query(
+            `SELECT *
+            FROM reviews;`
+        )
+        return allReviews;
+
+    } catch (error){
+        console.error(error)
+    }
 
 }
 
