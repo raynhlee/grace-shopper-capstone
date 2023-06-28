@@ -79,7 +79,20 @@ async function updateReview({id, ...fields}){
     }
 }
 
-async function deleteReview(){
+async function deleteReview(reviewId){
+    try {
+        const {rows: [res]} = await client.query(`
+        DELETE reviews
+        WHERE id=$1
+        RETURNING *;
+        `, [reviewId]);
+
+        return res;
+
+    } catch (error){
+        console.error(error)
+    }
+
 
 }
 
@@ -87,5 +100,7 @@ module.exports = {
     createReview,
     getAllReviews,
     getReviewsByProduct,
-    getReviewsByUser
+    getReviewsByUser,
+    updateReview,
+    deleteReview
 }
