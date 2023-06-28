@@ -46,8 +46,18 @@ async function getOrderById(id){
     
 }
 
-async function getOrderByUser(){
-    
+async function getOrderByUser(userId){
+    try{
+        const {rows: [order]} = await client.query(`
+        SELECT *
+        FROM orders
+        WHERE "userId"=$1;
+        `, [userId]);
+
+        return order;
+    } catch(error){
+        console.error(error)
+    }
 }
 
 async function updateOrder(){
@@ -62,5 +72,6 @@ async function deleteOrder(){
 module.exports = {
     createOrder,
     getAllOrders,
-    getOrderById
+    getOrderById,
+    getOrderByUser
 }
