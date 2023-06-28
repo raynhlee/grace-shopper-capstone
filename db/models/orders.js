@@ -60,8 +60,27 @@ async function getOrderByUser(userId){
     }
 }
 
-async function updateOrder(){
-    
+async function updateOrder({id, ...fields}){
+    const setString = Object.keys(fields)
+    .map((key, idx) => `${key} = $${idx + 1}`)
+    .join(", ");
+
+    if (setString.length === 0){
+        return;
+    }
+
+    try {
+        const {rows: [order]} = await client.query(`
+        UPDATE orders
+        SET ${setString}
+        WHERE id=$1
+        RETURNING *;
+        `, [id, ...Object.values(fields)]);
+
+        return order;
+    } catch (error){
+        console.error(error);
+    }
 }
 
 async function deleteOrder(){
@@ -73,5 +92,6 @@ module.exports = {
     createOrder,
     getAllOrders,
     getOrderById,
-    getOrderByUser
+    getOrderByUser,
+    updateOrder
 }
