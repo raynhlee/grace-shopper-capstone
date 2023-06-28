@@ -8,8 +8,8 @@ async function createReview({creatorId, productId, description}){
         VALUES ($1, $2, $3)
         RETURNING *;
         `, [creatorId, productId, description]);
-
         return review;
+        
     } catch({error}){
         console.error(error)
     }
