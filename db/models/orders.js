@@ -17,6 +17,17 @@ async function createOrder({userId, productId, price, quantity}){
 }
 
 async function getAllOrders(){
+    try {
+        const allOrders = await client.query(
+            `SELECT *
+            FROM orders;`
+        )
+        return allOrders;
+
+    } catch (error){
+        console.error(error)
+    }
+
     
 }
 
@@ -34,4 +45,10 @@ async function updateOrder(){
 
 async function deleteOrder(){
     
+}
+
+
+module.exports = {
+    createOrder,
+    getAllOrders
 }
