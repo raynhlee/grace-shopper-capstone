@@ -58,8 +58,25 @@ async function getReviewsByUser(creatorId){
 
 }
 
-async function updateReview(){
+async function updateReview({id, ...fields}){
+    const setString = Object.keys(fields)
+    .map((key, idx) => `${key} = $${idx + 1}`)
+    .join(", ");
 
+    if (setString.length === 0){
+        return;
+    }
+
+    try {
+        const {rows: [review]} = await client.query(`
+        UPDATE reviews
+        SET ${setString}
+        WHERE id=$1
+        RETURNING *;
+        `, [id, ...Object.values(fields)]);
+    } catch (error){
+        console.error(error);
+    }
 }
 
 async function deleteReview(){
