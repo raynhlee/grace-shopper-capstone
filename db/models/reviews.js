@@ -81,13 +81,13 @@ async function updateReview({id, ...fields}){
 
 async function deleteReview(reviewId){
     try {
-        const {rows: [res]} = await client.query(`
+        const {rows: [response]} = await client.query(`
         DELETE reviews
         WHERE id=$1
         RETURNING *;
         `, [reviewId]);
 
-        return res;
+        return response;
 
     } catch (error){
         console.error(error)
