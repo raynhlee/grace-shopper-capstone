@@ -12,7 +12,7 @@ const {
 
 // POST /api/users/register
 usersRouter.post('/register', async (req, res, next) => {
-    const { username, password } = req.body;
+    const { username, password, email } = req.body;
 
     try {
         const _user = await getUserByUsername(username);
@@ -54,6 +54,40 @@ usersRouter.post('/register', async (req, res, next) => {
     } catch ({ name, message, error }) {
         next({ name, message, error });
     }
-})
+});
+
+// POST /api/users/login
+usersRouter.post('/login', async (req, res, next) => {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+        next({
+            name: "MissingCridentialsError",
+            message: "Please supply both a username and password"
+        });
+    }
+
+    try {
+        const user = await getUser({ username, password });
+
+        console.log("user: ", user);
+
+        if (!user) {
+            next({
+                name: "InvalidUsername",
+                message: "That user does not exist"
+            });
+        }
+
+        const token = jwt.sign({
+            id: user.id,
+            username: user.username,
+        }, process.env.JWT_SECRET, {expiresIn: '1w'});
+
+        res.send({ user, token, message: "you're logged in!"});
+    } catch ({ name, message }) {
+        next({ name, message });
+    }
+});
 
 module.exports = usersRouter;
