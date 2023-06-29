@@ -7,7 +7,8 @@ const {
     createUser,
     getUserByUsername,
     getUser,
-    getUserById
+    getUserById,
+    getOrderByUser
 } = require('../db');
 
 // POST /api/users/register
@@ -98,6 +99,25 @@ usersRouter.get('/me', requireUser, async (req, res, next) => {
 
         if (verifiedUser) {
             res.send(verifiedUser);
+        }
+    } catch ({ name, message }) {
+        next({ name, message });
+    }
+});
+
+// GET /api/users/:username/orders
+usersRouter.get('/:username/orders', requireUser, async (req, res, next) => {
+    const { username } = req.params;
+
+    try {
+        if (req.user.username === username) {
+            const userOrders = await getOrderByUser({ username });
+            res.send(userOrders);
+        } else {
+            res.send({
+                message: `Could not find orders associated with ${username}`,
+                name: "NoExistingOrders"
+            });
         }
     } catch ({ name, message }) {
         next({ name, message });
