@@ -19,8 +19,18 @@ ordersRouter.get('/', async(req, res, next) => {
         console.log(error)
     }
 
+})
 
+ordersRouter.get('/:username', async(req, res, next) => {
+    const {username} = req.params;
 
+    try{
+        const orders = await getOrderByUser(username);
+        res.send(orders)
+
+    } catch(error){
+        console.log(error)
+    }
 
 })
 
