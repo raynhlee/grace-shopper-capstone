@@ -42,6 +42,14 @@ apiRouter.use(async (req, _res, next) => {
   }
 });
 
+apiRouter.use((req, _res, next) => {
+  if (req.user) {
+    console.log("User is set: ", req.user);
+  }
+
+  next();
+});
+
 // place your routers here
 const usersRouter = require('./users');
 apiRouter.use('/users', usersRouter);
