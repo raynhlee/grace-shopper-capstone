@@ -34,4 +34,29 @@ ordersRouter.get('/:username', async(req, res, next) => {
 
 })
 
+ordersRouter.post('/', async(req, res, next) => {
+    const {productId, price, quantity} = req.body;
+
+    const orderData = {};
+
+    try{
+
+        orderData.userId = req.user.id;
+        orderData.productId = productId;
+        orderData.price = price;
+        orderData.quantity = quantity;
+
+        const newOrder = await createOrder(orderData);
+
+        res.send(newOrder);
+
+    } catch(error){
+        
+        console.log(error);
+    }
+
+
+})
+
+ordersRouter,
 module.exports = ordersRouter;
