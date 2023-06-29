@@ -90,4 +90,18 @@ usersRouter.post('/login', async (req, res, next) => {
     }
 });
 
+// GET /api/users/me
+usersRouter.get('/me', requireUser, async (req, res, next) => {
+    try {
+        const verifiedUser = await getUserById(req.user.id);
+        console.log("verifiedUser: ", verifiedUser);
+
+        if (verifiedUser) {
+            res.send(verifiedUser);
+        }
+    } catch ({ name, message }) {
+        next({ name, message });
+    }
+});
+
 module.exports = usersRouter;
