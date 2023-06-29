@@ -3,7 +3,6 @@ const usersRouter = express.Router();
 const jwt = require('jsonwebtoken');
 const { requireUser } = require('./utils');
 const {
-    getAllUsers,
     createUser,
     getUserByUsername,
     getUser,
