@@ -2,7 +2,8 @@ const {
   client,
   createProduct,
   createUser,
-  createReview
+  createReview,
+  createOrder
 } = require('./');
 
 
@@ -201,11 +202,10 @@ async function populateInitialData() {
       }
     ]
 
-    /* const orders = await Promise.all(
+    const orders = await Promise.all(
       ordersToCreate.map(createOrder)
     );
-
-    */
+    console.log("orders: ", orders);
 
     console.log("Finished creating orders!");
 
