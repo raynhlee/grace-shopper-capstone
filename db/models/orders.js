@@ -81,6 +81,24 @@ async function updateOrder({ id, ...fields}) {
   }
 }
 
+async function deleteOrder(id) {
+    try {
+      const {
+        rows: [response],
+      } = await client.query(
+        `
+          DELETE orders
+          WHERE id = $1
+          RETURNING *
+          `,
+        [id]
+      );
+      return response;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
 module.exports = {
     createOrder,
     getAllOrders,
