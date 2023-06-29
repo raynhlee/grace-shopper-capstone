@@ -31,6 +31,22 @@ async function getAllProducts() {
   }
 }
 
+async function getProductByName(productName){
+  try{
+    const {rows: [product]} = await client.query(`
+    SELECT *
+    FROM products
+    WHERE name=$1;
+    `, [productName]);
+
+    return product;
+
+
+  } catch(error){
+    console.error(error)
+  }
+}
+
 async function updateProduct({ id, ...fields }) {
   const setString = Object.keys(fields)
     .map((key, idx) => `${key} = $${idx + 1}`)
@@ -97,4 +113,5 @@ module.exports = {
   updateProduct,
   getProductById,
   deleteProduct,
+  getProductByName
 };

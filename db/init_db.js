@@ -1,8 +1,10 @@
 const {
   client,
   createProduct,
-  createUser
+  createUser,
+  createReview
 } = require('./');
+
 
 async function buildTables() {
   try {
@@ -199,9 +201,11 @@ async function populateInitialData() {
       }
     ]
 
-    const orders = await Promise.all(
+    /* const orders = await Promise.all(
       ordersToCreate.map(createOrder)
     );
+
+    */
 
     console.log("Finished creating orders!");
 
@@ -228,7 +232,7 @@ async function populateInitialData() {
     const reviews = await Promise.all(
       reviewsToCreate.map(createReview)
     );
-
+    console.log('reviews: ', reviews)
     console.log("Finished creating reviews!");
     // create useful starting data by leveraging your
     // Model.method() adapters to seed your db, for example:
