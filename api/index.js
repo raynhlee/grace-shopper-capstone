@@ -15,7 +15,7 @@ apiRouter.get('/health', (req, res, next) => {
   });
 });
 
-<<<<<<< HEAD
+
 apiRouter.use(async (req, _res, next) => {
   const prefix = 'Bearer ';
   const auth = req.header('Authorization');
