@@ -2,6 +2,7 @@ const apiRouter = require('express').Router();
 const { getUserById } = require('../db');
 const { JWT_SECRET } = process.env;
 
+
 apiRouter.get('/', (req, res, next) => {
   res.send({
     message: 'API is under construction!',
@@ -14,6 +15,7 @@ apiRouter.get('/health', (req, res, next) => {
   });
 });
 
+<<<<<<< HEAD
 apiRouter.use(async (req, _res, next) => {
   const prefix = 'Bearer ';
   const auth = req.header('Authorization');
@@ -53,5 +55,9 @@ apiRouter.use((req, _res, next) => {
 // place your routers here
 const usersRouter = require('./users');
 apiRouter.use('/users', usersRouter);
+
+const ordersRouter = require('./orders');
+apiRouter.use('/orders', ordersRouter);
+
 
 module.exports = apiRouter;
