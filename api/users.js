@@ -12,6 +12,8 @@ const {
     getUserByEmail
 } = require('../db');
 
+let myToken;
+
 // GET /api/users
 usersRouter.get('/', async (req, res, next) => {
     try {
@@ -27,10 +29,10 @@ usersRouter.post('/register', async (req, res, next) => {
     const { username, password, email } = req.body;
     console.log('email:', email);
     try {
-        const _user = await getUserByUsername(username);
-
+        const _user = await getUserByUsername({username});
+        console.log(_user)
         if (_user) {
-            res.send({
+            next({
                 message: `User ${_user.username} is already taken.`,
                 name: 'UserExistsError',
                 error: 'Error creating a new user as that username already exists'
@@ -40,7 +42,7 @@ usersRouter.post('/register', async (req, res, next) => {
         const duplicateEmail = await getUserByEmail({email});
 
         if (duplicateEmail) {
-            res.send({
+            next({
                 message: `${duplicateEmail.email} is already in use on an other account`,
                 name: 'DuplicateEmailError',
                 error: 'Error creating a new user as that email is already in use'
@@ -48,8 +50,8 @@ usersRouter.post('/register', async (req, res, next) => {
         }
 
         if (password.length < 8) {
-            res.send({
-                error: 'Eror Creating Password: Password must be at least 8 or more characters',
+            next({
+                error: 'Error Creating Password: Password must be at least 8 or more characters',
                 message: 'Password Too Short!',
                 name: "PasswordLengthError"
             });
@@ -57,7 +59,8 @@ usersRouter.post('/register', async (req, res, next) => {
 
         const user = await createUser({
             username,
-            password
+            password,
+            email
         });
 
         const token = jwt.sign({
@@ -65,6 +68,7 @@ usersRouter.post('/register', async (req, res, next) => {
             username
         }, process.env.JWT_SECRET, {expiresIn: '1w'});
 
+        if(user){
         res.send({
             user: {
                 id: user.id,
@@ -72,9 +76,10 @@ usersRouter.post('/register', async (req, res, next) => {
             },
             message: "thank you for signing up",
             token
-        });
-    } catch ({ name, message, error }) {
-        next({ name, message, error });
+        })};
+    } catch (error) {
+        console.log(error);
+        next(error);
     }
 });
 
@@ -84,7 +89,7 @@ usersRouter.post('/login', async (req, res, next) => {
 
     if (!username || !password) {
         next({
-            name: "MissingCridentialsError",
+            name: "MissingCredentialsError",
             message: "Please supply both a username and password"
         });
     }
@@ -106,9 +111,13 @@ usersRouter.post('/login', async (req, res, next) => {
             username: user.username,
         }, process.env.JWT_SECRET, {expiresIn: '1w'});
 
+        if(token){
+            myToken = token;
+        }
+
         res.send({ user, token, message: "you're logged in!"});
     } catch ({ name, message }) {
-        next({ name, message });
+        console.log({name, message});
     }
 });
 
@@ -145,4 +154,4 @@ usersRouter.get('/:username/orders', requireUser, async (req, res, next) => {
     }
 });
 
-module.exports = usersRouter;
+module.exports = {usersRouter, myToken};

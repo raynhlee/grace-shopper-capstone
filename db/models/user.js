@@ -55,6 +55,7 @@ async function getUserByUsername(userName){
     return user;
   } catch (error){
     console.error(error)
+    throw error;
   }
 
 }
@@ -101,7 +102,7 @@ async function getUserByEmail({email}) {
 
     delete user.password;
     return user;
-  } catch (ereror) {
+  } catch (error) {
     console.error(error);
   }
 }
