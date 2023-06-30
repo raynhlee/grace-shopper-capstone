@@ -4,11 +4,15 @@ const bcrypt = require('bcrypt')
 
 async function getAllUsers() {
   try {
-    const allUsers = await client.query(`
-    SELECT *
-    FROM users
-    
+    const {rows: allUsers} = await client.query(`
+    SELECT
+      id,
+      username,
+      email
+    FROM 
+      users
     `);
+
     return allUsers;
   } catch(error){
     console.error(error)
@@ -87,6 +91,21 @@ async function getUserById(userId){
   }
 }
 
+async function getUserByEmail({email}) {
+  try {
+    const { rows: [user] } = await client.query(`
+      SELECT *
+      FROM users
+      WHERE email = $1;
+    `, [email]);
+
+    delete user.password;
+    return user;
+  } catch (ereror) {
+    console.error(error);
+  }
+}
+
 
 
 module.exports = {
@@ -95,6 +114,7 @@ module.exports = {
   createUser,
   getUserByUsername,
   getUser,
-  getUserById
+  getUserById,
+  getUserByEmail
 };
 
