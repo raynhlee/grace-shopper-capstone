@@ -42,7 +42,6 @@ ordersRouter.delete('/:orderId', async (req, res, next) => {
 
 ordersRouter.get('/:username', async(req, res, next) => {
     const {username} = req.params;
-<<<<<<< HEAD
 
     try{
         const orders = await getOrderByUser(username);
@@ -98,8 +97,6 @@ ordersRouter.delete('/:orderId', async (req, res, next) => {
     } catch(error) {
         next(error);
     }
-=======
->>>>>>> c89da26 (wrote ordersRouter.get for /:username)
 
     try{
         const orders = await getOrderByUser(username);
@@ -112,4 +109,5 @@ ordersRouter.delete('/:orderId', async (req, res, next) => {
 })
 
 
+ordersRouter,
 module.exports = ordersRouter;
