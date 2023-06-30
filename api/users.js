@@ -8,7 +8,8 @@ const {
     getUserByUsername,
     getUser,
     getUserById,
-    getOrderByUser
+    getOrderByUser,
+    getUserByEmail
 } = require('../db');
 
 // GET /api/users
@@ -33,6 +34,16 @@ usersRouter.post('/register', async (req, res, next) => {
                 message: `User ${_user.username} is already taken.`,
                 name: 'UserExistsError',
                 error: 'Error creating a new user as that username already exists'
+            });
+        }
+
+        const duplicateEmail = await getUserByEmail({email});
+
+        if (duplicateEmail) {
+            res.send({
+                message: `${duplicateEmail.email} is already in use on an other account`,
+                name: 'DuplicateEmailError',
+                error: 'Error creating a new user as that email is already in use'
             });
         }
 
