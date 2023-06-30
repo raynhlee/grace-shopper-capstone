@@ -3,12 +3,23 @@ const usersRouter = express.Router();
 const jwt = require('jsonwebtoken');
 const { requireUser } = require('./utils');
 const {
+    getAllUsers,
     createUser,
     getUserByUsername,
     getUser,
     getUserById,
     getOrderByUser
 } = require('../db');
+
+// GET /api/users
+usersRouter.get('/', async (req, res, next) => {
+    try {
+        const allUsers = await getAllUsers();
+        res.send(allUsers);
+    } catch ({ name, message }) {
+        next({ name, message });
+    }
+});
 
 // POST /api/users/register
 usersRouter.post('/register', async (req, res, next) => {
