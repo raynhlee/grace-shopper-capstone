@@ -7,7 +7,13 @@ const Header = () => {
             <div id='header-main-section'>
                 <h1 id='site-main-header'>guitarget</h1>
                 <div id='nav-bar'>
-                    <p id='categories'>Categories</p>
+                    <div class="dropdown">
+                        <button id='categories' class="dropbtn">Categories</button>
+                        <div class="dropdown-content">
+                            <a href="#">Guitars</a>
+                            
+                        </div>
+                    </div>
                     <form id='search-bar-div'>
                         <input id='search-bar' type="text" placeholder='What can we help you find?'></input>
                     </form>
