@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Header = () => {
 
     return (
         <div id='header-main-div'>
             <div id='header-main-section'>
-                <h1 id='site-main-header'>guitarget</h1>
+                <Link to='/'><h1 id='site-main-header'>guitarget</h1></Link>
                 <div id='nav-bar'>
-                    <div class="dropdown">
-                        <button id='categories' class="dropbtn">Categories</button>
-                        <div class="dropdown-content">
-                            <a href="#">Guitars</a>
+                    <div className="dropdown">
+                        <button id='categories' className="dropbtn">Categories</button>
+                        <div className="dropdown-content">
+                            <Link to='/guitars'>Guitars</Link>
                             
                         </div>
                     </div>

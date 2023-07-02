@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+a {
+  text-decoration: none;
+}
+
 #header-main-div{
   height: 110px;
   box-shadow: 0 4px 2px -2px rgb(224, 224, 224);
@@ -30,6 +34,8 @@
 #site-main-header{
   margin-top: 43px;
   margin-left: 30px;
+  color: black;
+  text-decoration: none;
 }
 
 #header-account-buttons-div{
