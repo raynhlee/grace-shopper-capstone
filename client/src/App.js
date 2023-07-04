@@ -4,7 +4,8 @@ import './App.css';
 import {
   Header,
   DefaultHomepage,
-  AllGuitars
+  AllGuitars,
+  Login
 } from './components'
 
 function App() {
@@ -12,7 +13,9 @@ function App() {
     <BrowserRouter>
     <div className="App">
        <Header />
-      
+      <Route path='/users/login'>
+        <Login />
+      </Route>
        <Route path='/guitars'>
           <AllGuitars />
        </Route>

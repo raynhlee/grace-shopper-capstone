@@ -19,7 +19,7 @@ const Header = () => {
                         <input id='search-bar' type="text" placeholder='What can we help you find?'></input>
                     </form>
                     <div id='header-account-buttons-div'>
-                        <p id='sign-in'>Sign in</p>
+                        <Link to='/users/login'><p id='sign-in'>Sign in</p></Link>
                         <p id='cart'>Cart</p>
                     </div>
                 </div>
