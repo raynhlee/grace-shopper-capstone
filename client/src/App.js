@@ -9,12 +9,16 @@ import {
 } from './components'
 
 function App() {
+  const [username, setUsername] = useState('')
+  const [token, setToken] = useState(null)
+  const [user, setUser] = useState([])
+
   return (
     <BrowserRouter>
     <div className="App">
        <Header />
       <Route path='/users/login'>
-        <Login />
+        <Login username={username} setUsername={setUsername} setToken={setToken} setUser={setUser}/>
       </Route>
        <Route path='/guitars'>
           <AllGuitars />
