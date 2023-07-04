@@ -63,7 +63,7 @@ const Login = ({username, setUsername, setToken, setUser}) => {
                 </div>
                 <button type='submit' id='sign-in-button'>Sign in</button>
             </form>
-        <button id='login-create-acc-button'> Create your guitarget account</button>
+       <Link to='/users/register'><button id='login-create-acc-button'> Create your guitarget account</button></Link> 
         </div>
     )
 }
