@@ -1,6 +1,12 @@
 import React, {useEffect} from "react";
+import { fetchFromAPI } from "../api";
 
-const AllGuitars = () => {
+const AllGuitars = (props) => {
+    
+    const getAllGuitars = async() => {
+        let data = fetchFromAPI()
+    }
+
     return(
         <div>
             <p>Hello</p>
