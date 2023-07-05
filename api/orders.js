@@ -1,5 +1,6 @@
 const express = require('express');
 const ordersRouter = express.Router();
+const {requireUser} = require('./utils');
 
 const {
     createOrder,
@@ -35,24 +36,34 @@ ordersRouter.get('/:username', async(req, res, next) => {
 
 })
 
-ordersRouter.post('/', async(req, res, next) => {
+ordersRouter.post('/', requireUser, async(req, res, next) => {
     const {productId, price, quantity} = req.body;
-
-    const orderData = {};
-
+    
+    
+    let orderData = {
+        userId: req.user.id,
+        productId,
+        price,
+        quantity
+    };
+    
+    
     try{
+        
+        console.log('hello')
 
-        orderData.userId = req.user.id;
-        orderData.productId = productId;
-        orderData.price = price;
-        orderData.quantity = quantity;
-
+        console.log('orderData: ', orderData)
         const newOrder = await createOrder(orderData);
 
-        res.send(newOrder);
+        console.log(newOrder)
+
+        res.send({
+            
+            message: "Thank you for your order! Confirmation email will be arriving shortly."
+            
+        })
 
     } catch(error){
-        
         next(error);
     }
 
