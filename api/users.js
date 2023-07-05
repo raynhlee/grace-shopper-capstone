@@ -12,8 +12,6 @@ const {
     getUserByEmail
 } = require('../db');
 
-let myToken;
-
 // GET /api/users
 usersRouter.get('/', async (req, res, next) => {
     try {
