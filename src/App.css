@@ -3,9 +3,15 @@
   flex-direction: column;
 }
 
+button {
+  border: none;
+  background-color: none;
+}
+
 a {
   text-decoration: none;
-  color: black
+  color: black;
+  border: none;
 }
 
 #header-main-div{
@@ -38,6 +44,8 @@ a {
   color: black;
   text-decoration: none;
 }
+
+
 
 #header-account-buttons-div{
   display: flex;
@@ -78,9 +86,11 @@ a {
   display: block;
 }
 
+
+
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: lightgray;
 }
 
 /* Show the dropdown menu on hover */
@@ -91,7 +101,7 @@ a {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: rgb(230, 230, 230);
+  background-color: lightgrey;
   border-radius: 10px;
  
 }

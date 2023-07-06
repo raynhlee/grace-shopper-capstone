@@ -4,7 +4,7 @@ import './App.css';
 import {
   Header,
   DefaultHomepage,
-  AllGuitars,
+  AllProducts,
   Login,
   Register
 } from './components'
@@ -13,19 +13,20 @@ function App() {
   const [username, setUsername] = useState('')
   const [token, setToken] = useState(null)
   const [user, setUser] = useState([])
+  const [productsType, setProductType] = useState('')
 
   return (
     
     <div className="App">
-       <Header token={token} setToken={setToken} setUser={setUser}/>
+       <Header token={token} setToken={setToken} setUser={setUser} setProductType={setProductType}/>
       <Route path='/users/login'>
         <Login username={username} setUsername={setUsername} setToken={setToken} setUser={setUser}/>
       </Route>
       <Route path = '/users/register'>
         <Register username = {username} setUsername={setUsername} setToken={setToken} setUser={setUser} />
       </Route>
-       <Route path='/guitars'>
-          <AllGuitars />
+       <Route path='/products'>
+          <AllProducts productsType={productsType}/>
        </Route>
        <Route exact path='/'>
          <DefaultHomepage />
