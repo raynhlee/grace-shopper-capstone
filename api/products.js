@@ -36,7 +36,7 @@ productsRouter.post("/products", async (req, res, next) => {
 productsRouter.patch("/products/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { name, description, price, stock } = req.body;
+    const { name, description, price, stock, type } = req.body;
 
     updateProduct = await updateProduct({
       id,
@@ -44,6 +44,7 @@ productsRouter.patch("/products/:id", async (req, res, next) => {
       description,
       price,
       stock,
+      type
     });
     res.send(updateProduct);
   } catch (error) {
