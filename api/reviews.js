@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const reviewsRouter = express.Router();
 const { 
     getAllReviews, 
     getReviewsByUser, 
@@ -10,7 +10,7 @@ const {
 } = require('../db/models/reviews');
 
 // GET /reviews
-router.get('/reviews', async (req, res) => {
+reviewsRouter.get('/reviews', async (req, res) => {
   try {
     const reviews = await getAllReviews();
     res.json(reviews);
@@ -21,7 +21,7 @@ router.get('/reviews', async (req, res) => {
 });
 
 // GET /reviews/:username
-router.get('/reviews/:username', async (req, res) => {
+reviewsRouter.get('/reviews/:username', async (req, res) => {
   const { username } = req.params;
 
   try {
@@ -34,7 +34,7 @@ router.get('/reviews/:username', async (req, res) => {
 });
 
 // GET /reviews/:productId
-router.get('/reviews/:productId', async (req, res) => {
+reviewsRouter.get('/reviews/:productId', async (req, res) => {
   const { productId } = req.params;
 
   try {
@@ -47,7 +47,7 @@ router.get('/reviews/:productId', async (req, res) => {
 });
 
 // POST /reviews/:productId
-router.post('/reviews/:productId', async (req, res) => {
+reviewsRouter.post('/reviews/:productId', async (req, res) => {
   const { productId } = req.params;
   const { creatorId, description } = req.body;
 
@@ -61,7 +61,7 @@ router.post('/reviews/:productId', async (req, res) => {
 });
 
 // PATCH /reviews/:reviewId
-router.patch('/reviews/:reviewId', async (req, res) => {
+reviewsRouter.patch('/reviews/:reviewId', async (req, res) => {
   const { reviewId } = req.params;
   const { id, ...fields } = req.body;
 
@@ -75,7 +75,7 @@ router.patch('/reviews/:reviewId', async (req, res) => {
 });
 
 // DELETE /reviews/:reviewId
-router.delete('/reviews/:reviewId', async (req, res) => {
+reviewsRouter.delete('/reviews/:reviewId', async (req, res) => {
   const { reviewId } = req.params;
 
   try {
@@ -87,4 +87,4 @@ router.delete('/reviews/:reviewId', async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = reviewsRouter;
