@@ -19,12 +19,13 @@ productsRouter.get("/products", async (req, res, next) => {
 
 productsRouter.post("/products", async (req, res, next) => {
   try {
-    const { name, description, price, stock } = req.body;
+    const { name, description, price, stock, type } = req.body;
     const postProduct = await createProduct({
       name,
       description,
       price,
       stock,
+      type
     });
     res.send(postProduct);
   } catch (error) {
