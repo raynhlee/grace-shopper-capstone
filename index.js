@@ -36,6 +36,14 @@ const PORT = process.env.PORT || 4000;
 
 server.use((error, req, res, next) => {
   res.send(error);
+});
+
+server.use((req, res, next) => {
+  res.status(404).json({ message: "Not Found"});
+});
+
+server.use((err, req, res, next) => {
+  res.status(500).json({ message: "Internal Server Error", err})
 })
 // define a server handle to close open tcp connection after unit tests have run
 const handle = server.listen(PORT, async () => {

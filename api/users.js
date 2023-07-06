@@ -12,8 +12,6 @@ const {
     getUserByEmail
 } = require('../db');
 
-let myToken;
-
 // GET /api/users
 usersRouter.get('/', async (req, res, next) => {
     try {
@@ -111,10 +109,6 @@ usersRouter.post('/login', async (req, res, next) => {
             username: user.username,
         }, process.env.JWT_SECRET, {expiresIn: '1w'});
 
-        if(token){
-            myToken = token;
-        }
-
         res.send({ user, token, message: "you're logged in!"});
     } catch ({ name, message }) {
         console.log({name, message});
@@ -154,4 +148,6 @@ usersRouter.get('/:username/orders', requireUser, async (req, res, next) => {
     }
 });
 
-module.exports = {usersRouter, myToken};
+module.exports = {
+    usersRouter
+};
