@@ -3,6 +3,11 @@
   flex-direction: column;
 }
 
+a {
+  text-decoration: none;
+  color: black
+}
+
 #header-main-div{
   height: 110px;
   box-shadow: 0 4px 2px -2px rgb(224, 224, 224);
@@ -30,6 +35,8 @@
 #site-main-header{
   margin-top: 43px;
   margin-left: 30px;
+  color: black;
+  text-decoration: none;
 }
 
 #header-account-buttons-div{
@@ -108,4 +115,54 @@
 #homepage-main-image{
   width: 80vw;
   height: auto;
+}
+
+#login-main-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+#login-form{
+  display: flex;
+  flex-direction: column;
+}
+
+#login-username-div{
+  display: flex;
+  flex-direction: column;
+  width: 482px;
+}
+
+#login-password-div{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+#login-username-input{
+  height: 22px;
+  padding: 9px 8px;
+}
+
+#login-password-input{
+  height: 22px;
+  padding: 9px 8px;
+}
+
+#sign-in-button{
+  height: 54px;
+  width: 482px;
+  padding: 0px 18px;
+  margin-top: 30px;
+  font-size: large;
+}
+
+#login-create-acc-button{
+  height: 54px;
+  width: 482px;
+  padding: 0px 18px;
+  margin-top: 30px;
+  font-size: large;
 }
