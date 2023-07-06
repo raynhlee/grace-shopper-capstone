@@ -5,7 +5,8 @@ import {
   Header,
   DefaultHomepage,
   AllGuitars,
-  Login
+  Login,
+  Register
 } from './components'
 
 function App() {
@@ -16,9 +17,12 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-       <Header />
+       <Header token={token} setToken={setToken} setUser={setUser}/>
       <Route path='/users/login'>
         <Login username={username} setUsername={setUsername} setToken={setToken} setUser={setUser}/>
+      </Route>
+      <Route path = '/users/register'>
+        <Register username = {username} setUsername={setUsername} setToken={setToken} setUser={setUser} />
       </Route>
        <Route path='/guitars'>
           <AllGuitars />

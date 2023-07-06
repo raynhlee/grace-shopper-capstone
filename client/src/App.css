@@ -166,3 +166,57 @@ a {
   margin-top: 30px;
   font-size: large;
 }
+
+#register-main-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+#register-form{
+  display: flex;
+  flex-direction: column;
+}
+
+#register-username-div{
+  display: flex;
+  flex-direction: column;
+  width: 482px;
+}
+
+#register-password-div{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+#confirm-password-div{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+#or-sign-in-link{
+  text-decoration: underline;
+}
+
+#register-email-div{
+  display: flex;
+  flex-direction: column;
+  width: 482px;
+  margin-top: 15px;
+}
+
+#logout-button{
+  border: none;
+  background-color: white;
+  height: 40px;
+  padding-top: 12px;
+  font-size: 16px;
+  color: black;
+}
+
+#logout-button:hover{
+  text-decoration: underline;
+}
