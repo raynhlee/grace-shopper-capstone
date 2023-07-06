@@ -1,0 +1,111 @@
+.App{
+  display: flex;
+  flex-direction: column;
+}
+
+#header-main-div{
+  height: 110px;
+  box-shadow: 0 4px 2px -2px rgb(224, 224, 224);
+}
+
+#header-main-section{
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+}
+
+#nav-bar{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 0px;
+  width: 80vw;
+  margin-top: 40px;
+}
+
+#search-bar{
+  margin-top: 15px;
+  width: 700px;
+}
+
+#site-main-header{
+  margin-top: 43px;
+  margin-left: 30px;
+}
+
+#header-account-buttons-div{
+  display: flex;
+  justify-content: space-evenly ;
+  width: 200px;
+  margin-left: 0px;
+}
+/* Dropdown Button */
+.dropbtn {
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  background-color: white;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+  margin-top: 3px;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: rgb(230, 230, 230);
+  border-radius: 10px;
+ 
+}
+
+#default-home-main-div{
+  display: flex;
+  flex-direction: column;
+}
+
+#sale-announcement-div{
+  display: flex;
+  justify-content: center;
+}
+
+#homepage-main-image-div{
+  display: flex;
+  justify-content: center;
+  
+}
+
+#homepage-main-image{
+  width: 80vw;
+  height: auto;
+}
