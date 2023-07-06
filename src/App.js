@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import './App.css';
 import {
   Header,
@@ -15,7 +15,7 @@ function App() {
   const [user, setUser] = useState([])
 
   return (
-    <BrowserRouter>
+    
     <div className="App">
        <Header token={token} setToken={setToken} setUser={setUser}/>
       <Route path='/users/login'>
@@ -33,7 +33,7 @@ function App() {
        
       
     </div>
-    </BrowserRouter>
+    
   )
 }
 

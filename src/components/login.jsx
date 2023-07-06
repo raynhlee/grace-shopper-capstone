@@ -3,6 +3,7 @@ import { fetchFromAPI } from "../api";
 import { Link, useHistory } from "react-router-dom";
 
 const Login = ({username, setUsername, setToken, setUser}) => {
+    const history = useHistory()
     const [password, setPassword] = useState('')
     // Why is useHistory not working?? getting weird error "invalid hook call, hooks can only be called inside the body of a function component"
     
@@ -39,7 +40,7 @@ const Login = ({username, setUsername, setToken, setUser}) => {
             setUser(user);
             localStorage.setItem('token', token);
             console.log('thank you for logging in')
-            //history.push('/')
+            history.push('/')
         }
 
         
@@ -68,4 +69,4 @@ const Login = ({username, setUsername, setToken, setUser}) => {
     )
 }
 
-export default Login
+export default Login;
