@@ -7,7 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
-const { fetchFromAPI } = require("../api");
+import { fetchFromAPI } from "../api";
 
 //todo make all product types route to /products?
 
@@ -20,19 +20,25 @@ function Products({ products, setProducts, count, setCount, username }) {
 
   const addToCart = async (product) => {};
 
-  useEffect(() => {
-    try {
-      const data = fetchFromAPI({
-        path: "/products",
-        method: "GET",
-      });
-      //todo need to filter through products based on type clicked
+  const fetchProducts = async () => {
+    const data = fetchFromAPI({
+      path: "/products",
+    });
+    if (data) {
       setProducts(data);
-
-      console.log("products: ", products);
-    } catch (error) {
-      console.log(error);
     }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+    // try {
+    //   fetchProducts();
+    //   //todo need to filter through products based on type clicked
+
+    //   console.log("products: ", products);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }, []);
 
   return (
