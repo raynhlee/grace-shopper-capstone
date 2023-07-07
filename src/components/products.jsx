@@ -6,8 +6,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-//todo won't let me file path to db
-const { getAllProducts, updateProduct, createOrder } = require("../");
+
+const { fetchFromAPI } = require("../api");
 
 //todo make all product types route to /products?
 
@@ -22,9 +22,14 @@ function Products({ products, setProducts, count, setCount, username }) {
 
   useEffect(() => {
     try {
-      Promise.all([getAllProducts()]).then(([data]) => {
-        setProducts(data);
+      const data = fetchFromAPI({
+        path: "/products",
+        method: "GET",
       });
+      //todo need to filter through products based on type clicked
+      setProducts(data);
+
+      console.log("products: ", products);
     } catch (error) {
       console.log(error);
     }
@@ -34,40 +39,41 @@ function Products({ products, setProducts, count, setCount, username }) {
     <>
       <div>
         <div style={{ display: "flex", flexWrap: "wrap" }}>
-          {products.map((product, index) => (
-            <Card key={index} id={index}>
-              <CardMedia image={product.img && product.img} />
-              <CardContent>
-                <Typography>{product.title}</Typography>
+          {products.length &&
+            products.map((product, index) => (
+              <Card key={index} id={index}>
+                <CardMedia image={product.img && product.img} />
+                <CardContent>
+                  <Typography>{product.title}</Typography>
 
-                <Typography>{product.description}</Typography>
+                  <Typography>{product.description}</Typography>
 
-                <Typography>${product.price}</Typography>
+                  <Typography>${product.price}</Typography>
 
-                <Typography>Stock : {product.stock}</Typography>
-              </CardContent>
+                  <Typography>Stock : {product.stock}</Typography>
+                </CardContent>
 
-              <CardActions>
-                {product.reviews.length !== 0 ? (
+                <CardActions>
+                  {product.reviews.length !== 0 ? (
+                    <Button
+                      size="small"
+                      type="button"
+                      onClick={handleOpen(product)}
+                    >
+                      Reviews
+                    </Button>
+                  ) : null}
+
                   <Button
                     size="small"
-                    type="button"
-                    onClick={handleOpen(product)}
+                    endIcon={<ShoppingCartIcon />}
+                    onClick={() => addToCart(product)}
                   >
-                    Reviews
+                    Add to Cart
                   </Button>
-                ) : null}
-
-                <Button
-                  size="small"
-                  endIcon={<ShoppingCartIcon />}
-                  onClick={() => addToCart(product)}
-                >
-                  Add to Cart
-                </Button>
-              </CardActions>
-            </Card>
-          ))}
+                </CardActions>
+              </Card>
+            ))}
         </div>
       </div>
     </>
