@@ -4,6 +4,12 @@ import { Link, useHistory} from "react-router-dom";
 const Header = ({token, setToken, setUser, setProductType}) => {
 
     return (
+        <div id='header-container'>
+        <div id='red-bar-on-top-of-header'>
+           
+                <p>40% all electric guitars! Prices as marked</p>
+            
+        </div>
         <div id='header-main-div'>
             <div id='header-main-section'>
                 <Link to='/'><h1 id='site-main-header'>guitarget</h1></Link>
@@ -37,13 +43,14 @@ const Header = ({token, setToken, setUser, setProductType}) => {
                             setUser('');
                             localStorage.removeItem("token");
                         }}>Logout </button>
-                        : <Link to='/users/login'><p id='sign-in'>Sign in</p></Link>
+                        : <Link to='/users/login'><p id='sign-in'> Sign in</p></Link>
                         }
                         
-                        <p id='cart'>Cart</p>
+                        <div id='cart'></div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     )
 }
