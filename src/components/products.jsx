@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
 import { fetchFromAPI } from "../api";
 
-const AllGuitars = (props) => {
-    
-    const getAllGuitars = async() => {
+const AllProducts = (props) => {
+    const {productType} = props;
+    const getAllProducts = async() => {
         let data = fetchFromAPI()
     }
 
@@ -13,4 +13,4 @@ const AllGuitars = (props) => {
         </div>
     )
 }
-export default AllGuitars;
+export default AllProducts;
