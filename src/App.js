@@ -4,7 +4,7 @@ import "./App.css";
 import {
   Header,
   DefaultHomepage,
-  AllGuitars,
+  AllProducts,
   Login,
   Register,
   Products,
