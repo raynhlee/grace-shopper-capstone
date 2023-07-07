@@ -27,6 +27,7 @@ function Products({ products, setProducts, count, setCount, username }) {
     if (data) {
       setProducts(data);
     }
+    console.log("products: ", products);
   };
 
   useEffect(() => {

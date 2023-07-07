@@ -36,9 +36,6 @@ function App() {
           setUser={setUser}
         />
       </Route>
-      <Route path="/guitars">
-        <AllGuitars />
-      </Route>
       <Route>
         <Products
           path="/products"
