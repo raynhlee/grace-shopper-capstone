@@ -36,7 +36,7 @@ function App() {
           setUser={setUser}
         />
       </Route>
-      <Route>
+      <Route path="/products">
         <Products
           path="/products"
           products={products}

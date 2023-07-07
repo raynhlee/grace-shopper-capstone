@@ -20,26 +20,28 @@ function Products({ products, setProducts, count, setCount, username }) {
 
   const addToCart = async (product) => {};
 
-  const fetchProducts = async () => {
-    const data = fetchFromAPI({
-      path: "/products",
-    });
-    if (data) {
-      setProducts(data);
-    }
-    console.log("products: ", products);
-  };
+  //todo
+  //   const fetchProducts = async () => {
+  //     const data = fetchFromAPI({
+  //       path: "/products",
+  //     });
+  //     if (data) {
+  //       setProducts(data);
+  //     }
+  //     console.log("data: ", Promise.all(data));
+  //     console.log("products: ", products);
+  //   };
 
+  //todo need to filter through products based on type clicked
   useEffect(() => {
-    fetchProducts();
-    // try {
-    //   fetchProducts();
-    //   //todo need to filter through products based on type clicked
-
-    //   console.log("products: ", products);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      Promise.all([fetchFromAPI({ path: "/products" })]).then(([data]) => {
+        setProducts(data);
+      });
+      console.log("products: ", products);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
@@ -49,7 +51,7 @@ function Products({ products, setProducts, count, setCount, username }) {
           {products.length &&
             products.map((product, index) => (
               <Card key={index} id={index}>
-                <CardMedia image={product.img && product.img} />
+                <CardMedia image={product.image && product.image} />
                 <CardContent>
                   <Typography>{product.title}</Typography>
 
@@ -60,7 +62,7 @@ function Products({ products, setProducts, count, setCount, username }) {
                   <Typography>Stock : {product.stock}</Typography>
                 </CardContent>
 
-                <CardActions>
+                {/* <CardActions>
                   {product.reviews.length !== 0 ? (
                     <Button
                       size="small"
@@ -78,7 +80,7 @@ function Products({ products, setProducts, count, setCount, username }) {
                   >
                     Add to Cart
                   </Button>
-                </CardActions>
+                </CardActions> */}
               </Card>
             ))}
         </div>
