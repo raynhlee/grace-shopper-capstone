@@ -8,7 +8,7 @@ const {
   deleteProduct,
 } = require("../db");
 
-productsRouter.get("/products", async (req, res, next) => {
+productsRouter.get("/", async (req, res, next) => {
   try {
     const getProducts = await getAllProducts();
     res.send(getProducts);
@@ -17,7 +17,7 @@ productsRouter.get("/products", async (req, res, next) => {
   }
 });
 
-productsRouter.post("/products", async (req, res, next) => {
+productsRouter.post("/", async (req, res, next) => {
   try {
     const { name, description, price, stock, type } = req.body;
     const postProduct = await createProduct({
@@ -33,7 +33,7 @@ productsRouter.post("/products", async (req, res, next) => {
   }
 });
 
-productsRouter.patch("/products/:id", async (req, res, next) => {
+productsRouter.patch("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const { name, description, price, stock, type } = req.body;
@@ -52,7 +52,7 @@ productsRouter.patch("/products/:id", async (req, res, next) => {
   }
 });
 
-productsRouter.delete("/products/:id", async (req, res, next) => {
+productsRouter.delete("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
 
