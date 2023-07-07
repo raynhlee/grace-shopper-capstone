@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Link, useHistory} from "react-router-dom";
 
-const Header = ({token, setToken, setUser}) => {
+const Header = ({token, setToken, setUser, setProductType}) => {
 
     return (
         <div id='header-main-div'>
@@ -11,7 +11,18 @@ const Header = ({token, setToken, setUser}) => {
                     <div className="dropdown">
                         <button id='categories' className="dropbtn">Categories</button>
                         <div className="dropdown-content">
-                            <Link to='/guitars'>Guitars</Link>
+                            <Link to='/products' ><button className='nav-buttons' onClick={(event) => {
+                                setProductType("acoustic")
+                            }}>Acoustic Guitars</button></Link>
+                            <Link to='/products' onClick={(event) => {
+                                setProductType("electric")
+                            }}><button className='nav-buttons'>Electric Guitars</button></Link>
+                            <Link to='/products'><button className='nav-buttons' onClick={(event) => {
+                                setProductType("picks")
+                            }}>Guitar Picks</button></Link>
+                            <Link to='/products'><button className='nav-buttons' onClick={(event) => {
+                                setProductType("amps")
+                            }}>Amps</button></Link>
                             
                         </div>
                     </div>
