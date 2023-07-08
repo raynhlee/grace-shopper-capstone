@@ -7,7 +7,7 @@ const {
     createReview, 
     updateReview, 
     deleteReview
-} = require('../db/models/reviews');
+} = require('../db');
 
 // GET /reviews
 reviewsRouter.get('/', async (req, res, next) => {
