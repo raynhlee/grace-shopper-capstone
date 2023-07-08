@@ -10,10 +10,10 @@ const {
 } = require('../db/models/reviews');
 
 // GET /reviews
-reviewsRouter.get('/', async (req, res) => {
+reviewsRouter.get('/', async (req, res, next) => {
   try {
     const reviews = await getAllReviews();
-    res.json(reviews);
+    res.send(reviews);
   } catch (error) {
     console.error(error);
     next(error);
@@ -21,12 +21,12 @@ reviewsRouter.get('/', async (req, res) => {
 });
 
 // GET /reviews/:username
-reviewsRouter.get('/:username', async (req, res) => {
+reviewsRouter.get('/:username', async (req, res, next) => {
   const { username } = req.params;
 
   try {
     const reviews = await getReviewsByUser(username);
-    res.json(reviews);
+    res.send(reviews);
   } catch (error) {
     console.error(error);
     next(error);
@@ -34,12 +34,12 @@ reviewsRouter.get('/:username', async (req, res) => {
 });
 
 // GET /reviews/:productId
-reviewsRouter.get('/:productId', async (req, res) => {
+reviewsRouter.get('/:productId', async (req, res, next) => {
   const { productId } = req.params;
 
   try {
     const reviews = await getReviewsByProduct(productId);
-    res.json(reviews);
+    res.send(reviews);
   } catch (error) {
     console.error(error);
     next(error);
@@ -47,13 +47,13 @@ reviewsRouter.get('/:productId', async (req, res) => {
 });
 
 // POST /reviews/:productId
-reviewsRouter.post('/:productId', async (req, res) => {
+reviewsRouter.post('/:productId', async (req, res, next) => {
   const { productId } = req.params;
   const { creatorId, description } = req.body;
 
   try {
     const review = await createReview({ creatorId, productId, description });
-    res.json(review);
+    res.send(review);
   } catch (error) {
     console.error(error);
     next(error);
@@ -61,7 +61,7 @@ reviewsRouter.post('/:productId', async (req, res) => {
 });
 
 // PATCH /reviews/:reviewId
-reviewsRouter.patch('/:reviewId', async (req, res) => {
+reviewsRouter.patch('/:reviewId', async (req, res, next) => {
   const { reviewId } = req.params;
   const { id, ...fields } = req.body;
 
@@ -75,12 +75,12 @@ reviewsRouter.patch('/:reviewId', async (req, res) => {
 });
 
 // DELETE /reviews/:reviewId
-reviewsRouter.delete('/:reviewId', async (req, res) => {
+reviewsRouter.delete('/:reviewId', async (req, res, next) => {
   const { reviewId } = req.params;
 
   try {
     const deletedReview = await deleteReview(reviewId);
-    res.json(deletedReview);
+    res.send(deletedReview);
   } catch (error) {
     console.error(error);
     next(error);
