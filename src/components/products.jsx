@@ -1,36 +1,60 @@
 import React, { useEffect, useState } from "react";
 
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Button from "@mui/material/Button";
 
 import { fetchFromAPI } from "../api";
 
 //todo make all product types route to /products?
 
-function Products({ products, setProducts, count, setCount, username }) {
+function Products({ products, setProducts, count, setCount, username, user }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const handleOpen = (product) => {
-    setSelectedProduct(product);
+  const addToCart = async (product) => {
+    setCount(count + 1);
+    let newStock = product.stock - 1;
+
+    if (count === 1) {
+      //todo createOrder
+      const order = await fetchFromAPI({
+        path: "/orders",
+        userId: user.id,
+        product: product.id,
+        price: product.price,
+        quantity: 1,
+      });
+      localStorage.setItem("orderid", order.orderid);
+
+      //todo updateProduct
+      await fetchFromAPI({
+        path: "/products",
+        id: product.id,
+        stock: newStock,
+      });
+
+      //todo getAllProducts
+      Promise.all([await fetchFromAPI({ path: "/products" })]).then(
+        ([data]) => {
+          setProducts(data);
+        }
+      );
+
+      try {
+        Promise.all([fetchFromAPI({ path: "/products" })]).then(([data]) => {
+          setProducts(data);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+      //todo updateProduct to -1
+      await fetchFromAPI({ path: "/products" });
+    }
   };
-
-  const addToCart = async (product) => {};
-
-  //todo
-  //   const fetchProducts = async () => {
-  //     const data = fetchFromAPI({
-  //       path: "/products",
-  //     });
-  //     if (data) {
-  //       setProducts(data);
-  //     }
-  //     console.log("data: ", Promise.all(data));
-  //     console.log("products: ", products);
-  //   };
 
   //todo need to filter through products based on type clicked
   useEffect(() => {
@@ -50,8 +74,18 @@ function Products({ products, setProducts, count, setCount, username }) {
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           {products.length &&
             products.map((product, index) => (
-              <Card key={index} id={index}>
-                <CardMedia image={product.image && product.image} />
+              <Card
+                key={index}
+                id={index}
+                style={{ width: "20%", margin: "2%" }}
+              >
+                <CardMedia>
+                  <img
+                    src={product.image && product.image}
+                    alt={product.title}
+                    height={200}
+                  />
+                </CardMedia>
                 <CardContent>
                   <Typography>{product.title}</Typography>
 
@@ -62,17 +96,7 @@ function Products({ products, setProducts, count, setCount, username }) {
                   <Typography>Stock : {product.stock}</Typography>
                 </CardContent>
 
-                {/* <CardActions>
-                  {product.reviews.length !== 0 ? (
-                    <Button
-                      size="small"
-                      type="button"
-                      onClick={handleOpen(product)}
-                    >
-                      Reviews
-                    </Button>
-                  ) : null}
-
+                <CardActions>
                   <Button
                     size="small"
                     endIcon={<ShoppingCartIcon />}
@@ -80,7 +104,7 @@ function Products({ products, setProducts, count, setCount, username }) {
                   >
                     Add to Cart
                   </Button>
-                </CardActions> */}
+                </CardActions>
               </Card>
             ))}
         </div>

@@ -43,6 +43,7 @@ function App() {
           setProducts={setProducts}
           count={count}
           setCount={setCount}
+          user={user}
         />
       </Route>
       <Route exact path="/">
