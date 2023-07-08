@@ -16,7 +16,7 @@ reviewsRouter.get('/', async (req, res) => {
     res.json(reviews);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching reviews' });
+    next(error);
   }
 });
 
@@ -29,7 +29,7 @@ reviewsRouter.get('/:username', async (req, res) => {
     res.json(reviews);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching reviews' });
+    next(error);
   }
 });
 
@@ -42,7 +42,7 @@ reviewsRouter.get('/:productId', async (req, res) => {
     res.json(reviews);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching reviews' });
+    next(error);
   }
 });
 
@@ -56,7 +56,7 @@ reviewsRouter.post('/:productId', async (req, res) => {
     res.json(review);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while creating a review' });
+    next(error);
   }
 });
 
@@ -70,7 +70,7 @@ reviewsRouter.patch('/:reviewId', async (req, res) => {
     res.sendStatus(200);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while updating the review' });
+    next(error);
   }
 });
 
@@ -83,7 +83,7 @@ reviewsRouter.delete('/:reviewId', async (req, res) => {
     res.json(deletedReview);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while deleting the review' });
+    next(error);
   }
 });
 
