@@ -4,10 +4,10 @@ import "./App.css";
 import {
   Header,
   DefaultHomepage,
-  AllProducts,
+  Products,
   Login,
   Register,
-  Products,
+  Footer,
   Cart,
 } from "./components";
 
@@ -66,6 +66,7 @@ function App() {
       <Route exact path="/">
         <DefaultHomepage />
       </Route>
+      <Footer />
     </div>
   );
 }

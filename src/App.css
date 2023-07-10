@@ -272,3 +272,32 @@ a {
 #logout-button:hover{
   text-decoration: underline;
 }
+
+#footer-logo{
+  height: 75px;
+  width: 75px;
+}
+
+#footer-slogan{
+  font-weight: bold;
+}
+
+#footer-main-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-family: 'Helvetica';
+}
+
+#footer-grey-div{
+  height: 50px;
+  background-color: rgb(51, 51, 51);
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-family: 'Helvetica';
+  font-size: 12px;
+  align-items: center;
+}

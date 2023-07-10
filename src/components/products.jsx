@@ -65,6 +65,8 @@ function Products({
           if (product.type === productType) {
             filteredProducts.push(product);
           }
+          console.log(product.type);
+          console.log(productType);
         });
         setProducts(filteredProducts);
       });
