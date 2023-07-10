@@ -43,16 +43,6 @@ function Products({ products, setProducts, count, setCount, username, user }) {
           setProducts(data);
         }
       );
-
-      try {
-        Promise.all([fetchFromAPI({ path: "/products" })]).then(([data]) => {
-          setProducts(data);
-        });
-      } catch (error) {
-        console.log(error);
-      }
-      //todo updateProduct to -1
-      await fetchFromAPI({ path: "/products" });
     }
   };
 
