@@ -16,10 +16,11 @@ function App() {
   const [username, setUsername] = useState("");
   const [token, setToken] = useState(null);
   const [user, setUser] = useState([]);
+  const [productType, setProductType] = useState(null);
 
   return (
     <div className="App">
-      <Header token={token} setToken={setToken} setUser={setUser} />
+      <Header token={token} setToken={setToken} setUser={setUser} setProductType={setProductType}/>
       <Route path="/users/login">
         <Login
           username={username}
@@ -44,6 +45,7 @@ function App() {
           count={count}
           setCount={setCount}
           user={user}
+          productType={productType}
         />
       </Route>
       <Route exact path="/">

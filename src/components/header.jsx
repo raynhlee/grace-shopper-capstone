@@ -18,16 +18,16 @@ const Header = ({token, setToken, setUser, setProductType}) => {
                         <button id='categories' className="dropbtn">Categories</button>
                         <div className="dropdown-content">
                             <Link to='/products' ><button className='nav-buttons' onClick={(event) => {
-                                setProductType("acoustic")
+                                setProductType("Acoustic Guitars")
                             }}>Acoustic Guitars</button></Link>
                             <Link to='/products' onClick={(event) => {
-                                setProductType("electric")
+                                setProductType("Electric Guitars")
                             }}><button className='nav-buttons'>Electric Guitars</button></Link>
                             <Link to='/products'><button className='nav-buttons' onClick={(event) => {
-                                setProductType("picks")
+                                setProductType("Guitar Picks")
                             }}>Guitar Picks</button></Link>
                             <Link to='/products'><button className='nav-buttons' onClick={(event) => {
-                                setProductType("amps")
+                                setProductType("Amps")
                             }}>Amps</button></Link>
                             
                         </div>
