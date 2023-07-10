@@ -12,12 +12,22 @@ import { fetchFromAPI } from "../api";
 
 //todo make all product types route to /products?
 
-function Products({ products, setProducts, count, setCount, username, user }) {
+function Products({
+  products,
+  setProducts,
+  count,
+  setCount,
+  username,
+  user,
+  productType,
+}) {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const addToCart = async (product) => {
     setCount(count + 1);
     let newStock = product.stock - 1;
+
+    console.log(count);
 
     if (count === 1) {
       //todo createOrder
@@ -29,7 +39,7 @@ function Products({ products, setProducts, count, setCount, username, user }) {
         quantity: 1,
       });
       localStorage.setItem("orderid", order.orderid);
-
+      console.log("order: ", order);
       //todo updateProduct
       await fetchFromAPI({
         path: "/products",
@@ -50,7 +60,13 @@ function Products({ products, setProducts, count, setCount, username, user }) {
   useEffect(() => {
     try {
       Promise.all([fetchFromAPI({ path: "/products" })]).then(([data]) => {
-        setProducts(data);
+        let filteredProducts = [];
+        data.map((product, index) => {
+          if (product.type === productType) {
+            filteredProducts.push(product);
+          }
+        });
+        setProducts(filteredProducts);
       });
       console.log("products: ", products);
     } catch (error) {
