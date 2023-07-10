@@ -71,13 +71,14 @@ function Products({ products, setProducts, count, setCount, username, user }) {
   return (
     <>
       <div>
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
+        <div id='all-products'>
           {products.length &&
             products.map((product, index) => (
               <Card
                 key={index}
                 id={index}
                 style={{ width: "20%", margin: "2%" }}
+                className ='product-card'
               >
                 <CardMedia>
                   <img
@@ -87,24 +88,24 @@ function Products({ products, setProducts, count, setCount, username, user }) {
                   />
                 </CardMedia>
                 <CardContent>
-                  <Typography>{product.title}</Typography>
-
-                  <Typography>{product.description}</Typography>
-
+                  <Typography id='product-title'>{product.name}</Typography>
                   <Typography>${product.price}</Typography>
+                  <p id='when-purchased-online'>When purchased online</p>
 
-                  <Typography>Stock : {product.stock}</Typography>
+                  
                 </CardContent>
 
                 <CardActions>
                   <Button
-                    size="small"
-                    endIcon={<ShoppingCartIcon />}
+                    
                     onClick={() => addToCart(product)}
+                    id='add-to-cart-button'
                   >
-                    Add to Cart
+                    Add to cart
                   </Button>
+                  
                 </CardActions>
+                
               </Card>
             ))}
         </div>
