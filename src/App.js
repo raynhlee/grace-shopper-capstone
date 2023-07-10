@@ -7,6 +7,7 @@ import {
   AllProducts,
   Login,
   Register,
+  Footer
   Products,
 } from "./components";
 
@@ -49,6 +50,13 @@ function App() {
       <Route exact path="/">
         <DefaultHomepage />
       </Route>
+       <Route path='/products'>
+          <AllProducts productsType={productsType}/>
+       </Route>
+       <Route exact path='/'>
+         <DefaultHomepage />
+       </Route>
+       <Footer />
     </div>
   );
 }
