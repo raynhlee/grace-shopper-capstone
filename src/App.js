@@ -4,11 +4,10 @@ import "./App.css";
 import {
   Header,
   DefaultHomepage,
-  AllProducts,
+  Products,
   Login,
   Register,
-  Footer
-  Products,
+  Footer,
 } from "./components";
 
 function App() {
@@ -50,12 +49,6 @@ function App() {
       <Route exact path="/">
         <DefaultHomepage />
       </Route>
-       <Route path='/products'>
-          <AllProducts productsType={productsType}/>
-       </Route>
-       <Route exact path='/'>
-         <DefaultHomepage />
-       </Route>
        <Footer />
     </div>
   );
