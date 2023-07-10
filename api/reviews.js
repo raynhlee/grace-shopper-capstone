@@ -7,61 +7,61 @@ const {
     createReview, 
     updateReview, 
     deleteReview
-} = require('../db/models/reviews');
+} = require('../db');
 
 // GET /reviews
-reviewsRouter.get('/reviews', async (req, res) => {
+reviewsRouter.get('/', async (req, res, next) => {
   try {
     const reviews = await getAllReviews();
-    res.json(reviews);
+    res.send(reviews);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching reviews' });
+    next(error);
   }
 });
 
 // GET /reviews/:username
-reviewsRouter.get('/reviews/:username', async (req, res) => {
+reviewsRouter.get('/:username', async (req, res, next) => {
   const { username } = req.params;
 
   try {
     const reviews = await getReviewsByUser(username);
-    res.json(reviews);
+    res.send(reviews);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching reviews' });
+    next(error);
   }
 });
 
 // GET /reviews/:productId
-reviewsRouter.get('/reviews/:productId', async (req, res) => {
+reviewsRouter.get('/:productId', async (req, res, next) => {
   const { productId } = req.params;
 
   try {
     const reviews = await getReviewsByProduct(productId);
-    res.json(reviews);
+    res.send(reviews);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while fetching reviews' });
+    next(error);
   }
 });
 
 // POST /reviews/:productId
-reviewsRouter.post('/reviews/:productId', async (req, res) => {
+reviewsRouter.post('/:productId', async (req, res, next) => {
   const { productId } = req.params;
   const { creatorId, description } = req.body;
 
   try {
     const review = await createReview({ creatorId, productId, description });
-    res.json(review);
+    res.send(review);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while creating a review' });
+    next(error);
   }
 });
 
 // PATCH /reviews/:reviewId
-reviewsRouter.patch('/reviews/:reviewId', async (req, res) => {
+reviewsRouter.patch('/:reviewId', async (req, res, next) => {
   const { reviewId } = req.params;
   const { id, ...fields } = req.body;
 
@@ -70,20 +70,20 @@ reviewsRouter.patch('/reviews/:reviewId', async (req, res) => {
     res.sendStatus(200);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while updating the review' });
+    next(error);
   }
 });
 
 // DELETE /reviews/:reviewId
-reviewsRouter.delete('/reviews/:reviewId', async (req, res) => {
+reviewsRouter.delete('/:reviewId', async (req, res, next) => {
   const { reviewId } = req.params;
 
   try {
     const deletedReview = await deleteReview(reviewId);
-    res.json(deletedReview);
+    res.send(deletedReview);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while deleting the review' });
+    next(error);
   }
 });
 

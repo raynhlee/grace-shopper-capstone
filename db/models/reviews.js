@@ -18,7 +18,7 @@ async function createReview({creatorId, productId, description}){
 
 async function getAllReviews(){
     try {
-        const allReviews = await client.query(
+        const { rows: allReviews } = await client.query(
             `SELECT *
             FROM reviews;`
         )
@@ -37,7 +37,9 @@ async function getReviewsByProduct(productId){
         SELECT * 
         FROM reviews
         WHERE "productId"=$1;
-        `, [productId])
+        `, [productId]);
+
+        return review;
     } catch(error){
         console.error(error)
     }
@@ -50,7 +52,9 @@ async function getReviewsByUser(creatorId){
         SELECT * 
         FROM reviews
         WHERE "creatorId"=$1
-        `, [creatorId])
+        `, [creatorId]);
+
+        return review;
 
     } catch(error){
         console.error(error)
@@ -74,6 +78,8 @@ async function updateReview({id, ...fields}){
         WHERE id=$1
         RETURNING *;
         `, [id, ...Object.values(fields)]);
+
+        return review;
     } catch (error){
         console.error(error);
     }
@@ -81,13 +87,13 @@ async function updateReview({id, ...fields}){
 
 async function deleteReview(reviewId){
     try {
-        const {rows: [res]} = await client.query(`
+        const {rows: [response]} = await client.query(`
         DELETE reviews
         WHERE id=$1
         RETURNING *;
         `, [reviewId]);
 
-        return res;
+        return response;
 
     } catch (error){
         console.error(error)
