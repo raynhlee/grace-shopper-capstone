@@ -272,3 +272,8 @@ a {
 #logout-button:hover{
   text-decoration: underline;
 }
+
+#footer-logo{
+  height: 75px;
+  width: 75px;
+}

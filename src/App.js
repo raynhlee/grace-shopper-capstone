@@ -6,7 +6,8 @@ import {
   DefaultHomepage,
   AllProducts,
   Login,
-  Register
+  Register,
+  Footer
 } from './components'
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
        <Route exact path='/'>
          <DefaultHomepage />
        </Route>
-       
+       <Footer />
       
     </div>
     
