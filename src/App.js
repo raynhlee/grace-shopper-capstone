@@ -19,6 +19,7 @@ function App() {
   const [user, setUser] = useState([]);
   const [cartData, setCartData] = useState([]);
   const [productType, setProductType] = useState(null);
+  console.log("USER", user);
 
   return (
     <div className="App">
@@ -57,7 +58,7 @@ function App() {
       </Route>
       <Route path="/cart">
         <Cart
-          username={username}
+          user={user}
           setCartData={setCartData}
           cartData={cartData}
           products={products}

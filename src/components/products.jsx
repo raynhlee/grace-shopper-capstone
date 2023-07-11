@@ -33,10 +33,14 @@ function Products({
       //todo createOrder
       const order = await fetchFromAPI({
         path: "/orders",
-        userId: user.id,
-        product: product.id,
-        price: product.price,
-        quantity: 1,
+        method: "POST",
+        body: {
+          userId: user.id,
+          productId: product.id,
+          price: product.price,
+          quantity: 1,
+        },
+        token: user.token,
       });
       localStorage.setItem("orderid", order.orderid);
       console.log("order: ", order);
@@ -65,8 +69,6 @@ function Products({
           if (product.type === productType) {
             filteredProducts.push(product);
           }
-          console.log(product.type);
-          console.log(productType);
         });
         setProducts(filteredProducts);
       });

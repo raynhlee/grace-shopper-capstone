@@ -54,32 +54,21 @@ async function getOrderByUser({ username }) {
     const { rows: orders } = await client.query(
       `
             SELECT o.*, u.username
-            AS "customerName"
+            AS "customerName", p.name,p.description,p.price,p.image
             FROM orders o
             INNER JOIN users u
             ON o."userId" = u.id
+            JOIN products p ON p.id = o."productId"
             WHERE u.username = $1;
         `,
       [username]
     );
+    console.log("Hello");
 
     //todo new
-    const productids = orders.map((order) => order.productId).join(",");
 
-    const { rows: orderedProducts } = await client.query(
-      `select p.name,p.description,p.price,p.image from products p where p.id in (${productids})`
-    );
-
-    //todo new
-    const myOrders = await Promise.all(
-      orders.map(async (order) => {
-        order.products = [];
-        if (orderedProducts) order.products = orderedProducts;
-        return order;
-      })
-    );
-
-    return myOrders;
+    console.log("ORDERS", orders);
+    return orders;
   } catch (error) {
     console.error("Error while getting order by user", error);
   }

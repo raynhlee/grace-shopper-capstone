@@ -8,20 +8,20 @@ import { Link } from "react-router-dom";
 
 import { fetchFromAPI } from "../api";
 
-function Cart({ username, cartData, setCartData }) {
+function Cart({ user, cartData, setCartData }) {
   useEffect(() => {
     try {
       //todo getOrderByUser
-      Promise.all([fetchFromAPI({ path: "/orders", username })]).then(
-        ([data]) => {
-          setCartData(data);
-          console.log("cartData: ", cartData);
-        }
-      );
+      Promise.all([
+        fetchFromAPI({ path: `/orders/${user.user.username}` }),
+      ]).then(([data]) => {
+        setCartData(data);
+        console.log("cartData: ", cartData);
+      });
     } catch (error) {
       console.log(error);
     }
-  }, [username]);
+  }, []);
 
   return (
     <>

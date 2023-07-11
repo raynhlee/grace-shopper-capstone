@@ -13,19 +13,27 @@ import Avatar from "@mui/material/Avatar";
 function CartItem(props) {
   const { cardData } = props;
   console.log("cardData: ", cardData);
+
+  /*
+  const productIdArray = [];
+
+  for (const key in obj) {
+    if (key === 'productId') {
+      productIdArray.push(obj[key]);
+    }
+  }
+*/
   return (
     <Card style={{ width: "100%" }}>
       <CardActionArea>
-        <CardContent>
-          {/* todo */}
-          {/* todo  */}
-          <img src={cardData?.products?.image} />
+        <CardContent style={{ display: "flex", gap: "1rem" }}>
+          <Avatar src={cardData?.image} />
           <div>
             <Typography>
-              {cardData?.products?.title || ""}
+              {cardData?.name || ""}
               <span>${cardData.price}</span>
             </Typography>
-            <Typography>{cardData?.products?.description || ""}</Typography>
+            <Typography>{cardData?.description || ""}</Typography>
             <Typography>Quantity: {cardData?.quantity || ""}</Typography>
           </div>
         </CardContent>
