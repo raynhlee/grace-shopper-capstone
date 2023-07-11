@@ -8,6 +8,7 @@ import {
   Login,
   Register,
   Footer,
+  Cart,
 } from "./components";
 
 function App() {
@@ -16,11 +17,18 @@ function App() {
   const [username, setUsername] = useState("");
   const [token, setToken] = useState(null);
   const [user, setUser] = useState([]);
+  const [cartData, setCartData] = useState([]);
   const [productType, setProductType] = useState(null);
+  console.log("USER", user);
 
   return (
     <div className="App">
-      <Header token={token} setToken={setToken} setUser={setUser} setProductType={setProductType}/>
+      <Header
+        token={token}
+        setToken={setToken}
+        setUser={setUser}
+        setProductType={setProductType}
+      />
       <Route path="/users/login">
         <Login
           username={username}
@@ -48,10 +56,18 @@ function App() {
           productType={productType}
         />
       </Route>
+      <Route path="/cart">
+        <Cart
+          user={user}
+          setCartData={setCartData}
+          cartData={cartData}
+          products={products}
+        />
+      </Route>
       <Route exact path="/">
         <DefaultHomepage />
       </Route>
-       <Footer />
+      <Footer />
     </div>
   );
 }
