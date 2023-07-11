@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link, useHistory, Route} from "react-router-dom";
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -12,7 +13,7 @@ import { fetchFromAPI } from "../api";
 
 //todo make all product types route to /products?
 
-function Products({ products, setProducts, count, setCount, username, user, productType }) {
+function Products({ products, setProducts, count, setCount, username, user, productType, setSingleProductId}) {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const addToCart = async (product) => {
@@ -103,7 +104,6 @@ function Products({ products, setProducts, count, setCount, username, user, prod
                 id={index}
                 style={{ boxShadow: 'none', borderRadius:'0px', width: '28%', marginBottom: '20px', marginLeft: '10px'}}
                 className ='product-card' 
-               
               >
                 <CardMedia>
                   <img className='product-image'
@@ -113,7 +113,7 @@ function Products({ products, setProducts, count, setCount, username, user, prod
                   />
                 </CardMedia>
                 <CardContent>
-                  <Typography id='product-title'>{product.name}</Typography>
+                  <Link to={`/products/singleproduct`}><button id='product-title' onClick={() => setSingleProductId(product.id)} >{product.name}</button></Link>
                   <Typography>${product.price}</Typography>
                   <p id='when-purchased-online'>When purchased online</p>
 
@@ -132,7 +132,9 @@ function Products({ products, setProducts, count, setCount, username, user, prod
         </div>
         </div>
       </div>
+      
     </>
+    
   );
 }
 

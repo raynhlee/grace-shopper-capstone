@@ -8,7 +8,8 @@ import {
   Login,
   Register,
   Footer,
-  MyAccount
+  MyAccount,
+  SingleProduct
 } from "./components";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [productType, setProductType] = useState(null);
+  const [singleProductId, setSingleProductId] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('token', token);
@@ -43,15 +45,16 @@ function App() {
           setUser={setUser}
         />
       </Route>
-      <Route path="/products">
+      <Route exact path="/products">
         <Products
-          path="/products"
+          exact path="/products"
           products={products}
           setProducts={setProducts}
           count={count}
           setCount={setCount}
           user={user}
           productType={productType}
+          setSingleProductId={setSingleProductId}
         />
       </Route>
       <Route exact path="/">
@@ -61,6 +64,9 @@ function App() {
         <MyAccount
         user={user}
         />
+      </Route>
+      <Route exact path='/products/singleproduct'>
+        <SingleProduct singleProductId={singleProductId}/>
       </Route>
        <Footer />
     </div>
