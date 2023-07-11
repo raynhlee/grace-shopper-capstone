@@ -63,6 +63,7 @@ const Header = ({token, setToken, setUser, setProductType, user}) => {
                             setToken('');
                             setUser('');
                             localStorage.removeItem("token");
+                            localStorage.removeItem('user');
                             history.push('/');
                         }}>Logout </button>
                         <Link to='/me' ><p id='account-button'>Account</p></Link>

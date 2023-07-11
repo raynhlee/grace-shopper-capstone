@@ -1,18 +1,20 @@
 import React, {useState, useEffect} from "react";
+import { useReducer } from "react";
 import { fetchFromAPI } from "../api";
 
 const MyAccount = ({user}) => {
     const [myInfo, setMyInfo] = useState([])
-    console.log(user.username);
+    const [myOrders, setMyOrders] = useState([])
+    
 
     const getMyOrders = async(event) => {
-        event.preventDefault();
 
         const data = await fetchFromAPI({
-            path: `/${me.username}/orders`
+            path: `/orders/${user.username}`
         })
 
         console.log(data)
+
     }
 
     useEffect(() => {
@@ -30,9 +32,20 @@ const MyAccount = ({user}) => {
         }
       }, []);
 
+      useEffect( ()=>{
+           async function fetchData(){
+            await getMyOrders()
+           }
+
+           fetchData();
+      }, [] )
+
 return (
     <div id='my-account-main-div'>
-        <h3 id='my-account-header'>Hello,</h3>
+        <h3 id='my-account-header'>Hello, {user.username}</h3>
+        <div id='my-orders'>
+        <h3 id='purchase-history'>Purchase history</h3>
+        </div>
     </div>
 )
 }
