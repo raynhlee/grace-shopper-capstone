@@ -1,14 +1,20 @@
 import React, {useState} from 'react';
 import { Link, useHistory} from "react-router-dom";
 
-const Header = ({token, setToken, setUser, setProductType}) => {
+const Header = ({token, setToken, setUser, setProductType, user}) => {
     const history = useHistory();
+    console.log(user.user.username)
 
     return (
         <div id='header-container'>
         <div id='red-bar-on-top-of-header'>
-           
-                <p>40% all electric guitars! Prices as marked</p>
+            {token
+            ?<div id='red-stripe'>
+                <p> Store location closest to you: San Jose</p>
+                <p id='hello'>Hello, {user.user.username}</p>
+            </div>
+            :   <p>40% all electric guitars! Prices as marked</p>
+            }
             
         </div>
         <div id='header-main-div'>
@@ -46,7 +52,7 @@ const Header = ({token, setToken, setUser, setProductType}) => {
                             localStorage.removeItem("token");
                             history.push('/');
                         }}>Logout </button>
-                        <p id='account-button'>Account</p>
+                        <Link to='/me' ><p id='account-button'>Account</p></Link>
                             </div>
                         :
                         <Link to='/users/login'><p id='sign-in'> Sign in</p></Link>

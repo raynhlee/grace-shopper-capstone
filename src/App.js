@@ -8,6 +8,7 @@ import {
   Login,
   Register,
   Footer,
+  MyAccount
 } from "./components";
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header token={token} setToken={setToken} setUser={setUser} setProductType={setProductType}/>
+      <Header token={token} setToken={setToken} setUser={setUser} setProductType={setProductType} user={user}/>
       <Route path="/users/login">
         <Login
           username={username}
@@ -50,6 +51,9 @@ function App() {
       </Route>
       <Route exact path="/">
         <DefaultHomepage />
+      </Route>
+      <Route path='/me'>
+        <MyAccount />
       </Route>
        <Footer />
     </div>

@@ -149,6 +149,7 @@ a {
 #sale-announcement-div{
   display: flex;
   justify-content: center;
+  color: rgb(204, 0, 0);
 }
 
 #homepage-main-image-div{
@@ -432,3 +433,12 @@ margin-left: 30px;
   width: 200px;
 }
 
+#red-stripe{
+  display: flex;
+  justify-content: space-between;
+  width: 90vw;
+}
+
+#hello{
+  font-weight: bold;
+}
