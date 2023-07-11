@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Link, useHistory} from "react-router-dom";
 
 const Header = ({token, setToken, setUser, setProductType}) => {
+    const history = useHistory();
 
     return (
         <div id='header-container'>
@@ -37,13 +38,19 @@ const Header = ({token, setToken, setUser, setProductType}) => {
                     </form>
                     <div id='header-account-buttons-div'>
                         {token
-                        ? <button id='logout-button' onClick={(event) => {
+                        ?<div id='header-account-buttons'>
+                         <button id='logout-button' onClick={(event) => {
                             event.preventDefault();
                             setToken('');
                             setUser('');
                             localStorage.removeItem("token");
+                            history.push('/');
                         }}>Logout </button>
-                        : <Link to='/users/login'><p id='sign-in'> Sign in</p></Link>
+                        <p id='account-button'>Account</p>
+                            </div>
+                        :
+                        <Link to='/users/login'><p id='sign-in'> Sign in</p></Link>
+                            
                         }
                         
                         <div id='cart'></div>
