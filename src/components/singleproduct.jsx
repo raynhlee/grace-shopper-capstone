@@ -34,6 +34,20 @@ return(
                 <div>
                     <h5 id='product-price'>${product.price}</h5>
                     <p id='single-when-purchased-online'>When purchased online</p>
+                    <div id='single-product-pickup-options-div'>
+                        <div id='single-product-pickup'>
+                            <p id='single-product-pickup-text'>Pickup</p>
+                            <p id='ready-within-2-hours'>Ready within 2 hours</p>
+                        </div>
+                        <div id='single-product-pickup'>
+                            <p id='single-product-pickup-text'>Delivery</p>
+                            <p id='ready-within-2-hours'>Select delivery window at checkout</p>
+                        </div>
+                        <div id='single-product-pickup'>
+                            <p id='single-product-pickup-text'>Shipping</p>
+                            <p id='ready-within-2-hours'>Get it within 3 business days</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

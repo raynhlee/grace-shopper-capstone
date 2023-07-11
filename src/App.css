@@ -1,6 +1,7 @@
 .App{
   display: flex;
   flex-direction: column;
+  font-family: 'Helvetica';
 }
 
 button {
@@ -520,12 +521,14 @@ a {
 #product-info{
   display: flex;
   flex-direction: column;
+  margin-left: 30px;
 }
 
 #product-price{
   font-family: 'Helvetica';
   font-size: 23px;
   margin-bottom: 0px;
+  margin-left: 10px;
 }
 
 #single-when-purchased-online{
@@ -533,6 +536,41 @@ a {
   color: rgb(51, 51, 51);
   font-size: 15px;
   margin-top: 3px;
+  margin-left: 10px;
 }
 
+#single-product-pickup{
+  border: solid 1px rgb(136, 136, 136);
+  border-radius: 8px;
+  padding-left: 10px;
+  width: 200px;
+}
 
+#single-product-pickup:hover{
+  background-color: rgb(247, 247, 247);
+  text-decoration: underline;
+}
+
+#single-product-pickup:active{
+  border: solid 2px rgb(0, 131, 0);
+}
+
+#single-product-pickup-text{
+  font-family: 'Helvetica';
+  font-size: 16px;
+  color: rgb(51, 51, 51);
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+#ready-within-2-hours{
+  color: rgb(0, 131, 0);
+  font-size: 12px;
+  font-family: 'Helvetica';
+}
+
+#single-product-pickup-options-div{
+  display: flex;
+  width: 700px;
+  justify-content: space-around;
+}
