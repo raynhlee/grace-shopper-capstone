@@ -91,7 +91,7 @@ function Products({ products, setProducts, count, setCount, username, user, prod
             <p id='exclusions'>*Exclusions apply</p>
             </div>
           </div>
-          <div>
+          <div id="products-container">
           <div>
             <h3 id='num-results'>{products.length} results</h3>
           </div>
@@ -101,12 +101,12 @@ function Products({ products, setProducts, count, setCount, username, user, prod
               <Card
                 key={index}
                 id={index}
-                style={{ boxShadow: 'none', borderRadius:'none', width: '30%', marginBottom: '20px', marginLeft: '10px'}}
+                style={{ boxShadow: 'none', borderRadius:'0px', width: '28%', marginBottom: '20px', marginLeft: '10px'}}
                 className ='product-card' 
                
               >
                 <CardMedia>
-                  <img
+                  <img className='product-image'
                     src={product.image && product.image}
                     alt={product.title}
                     height={200}
@@ -121,13 +121,8 @@ function Products({ products, setProducts, count, setCount, username, user, prod
                 </CardContent>
 
                 <CardActions>
-                  <Button
-                    
-                    onClick={() => addToCart(product)}
-                    id='add-to-cart-button'
-                  >
-                    Add to cart
-                  </Button>
+                  <button onClick={() => addToCart(product)}
+                    id='add-to-cart-button'>Add to cart</button>
                   
                 </CardActions>
                 
