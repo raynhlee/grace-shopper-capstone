@@ -15,9 +15,14 @@ function App() {
   const [products, setProducts] = useState([]);
   const [count, setCount] = React.useState(0);
   const [username, setUsername] = useState("");
-  const [token, setToken] = useState(null);
-  const [user, setUser] = useState([]);
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [productType, setProductType] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user))
+  }, [token, user])
 
   return (
     <div className="App">
@@ -53,7 +58,9 @@ function App() {
         <DefaultHomepage />
       </Route>
       <Route path='/me'>
-        <MyAccount />
+        <MyAccount
+        user={user}
+        />
       </Route>
        <Footer />
     </div>

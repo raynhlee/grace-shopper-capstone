@@ -1,9 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link, useHistory} from "react-router-dom";
 
 const Header = ({token, setToken, setUser, setProductType, user}) => {
     const history = useHistory();
-    console.log(user.user.username)
+    useEffect(() => {
+        if(user){
+            return;
+        }
+        try {
+          Promise.all([fetchFromAPI({ path: `/users/me` })]).then(([data]) => {
+            setUser(data);
+            console.log(data);
+          });
+          
+        } catch (error) {
+          console.log(error);
+        }
+      }, []);
 
     return (
         <div id='header-container'>
@@ -11,7 +24,7 @@ const Header = ({token, setToken, setUser, setProductType, user}) => {
             {token
             ?<div id='red-stripe'>
                 <p> Store location closest to you: San Jose</p>
-                <p id='hello'>Hello, {user.user.username}</p>
+                <p id='hello'>Hello, {user.username}</p>
             </div>
             :   <p>40% all electric guitars! Prices as marked</p>
             }
