@@ -24,7 +24,7 @@ export const fetchFromAPI = async ({ path, method, body, token }) => {
       alert(`Error: ${response.error}`);
     }
 
-    debugger;
+    
     return response;
   } catch (error) {
     console.log(error);

@@ -495,4 +495,44 @@ a {
   width: 80vw;
 }
 
+#single-product-main-div{
+  margin-top: 20px;
+  margin-left: 50px;
+  min-height: 100vh;
+}
+
+#single-product-name{
+  color: rgb(51, 51, 51);
+  font-family: 'Helvetica';
+  font-size: 23px;
+}
+
+#single-product-image{
+  height: 500px;
+}
+
+#product-info-with-image{
+  display: flex;
+  justify-content: space-between;
+  width: 60vw;
+}
+
+#product-info{
+  display: flex;
+  flex-direction: column;
+}
+
+#product-price{
+  font-family: 'Helvetica';
+  font-size: 23px;
+  margin-bottom: 0px;
+}
+
+#single-when-purchased-online{
+  font-family: 'Helvetica';
+  color: rgb(51, 51, 51);
+  font-size: 15px;
+  margin-top: 3px;
+}
+
 
