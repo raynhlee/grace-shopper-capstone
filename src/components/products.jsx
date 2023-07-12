@@ -18,11 +18,9 @@ function Products({
   setProducts,
   count,
   setCount,
-  username,
   user,
   productType,
 }) {
-  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const addToCart = async (product) => {
     setCount(count + 1);
