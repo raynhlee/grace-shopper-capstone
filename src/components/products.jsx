@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link, useHistory, Route } from "react-router-dom";
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -25,8 +26,6 @@ function Products({
     setCount(count + 1);
     let newStock = product.stock - 1;
 
-    console.log(count);
-
     if (count === 1) {
       //todo createOrder
       const order = await fetchFromAPI({
@@ -41,8 +40,8 @@ function Products({
         token: user.token,
       });
       localStorage.setItem("orderid", order.orderid);
-      console.log("order: ", order);
-      //todo updateProduct; check body
+
+      //todo updateProduct
       await fetchFromAPI({
         path: "/products",
         body: {
@@ -101,7 +100,7 @@ function Products({
               <p id="exclusions">*Exclusions apply</p>
             </div>
           </div>
-          <div>
+          <div id="products-container">
             <div>
               <h3 id="num-results">{products.length} results</h3>
             </div>
@@ -113,8 +112,8 @@ function Products({
                     id={index}
                     style={{
                       boxShadow: "none",
-                      borderRadius: "none",
-                      width: "30%",
+                      borderRadius: "0px",
+                      width: "28%",
                       marginBottom: "20px",
                       marginLeft: "10px",
                     }}
@@ -122,24 +121,27 @@ function Products({
                   >
                     <CardMedia>
                       <img
+                        className="product-image"
                         src={product.image && product.image}
                         alt={product.title}
                         height={200}
                       />
                     </CardMedia>
                     <CardContent>
-                      <Typography id="product-title">{product.name}</Typography>
+                      <Link to={`/products/${product.id}`}>
+                        <button id="product-title">{product.name}</button>
+                      </Link>
                       <Typography>${product.price}</Typography>
                       <p id="when-purchased-online">When purchased online</p>
                     </CardContent>
 
                     <CardActions>
-                      <Button
+                      <button
                         onClick={() => addToCart(product)}
                         id="add-to-cart-button"
                       >
                         Add to cart
-                      </Button>
+                      </button>
                     </CardActions>
                   </Card>
                 ))}
