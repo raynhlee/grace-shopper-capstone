@@ -31,17 +31,27 @@ const Login = ({username, setUsername, setToken, setUser}) => {
             alert('Invalid username or password')
         }
 
-        const user = data;
+        
 
         if (token) {
+            const data = await fetchFromAPI({
+                path: '/users/me',
+                token
+            })
+            const user = data;
             setUsername('');
             setPassword('');
             setToken(token);
             setUser(user);
-            localStorage.setItem('token', token);
+            
+            
             console.log('thank you for logging in')
-            history.push('/')
+            
         }
+
+      
+            history.push('/')
+        
 
         
     }

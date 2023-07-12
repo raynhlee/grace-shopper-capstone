@@ -6,6 +6,7 @@ const {
   getAllProducts,
   updateProduct,
   deleteProduct,
+  getProductById
 } = require("../db");
 
 productsRouter.get("/", async (req, res, next) => {
@@ -16,6 +17,16 @@ productsRouter.get("/", async (req, res, next) => {
     next(error);
   }
 });
+
+productsRouter.get("/:id", async (req, res, next) => {
+  const {id} = req.params;
+  try {
+    const getProduct = await getProductById(id);
+    res.send(getProduct);
+  } catch (error) {
+    next(error)
+  }
+}) 
 
 productsRouter.post("/", async (req, res, next) => {
   try {

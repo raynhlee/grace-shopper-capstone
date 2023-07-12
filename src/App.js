@@ -9,26 +9,28 @@ import {
   Register,
   Footer,
   Cart,
+  MyAccount,
+  SingleProduct
 } from "./components";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [count, setCount] = React.useState(0);
   const [username, setUsername] = useState("");
-  const [token, setToken] = useState(null);
-  const [user, setUser] = useState([]);
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [cartData, setCartData] = useState([]);
   const [productType, setProductType] = useState(null);
-  console.log("USER", user);
+  const [singleProductId, setSingleProductId] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user))
+  }, [token, user])
 
   return (
     <div className="App">
-      <Header
-        token={token}
-        setToken={setToken}
-        setUser={setUser}
-        setProductType={setProductType}
-      />
+      <Header token={token} setToken={setToken} setUser={setUser} setProductType={setProductType} user={user}/>
       <Route path="/users/login">
         <Login
           username={username}
@@ -45,15 +47,16 @@ function App() {
           setUser={setUser}
         />
       </Route>
-      <Route path="/products">
+      <Route exact path="/products">
         <Products
-          path="/products"
+          exact path="/products"
           products={products}
           setProducts={setProducts}
           count={count}
           setCount={setCount}
           user={user}
           productType={productType}
+          setSingleProductId={setSingleProductId}
         />
       </Route>
       <Route path="/cart">
@@ -67,7 +70,15 @@ function App() {
       <Route exact path="/">
         <DefaultHomepage />
       </Route>
-      <Footer />
+      <Route path='/me'>
+        <MyAccount
+        user={user}
+        />
+      </Route>
+      <Route exact path='/products/:id'>
+        <SingleProduct />
+      </Route>
+       <Footer />
     </div>
   );
 }
