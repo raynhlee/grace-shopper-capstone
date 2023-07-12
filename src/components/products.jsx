@@ -75,7 +75,7 @@ function Products({
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [productType]);
 
   return (
     <>
