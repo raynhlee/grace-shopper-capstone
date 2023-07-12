@@ -33,7 +33,7 @@ function Cart({ user, cartData, setCartData }) {
     ).then(() => {
       history.replace("/");
     });
-    //todo
+    //todo deleteOrder?
     Promise.all(
       cartData.map((order) =>
         fetchFromAPI({
