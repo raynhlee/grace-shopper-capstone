@@ -668,3 +668,9 @@ a {
   text-align: left;
   border-bottom: solid 1px rgb(224, 224, 224);
 }
+
+#categories{
+  margin-right: 40px;
+  text-align: left;
+  padding-left: 0px;
+}
