@@ -52,19 +52,7 @@ return(
                             <p id='ready-within-2-hours'>Get it within 3 business days</p>
                         </div>
                     </div>
-                    <div className="dropdown">
-                        <button id='single-product-categories' className="single-product-dropbtn">Qty ↓</button>
-                        <div className="single-product-dropdown-content">
-                            <button className='qty'>1</button>
-                            <button className='qty'>2</button>
-                            <button className='qty'>3</button>
-                            <button className='qty'>4</button>
-                            <button className='qty'>5</button>
-                            <button className='qty'>6</button>
-
-                            
-                        </div>
-                    </div>
+                   
                     <button id='single-product-add-to-cart'>Add to cart</button>
                 </div>
             </div>

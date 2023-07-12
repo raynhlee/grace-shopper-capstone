@@ -121,7 +121,7 @@ a {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: lightgrey;
+  text-decoration: underline;
   border-radius: 10px;
  
 }
@@ -604,6 +604,7 @@ a {
   font-family: 'Helvetica';
   margin-bottom: 10px;
   margin-left: 8px;
+  margin-top: 30px;
 }
 
 #single-product-add-to-cart:hover{
@@ -676,5 +677,5 @@ a {
 }
 
 #categories:hover{
-  
+
 }
