@@ -38,6 +38,8 @@ return(
                 <div>
                     <h5 id='product-price'>${product.price}</h5>
                     <p id='single-when-purchased-online'>When purchased online</p>
+                    <p id='single-product-desc-header'>Details</p>
+                    <p id='single-product-description'>{product.description}</p>
                     <div id='single-product-pickup-options-div'>
                         <div id='single-product-pickup'>
                             <p id='single-product-pickup-text'>Pickup</p>
