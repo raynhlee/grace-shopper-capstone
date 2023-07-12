@@ -13,7 +13,15 @@ import { fetchFromAPI } from "../api";
 
 //todo make all product types route to /products?
 
-function Products({ products, setProducts, count, setCount, username, user, productType, setSingleProductId}) {
+function Products({
+  products,
+  setProducts,
+  count,
+  setCount,
+  username,
+  user,
+  productType,
+}) {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const addToCart = async (product) => {
@@ -24,10 +32,14 @@ function Products({ products, setProducts, count, setCount, username, user, prod
       //todo createOrder
       const order = await fetchFromAPI({
         path: "/orders",
-        userId: user.id,
-        product: product.id,
-        price: product.price,
-        quantity: 1,
+        method: "POST",
+        body: {
+          userId: user.id,
+          productId: product.id,
+          price: product.price,
+          quantity: 1,
+        },
+        token: user.token,
       });
       localStorage.setItem("orderid", order.orderid);
 
@@ -44,16 +56,6 @@ function Products({ products, setProducts, count, setCount, username, user, prod
           setProducts(data);
         }
       );
-
-      try {
-        Promise.all([fetchFromAPI({ path: "/products" })]).then(([data]) => {
-          setProducts(data);
-        });
-      } catch (error) {
-        console.log(error);
-      }
-      //todo updateProduct to -1
-      await fetchFromAPI({ path: "/products" });
     }
   };
 
@@ -61,7 +63,13 @@ function Products({ products, setProducts, count, setCount, username, user, prod
   useEffect(() => {
     try {
       Promise.all([fetchFromAPI({ path: "/products" })]).then(([data]) => {
-        setProducts(data);
+        let filteredProducts = [];
+        data.map((product, index) => {
+          if (product.type === productType) {
+            filteredProducts.push(product);
+          }
+        });
+        setProducts(filteredProducts);
       });
       console.log("products: ", products);
     } catch (error) {

@@ -8,6 +8,7 @@ import {
   Login,
   Register,
   Footer,
+  Cart,
   MyAccount,
   SingleProduct
 } from "./components";
@@ -18,6 +19,7 @@ function App() {
   const [username, setUsername] = useState("");
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  const [cartData, setCartData] = useState([]);
   const [productType, setProductType] = useState(null);
   const [singleProductId, setSingleProductId] = useState(null);
 
@@ -55,6 +57,14 @@ function App() {
           user={user}
           productType={productType}
           setSingleProductId={setSingleProductId}
+        />
+      </Route>
+      <Route path="/cart">
+        <Cart
+          user={user}
+          setCartData={setCartData}
+          cartData={cartData}
+          products={products}
         />
       </Route>
       <Route exact path="/">
