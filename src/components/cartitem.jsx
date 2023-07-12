@@ -13,6 +13,13 @@ import Avatar from "@mui/material/Avatar";
 function CartItem(props) {
   const { cardData } = props;
 
+  const handleRemove = async (e) => {
+    e.preventDefault();
+    Promise.all([
+      fetchFromAPI({ path: "/orders", method: "update", body: {} }),
+    ]);
+  };
+
   return (
     <Card style={{ width: "100%" }}>
       <CardActionArea>
@@ -30,7 +37,7 @@ function CartItem(props) {
       </CardActionArea>
 
       <CardActions style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button>REMOVE</Button>
+        <Button onClick={handleRemove}>REMOVE</Button>
       </CardActions>
     </Card>
   );
