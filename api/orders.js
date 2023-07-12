@@ -61,13 +61,17 @@ ordersRouter.post("/", requireUser, async (req, res, next) => {
   }
 });
 
-ordersRouter.delete("/:orderId", async (req, res, next) => {
-  const { orderId } = req.params;
+ordersRouter.delete("/:username/:orderId", async (req, res, next) => {
+  const { username, orderId } = req.params;
 
   try {
+    //todo new:
+    const orderByUser = await getOrderByUser(username);
+    //
+
     const orderToBeDeleted = await getOrderById(orderId);
 
-    if (orderToBeDeleted.userId === req.user.id) {
+    if (orderToBeDeleted.orderId === req.user.id) {
       const deletedOrder = await deleteOrder(orderToBeDeleted.id);
       res.send(deletedOrder);
     } else {

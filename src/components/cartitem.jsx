@@ -12,17 +12,7 @@ import Avatar from "@mui/material/Avatar";
 
 function CartItem(props) {
   const { cardData } = props;
-  console.log("cardData: ", cardData);
 
-  /*
-  const productIdArray = [];
-
-  for (const key in obj) {
-    if (key === 'productId') {
-      productIdArray.push(obj[key]);
-    }
-  }
-*/
   return (
     <Card style={{ width: "100%" }}>
       <CardActionArea>

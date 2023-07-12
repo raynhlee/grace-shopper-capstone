@@ -10,8 +10,6 @@ import Button from "@mui/material/Button";
 
 import { fetchFromAPI } from "../api";
 
-//todo make all product types route to /products?
-
 function Products({
   products,
   setProducts,
@@ -44,11 +42,13 @@ function Products({
       });
       localStorage.setItem("orderid", order.orderid);
       console.log("order: ", order);
-      //todo updateProduct
+      //todo updateProduct; check body
       await fetchFromAPI({
         path: "/products",
-        id: product.id,
-        stock: newStock,
+        body: {
+          id: product.id,
+          stock: newStock,
+        },
       });
 
       //todo getAllProducts

@@ -83,8 +83,9 @@ const Header = ({ token, setToken, setUser, setProductType }) => {
                   <p id="sign-in"> Sign in</p>
                 </Link>
               )}
-
-              <div id="cart"></div>
+              <Link to="/cart">
+                <div id="cart"></div>
+              </Link>
             </div>
           </div>
         </div>
