@@ -1,15 +1,17 @@
 import React, {useState, useEffect} from "react"
 import { fetchFromAPI } from "../api";
+import { useParams } from "react-router-dom";
 
-const SingleProduct = ({singleProductId}) => {
-    console.log(singleProductId);
+const SingleProduct = () => {
+    const {id} = useParams(); 
+    console.log(id);
 
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState(null)
 
     const getProduct = async() => {
         
         const data = await fetchFromAPI({
-            path:`/products/${singleProductId}`
+            path:`/products/${id}`
         });
 
         setProduct(data);
@@ -27,6 +29,8 @@ const SingleProduct = ({singleProductId}) => {
 
 return(
     <div id='single-product-main-div'>
+        {product 
+          &&  <>
         <h2 id='single-product-name'>{product.name}</h2>
         <div id='product-info-with-image'>
             <img src={product.image && product.image} id='single-product-image' />
@@ -48,10 +52,25 @@ return(
                             <p id='ready-within-2-hours'>Get it within 3 business days</p>
                         </div>
                     </div>
+                    <div className="dropdown">
+                        <button id='single-product-categories' className="single-product-dropbtn">Qty ↓</button>
+                        <div className="single-product-dropdown-content">
+                            <button className='qty'>1</button>
+                            <button className='qty'>2</button>
+                            <button className='qty'>3</button>
+                            <button className='qty'>4</button>
+                            <button className='qty'>5</button>
+                            <button className='qty'>6</button>
+
+                            
+                        </div>
+                    </div>
+                    <button id='single-product-add-to-cart'>Add to cart</button>
                 </div>
             </div>
         </div>
-        
+        </>
+}
     </div>
 )
 }

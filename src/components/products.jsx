@@ -113,7 +113,7 @@ function Products({ products, setProducts, count, setCount, username, user, prod
                   />
                 </CardMedia>
                 <CardContent>
-                  <Link to={`/products/singleproduct`}><button id='product-title' onClick={() => setSingleProductId(product.id)} >{product.name}</button></Link>
+                  <Link to={`/products/${product.id}`}><button id='product-title' >{product.name}</button></Link>
                   <Typography>${product.price}</Typography>
                   <p id='when-purchased-online'>When purchased online</p>
 

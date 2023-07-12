@@ -65,8 +65,8 @@ function App() {
         user={user}
         />
       </Route>
-      <Route exact path='/products/singleproduct'>
-        <SingleProduct singleProductId={singleProductId}/>
+      <Route exact path='/products/:id'>
+        <SingleProduct />
       </Route>
        <Footer />
     </div>
