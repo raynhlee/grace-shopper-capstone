@@ -9,7 +9,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import { fetchFromAPI } from "../api";
 
-function Cart({ user, cartData, setCartData }) {
+function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
   const getCart = async () => {
     const myCart = await fetchFromAPI({
       path: `/orders/${user.username}`,
@@ -32,7 +32,7 @@ function Cart({ user, cartData, setCartData }) {
     ).then(() => {
       history.replace("/");
     });
-    //todo deleteOrder?
+    //todo deleteOrder? might not need this
     Promise.all(
       cartData.map((order) =>
         fetchFromAPI({

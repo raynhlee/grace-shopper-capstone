@@ -53,6 +53,7 @@ ordersRouter.post("/", async (req, res, next) => {
     console.log(newOrder);
 
     res.send({
+      newOrder,
       message:
         "Thank you for your order! Confirmation email will be arriving shortly.",
     });

@@ -21,6 +21,8 @@ function Products({
   setCount,
   user,
   productType,
+  orderId,
+  setOrderId,
 }) {
   const addToCart = async (product) => {
     console.log("adding to cart");
@@ -151,6 +153,8 @@ function Products({
                       setCount={setCount}
                       setProducts={setProducts}
                       user={user}
+                      orderId={orderId}
+                      setOrderId={setOrderId}
                     />
                   </Card>
                 ))}

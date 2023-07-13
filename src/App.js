@@ -22,6 +22,7 @@ function App() {
   const [cartData, setCartData] = useState([]);
   const [productType, setProductType] = useState(null);
   const [singleProductId, setSingleProductId] = useState(null);
+  const [orderId, setOrderId] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("token", token);
@@ -64,6 +65,8 @@ function App() {
           user={user}
           productType={productType}
           setSingleProductId={setSingleProductId}
+          orderId={orderId}
+          setOrderId={setOrderId}
         />
       </Route>
       <Route path="/cart">
@@ -72,6 +75,8 @@ function App() {
           setCartData={setCartData}
           cartData={cartData}
           products={products}
+          orderId={orderId}
+          setOrderId={setOrderId}
         />
       </Route>
       <Route exact path="/">

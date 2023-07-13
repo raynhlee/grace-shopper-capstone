@@ -13,11 +13,15 @@ import Avatar from "@mui/material/Avatar";
 function CartItem(props) {
   const { cardData } = props;
 
-  const handleRemove = async (e) => {
-    e.preventDefault();
-    Promise.all([
-      fetchFromAPI({ path: "/orders", method: "update", body: {} }),
-    ]);
+  const handleRemove = async (orderId) => {
+    await fetchFromAPI({
+      path: `/orders${orderId}`,
+      method: "delete",
+    });
+
+    // Promise.all([
+    //   fetchFromAPI({ path: "/orders", method: "update", body: {} }),
+    // ]);
   };
 
   return (
@@ -37,7 +41,8 @@ function CartItem(props) {
       </CardActionArea>
 
       <CardActions style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button onClick={handleRemove}>REMOVE</Button>
+        {/* //todo */}
+        <Button onClick={() => handleRemove(cardData?.id)}>REMOVE</Button>
       </CardActions>
     </Card>
   );
