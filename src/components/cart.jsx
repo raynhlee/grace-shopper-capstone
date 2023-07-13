@@ -74,11 +74,13 @@ function Cart({ user, cartData, setCartData, cartSubtotal, setCartSubtotal, cart
     <div id='cart-container'>
      
       <div id='cart-main-div'>
+        <div id='my-order-and-cart-items'>
         <h3 id='my-order'>My order</h3>
-        {cartData.length > 1
-          ? <p id='cart-items-in-cart-list'>{cartData.length} items</p>
-          : <p id='cart-items-in-cart-list'>1 item</p>
+        {cartData.length > 0
+          ? <p id='cart-items-in-cart-list'>{cartData.length} item(s)</p>
+          : <p id='no-items-in-cart'>No items currently in cart</p>
         }
+        </div>
         {cartData &&
           cartData.map((item, index) => {
             return (
@@ -87,15 +89,6 @@ function Cart({ user, cartData, setCartData, cartSubtotal, setCartSubtotal, cart
               </Grid>
             );
           })}
-      </div>
-      <div
-        style={{
-          position: "relative",
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-       
       </div>
       <div id='order-summary-aside'>
         <h3 id='order-summary-aside-header'>Order summary</h3>
