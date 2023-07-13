@@ -2,9 +2,10 @@ import React, {useState, useEffect} from "react"
 import { fetchFromAPI } from "../api";
 import { useParams } from "react-router-dom";
 
+
 const SingleProduct = () => {
     const {id} = useParams(); 
-    console.log(id);
+    
 
     const [product, setProduct] = useState(null)
 
@@ -60,7 +61,10 @@ return(
             </div>
         </div>
         </>
+
+        
 }
+       
     </div>
 )
 }
