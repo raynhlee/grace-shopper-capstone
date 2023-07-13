@@ -15,6 +15,7 @@ const getOptions = (method, body, token) => ({
 });
 
 export const fetchFromAPI = async ({ path, method, body, token }) => {
+
   try {
     const result = await fetch(getURL(path), getOptions(method, body, token));
 
@@ -23,7 +24,7 @@ export const fetchFromAPI = async ({ path, method, body, token }) => {
     if (response.error) {
       alert(`Error: ${response.error}`);
     }
-
+    
     
     return response;
   } catch (error) {
