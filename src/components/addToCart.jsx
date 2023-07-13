@@ -9,7 +9,7 @@ const AddToCart = ({product, count, setCount, setProducts, user}) => {
 
         console.log('count: ', count )
         
-        if (count === 3) {
+        if (count === 1) {
           //todo createOrder
           const order = await fetchFromAPI({
             path: "/orders",
@@ -32,12 +32,6 @@ const AddToCart = ({product, count, setCount, setProducts, user}) => {
             stock: newStock,
           });
     
-          //todo getAllProducts
-          Promise.all([await fetchFromAPI({ path: "/products" })]).then(
-            ([data]) => {
-              setProducts(data);
-            }
-          );
         }
         
         /*
