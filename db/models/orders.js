@@ -104,10 +104,31 @@ async function updateOrder({ id, ...fields }) {
   }
 }
 
+async function deleteOrder(orderId) {
+  try {
+    const { rows: [response] } = await client.query(`
+    DELETE FROM orders
+    WHERE id = $1
+    RETURNING *;
+  `, [orderId]);
+
+    if (response.rowCount === 0) {
+      throw new Error('Order not found');
+    }
+
+    console.log("deleteOrder response: ", response);
+
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 module.exports = {
   createOrder,
   getAllOrders,
   getOrderById,
   getOrderByUser,
   updateOrder,
+  deleteOrder
 };

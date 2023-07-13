@@ -35,7 +35,7 @@ ordersRouter.get("/", async (req, res, next) => {
 });
 
 ordersRouter.post("/", async (req, res, next) => {
-  const { productId, price, quantity, userId} = req.body;
+  const { productId, price, quantity, userId } = req.body;
 
   let orderData = {
     userId,
@@ -61,8 +61,24 @@ ordersRouter.post("/", async (req, res, next) => {
   }
 });
 
-ordersRouter.delete("/:username/:orderId", async (req, res, next) => {
-  const { username, orderId } = req.params;
+ordersRouter.patch("/:orderId", async (req, res, next) => {
+  const { orderId } = req.params;
+  const { quantity, price } = req.body;
+
+  try {
+    const updatedOrder = await updateOrder({
+      orderId,
+      quantity,
+      price,
+    });
+    res.send(updatedOrder);
+  } catch (error) {
+    next(error);
+  }
+});
+
+ordersRouter.delete("/:orderId", async (req, res, next) => {
+  const { orderId } = req.params;
 
   try {
     //todo new:
