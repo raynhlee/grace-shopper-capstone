@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { fetchFromAPI } from "../api";
 
-const MyAccount = ({user}) => {
-  const [purchaseHistory, setPurchaseHistory] = useState([]);
+const MyAccount = ({user, purchaseHistory, setPurchaseHistory}) => {
     
   const handlePurchaseHistory = async () => {
     const data = await fetchFromAPI({
