@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+
 import Button from "@mui/material/Button";
 import swal from "sweetalert";
 
@@ -39,7 +40,7 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
       currentTax = parseFloat((newSubtotal * 0.0725)).toFixed(2) 
       console.log('cart tax: ', currentTax);
   
-      currentFinalPrice = parseFloat(currentTax) + parseFloat(newSubtotal) + 1;
+      currentFinalPrice = ((parseFloat(currentTax) + parseFloat(newSubtotal)).toFixed(2));
       console.log('final price: ', currentFinalPrice);
       
     }
