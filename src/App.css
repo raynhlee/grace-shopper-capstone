@@ -712,3 +712,52 @@ a {
 .single-product-pickup-margin{
    margin-bottom: 10px;
 }
+
+#cart-main-div{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 60vw;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 6px 12px 4px, rgba(0, 0, 0, 0.04) 0px 4px 10px 2px, rgba(0, 0, 0, 0.06) 0px 2px 8px, rgba(0, 0, 0, 0.04) 0px 2px 4px;
+  margin-top: 30px;
+  margin-left: 30px;
+  border-radius: 8px;
+}
+
+#cart-container{
+  display: flex;
+}
+
+#cart-item-card{
+  width: 822px;
+  border-top: 1px solid rgb(214, 214, 214);
+}
+
+#my-order{
+  width: 60vw;
+  color: rgb(51, 51, 51);
+  font-size: 23px;
+  font-weight: bold;
+  font-family: 'Helvetica';
+  margin-bottom: 0px;
+  margin-left: 15px;
+}
+
+#cart-items-in-cart-list{
+  width: 60vw;
+  margin-left: 16px;
+  color: rgb(102, 102, 102);
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+#cart-item-image{
+  width: 80px;
+  height: 80px;
+}
+
+#cart-item-name{
+  font-family: 'Helvetica';
+  color: rgb(51, 51, 51);
+  font-size: 16px;
+}

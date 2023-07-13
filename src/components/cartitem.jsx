@@ -24,16 +24,15 @@ function CartItem(props) {
   }
 */
   return (
-    <Card style={{ width: "100%" }}>
+    <Card style={{ boxShadow: 'none' }} id='cart-item-card'>
       <CardActionArea>
         <CardContent style={{ display: "flex", gap: "1rem" }}>
-          <Avatar src={cardData?.image} />
+          <Avatar src={cardData?.image} id='cart-item-image'/>
           <div>
-            <Typography>
+            <Typography id='cart-item-name'>
               {cardData?.name || ""}
               <span>${cardData.price}</span>
             </Typography>
-            <Typography>{cardData?.description || ""}</Typography>
             <Typography>Quantity: {cardData?.quantity || ""}</Typography>
           </div>
         </CardContent>

@@ -22,6 +22,9 @@ const AddToCart = ({product, count, setCount, setProducts, user, onSingleProduct
           //localStorage.setItem("orderid", order.id);
           console.log('order: ', order )
          
+          if(order){
+            alert('Item added to cart! :) ')
+          }
 
           //todo updateProduct
           await fetchFromAPI({
@@ -40,7 +43,9 @@ const AddToCart = ({product, count, setCount, setProducts, user, onSingleProduct
       return(
         <div>
         { onSingleProductPage
-            ? <button onClick={() => addToCart(product)}
+            ? <button onClick={() => {
+              addToCart(product)
+            }}
             id='single-product-add-to-cart'>Add to cart</button>
           : <button onClick={() => addToCart(product)}
                     id='add-to-cart-button'>Add to cart</button>

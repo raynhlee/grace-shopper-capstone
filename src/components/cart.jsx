@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import Button from "@mui/material/Button";
 
@@ -18,6 +18,7 @@ function Cart({ user, cartData, setCartData }) {
     setCartData(myCart);
   }
 
+  
 
   useEffect(() => {
     const loadCart = async () => {
@@ -29,9 +30,13 @@ function Cart({ user, cartData, setCartData }) {
 
   return (
     <>
-      <div
-        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
-      >
+    <div id='cart-container'>
+      <div id='cart-main-div'>
+        <h3 id='my-order'>My order</h3>
+        {cartData.length > 1
+          ? <p id='cart-items-in-cart-list'>{cartData.length} items</p>
+          : <p id='cart-items-in-cart-list'>1 item</p>
+        }
         {cartData &&
           cartData.map((item, index) => {
             return (
@@ -57,6 +62,8 @@ function Cart({ user, cartData, setCartData }) {
           </Button>
         </Link>
       </div>
+      </div>
+      
     </>
   );
 }
