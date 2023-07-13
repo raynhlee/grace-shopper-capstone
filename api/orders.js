@@ -61,6 +61,22 @@ ordersRouter.post("/", async (req, res, next) => {
   }
 });
 
+ordersRouter.patch ("/:orderId", async (req, res, next) => {
+  const { orderId } = req.params;
+  const { quantity, price } = req.body;
+
+  try {
+    const updatedOrder = await updateOrder({
+      orderId,
+      quantity,
+      price
+    });
+    res.send(updatedOrder);
+  } catch (error) {
+    next(error);
+  }
+});
+
 ordersRouter.delete("/:orderId", async (req, res, next) => {
   const { orderId } = req.params;
 
