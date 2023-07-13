@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import AddToCart from "./addToCart";
 
 
-const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngleProductPage, onSingleProductPage}) => {
+const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngleProductPage, onSingleProductPage, nonfunctionalButton}) => {
     const {id} = useParams(); 
     
 
@@ -46,18 +46,18 @@ return(
                     <p id='single-product-desc-header'>Details</p>
                     <p id='single-product-description'>{product.description}</p>
                     <div id='single-product-pickup-options-div'>
-                        <div id='single-product-pickup'>
-                            <p id='single-product-pickup-text'>Pickup</p>
+                       <button id='single-product-pickup' onClick={() => {nonfunctionalButton()}}>
+                            <p id='single-product-pickup-text' style={{marginBottom: '27px'}}>Pickup</p>
                             <p id='ready-within-2-hours'>Ready within 2 hours</p>
-                        </div>
-                        <div id='single-product-pickup'>
+                        </button>
+                        <button id='single-product-pickup' onClick={() => {nonfunctionalButton()}}>
                             <p id='single-product-pickup-text'>Delivery</p>
                             <p id='ready-within-2-hours'>Select delivery window at checkout</p>
-                        </div>
-                        <div id='single-product-pickup'>
-                            <p id='single-product-pickup-text'>Shipping</p>
+                        </button>
+                        <button id='single-product-pickup' onClick={() => {nonfunctionalButton()}}>
+                            <p id='single-product-pickup-text' style={{marginBottom: '27px'}}>Shipping</p>
                             <p id='ready-within-2-hours'>Get it within 3 business days</p>
-                        </div>
+                        </button>
                     </div>
                    
                     <AddToCart count = {count} setCount={setCount} setProducts={setProducts} user={user} product={product} onSingleProductPage={onSingleProductPage}/>
