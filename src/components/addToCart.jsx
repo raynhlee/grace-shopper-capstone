@@ -7,8 +7,7 @@ const AddToCart = ({
   setCount,
   setProducts,
   user,
-  orderId,
-  setOrderId,
+  onSingleProductPage,
 }) => {
   const addToCart = async (product) => {
     let newStock = product.stock - 1;
