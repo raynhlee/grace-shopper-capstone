@@ -20,6 +20,9 @@ function Products({
   setCount,
   user,
   productType,
+  setOnSngleProductPage,
+  onSingleProductPage,
+  nonfunctionalButton
 }) {
 
   
@@ -42,6 +45,10 @@ function Products({
     }
   }, [productType]);
 
+  useEffect(() => {
+    setOnSngleProductPage(false);
+}, [])
+
   return (
     <>
       <div>
@@ -49,18 +56,18 @@ function Products({
         <div id='products-div'>
           <div id='how-are-shopping'>
             <h2 id='how-shop-header'>How are you shopping today?</h2>
-            <div id='pickup-div'>
+            <button id='pickup-div' onClick={() => {nonfunctionalButton()}}>
               <h3 id="pickup-method"> Pickup</h3>
               <p id='pickup-desc'>In-store pickup, ready within 2 hours</p>
-            </div>
-            <div id='pickup-div'>
-              <h3 id="pickup-method">Same Day Delivery</h3>
-              <p>Schedule contactless deliveries as soon as today</p>
-            </div>
-            <div id='pickup-div'>
-              <h3 id="pickup-method">Shipping</h3>
-              <p>Free with FretCard or $350 orders*</p>
-            </div>
+            </button>
+            <button id='pickup-div' onClick={() => {nonfunctionalButton()}}>
+              <h3 id="pickup-method"> Same Day Delivery</h3>
+              <p id='pickup-desc'>Schedule contactless deliveries as soon as today</p>
+            </button>
+            <button id='pickup-div' onClick={() => {nonfunctionalButton()}}>
+              <h3 id="pickup-method"> Shipping</h3>
+              <p id='pickup-desc'>Free with FretCard or $350 orders*</p>
+            </button>
             <div id='exclusions-div'>
             <p id='exclusions'>*Exclusions apply</p>
             </div>
@@ -92,7 +99,7 @@ function Products({
 
                   
                 </CardContent>
-              <AddToCart product = {product} count = {count} setCount={setCount} setProducts={setProducts} user={user}/>
+              <AddToCart product = {product} count = {count} setCount={setCount} setProducts={setProducts} user={user} onSingleProductPage={onSingleProductPage}/>
               </Card>
             ))}
         </div>

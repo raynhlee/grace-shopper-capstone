@@ -15,6 +15,7 @@ import {
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [onSingleProductPage, setOnSngleProductPage] = useState(false);
   const [count, setCount] = React.useState(0);
   const [username, setUsername] = useState("");
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -22,6 +23,10 @@ function App() {
   const [cartData, setCartData] = useState([]);
   const [productType, setProductType] = useState(null);
   const [singleProductId, setSingleProductId] = useState(null);
+
+  const nonfunctionalButton = () => {
+    alert('This feature is not currently available in your area :( ')
+  }
 
   useEffect(() => {
     localStorage.setItem('token', token);
@@ -57,6 +62,9 @@ function App() {
           user={user}
           productType={productType}
           setSingleProductId={setSingleProductId}
+          setOnSngleProductPage={setOnSngleProductPage}
+          onSingleProductPage={onSingleProductPage}
+          nonfunctionalButton={nonfunctionalButton}
         />
       </Route>
       <Route path="/cart">
@@ -76,7 +84,7 @@ function App() {
         />
       </Route>
       <Route exact path='/products/:id'>
-        <SingleProduct />
+        <SingleProduct nonfunctionalButton={nonfunctionalButton} count={count} setCount={setCount} setProducts={setProducts} products={products} user={user} setOnSngleProductPage={setOnSngleProductPage} onSingleProductPage={onSingleProductPage}/>
       </Route>
        <Footer />
     </div>

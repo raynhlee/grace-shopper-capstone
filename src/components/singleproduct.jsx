@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react"
 import { fetchFromAPI } from "../api";
 import { useParams } from "react-router-dom";
+import AddToCart from "./addToCart";
 
 
-const SingleProduct = () => {
+const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngleProductPage, onSingleProductPage, nonfunctionalButton}) => {
     const {id} = useParams(); 
     
 
@@ -27,6 +28,9 @@ const SingleProduct = () => {
         loadProduct();
     }, []);
     
+    useEffect(() => {
+        setOnSngleProductPage(true);
+    }, [])
 
 return(
     <div id='single-product-main-div'>
@@ -42,21 +46,21 @@ return(
                     <p id='single-product-desc-header'>Details</p>
                     <p id='single-product-description'>{product.description}</p>
                     <div id='single-product-pickup-options-div'>
-                        <div id='single-product-pickup'>
-                            <p id='single-product-pickup-text'>Pickup</p>
+                       <button id='single-product-pickup' onClick={() => {nonfunctionalButton()}}>
+                            <p id='single-product-pickup-text' style={{marginBottom: '27px'}}>Pickup</p>
                             <p id='ready-within-2-hours'>Ready within 2 hours</p>
-                        </div>
-                        <div id='single-product-pickup'>
+                        </button>
+                        <button id='single-product-pickup' onClick={() => {nonfunctionalButton()}}>
                             <p id='single-product-pickup-text'>Delivery</p>
                             <p id='ready-within-2-hours'>Select delivery window at checkout</p>
-                        </div>
-                        <div id='single-product-pickup'>
-                            <p id='single-product-pickup-text'>Shipping</p>
+                        </button>
+                        <button id='single-product-pickup' onClick={() => {nonfunctionalButton()}}>
+                            <p id='single-product-pickup-text' style={{marginBottom: '27px'}}>Shipping</p>
                             <p id='ready-within-2-hours'>Get it within 3 business days</p>
-                        </div>
+                        </button>
                     </div>
                    
-                    <button id='single-product-add-to-cart'>Add to cart</button>
+                    <AddToCart count = {count} setCount={setCount} setProducts={setProducts} user={user} product={product} onSingleProductPage={onSingleProductPage}/>
                 </div>
             </div>
         </div>

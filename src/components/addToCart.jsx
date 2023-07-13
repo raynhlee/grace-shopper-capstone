@@ -1,15 +1,13 @@
 import React from 'react';
 import { fetchFromAPI } from '../api';
 
-const AddToCart = ({product, count, setCount, setProducts, user}) => {
+const AddToCart = ({product, count, setCount, setProducts, user, onSingleProductPage}) => {
 
     const addToCart = async (product) => {
-        setCount(count + 1);
+        
         let newStock = product.stock - 1;
 
-        console.log('count: ', count )
-        
-        if (count === 1) {
+      
           //todo createOrder
           const order = await fetchFromAPI({
             path: "/orders",
@@ -32,23 +30,22 @@ const AddToCart = ({product, count, setCount, setProducts, user}) => {
             stock: newStock,
           });
     
-        }
         
-        /*
-
-        if (count >= 2) {
-          await fetchFromAPI({
-            path: "/orders",
-            method: "PATCH",
-          });
-        }
-        */
+        
+        
+       
 
       };
     
       return(
-        <button onClick={() => addToCart(product)}
+        <div>
+        { onSingleProductPage
+            ? <button onClick={() => addToCart(product)}
+            id='single-product-add-to-cart'>Add to cart</button>
+          : <button onClick={() => addToCart(product)}
                     id='add-to-cart-button'>Add to cart</button>
+        }
+        </div>
       )
 
 }
