@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { fetchFromAPI } from "../api";
 
 const Register = ({username, setUsername, setToken, setUser}) => {
+    const history = useHistory();
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [passwordToCheck, setPasswordToCheck] = useState('')
@@ -38,18 +39,21 @@ const Register = ({username, setUsername, setToken, setUser}) => {
             alert('Invalid username or password')
         }
 
-        const user = data;
-
         if (token) {
+            const data = await fetchFromAPI({
+                path: '/users/me',
+                token
+            });
+            const user = data;
+
             setUsername('');
             setPasswordToCheck('');
             setConfirmPassword('');
             setEmail('');
             setToken(token);
             setUser(user);
-            localStorage.setItem('token', token);
             console.log('thank you for signing up')
-            //history.push('/')
+            history.push('/')
         }
     }
 
