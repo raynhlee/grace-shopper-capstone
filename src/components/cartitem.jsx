@@ -24,10 +24,6 @@ function CartItem(props) {
     console.log("cardDataId: ", cardData.id);
 
     onDelete();
-
-    // Promise.all([
-    //   fetchFromAPI({ path: "/orders", method: "update", body: {} }),
-    // ]);
   };
 
   return (

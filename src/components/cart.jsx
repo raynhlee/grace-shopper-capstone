@@ -30,12 +30,14 @@ function Cart({ user, cartData, setCartData }) {
     loadCart();
   }, []);
 
-  const handleCheckout = async () => {
-    //todo deleteOrder? might not need this
+  const handleCheckout = async (event) => {
+    
+    event.preventDefault();
+
     Promise.all(
       cartData.map((order) =>
         fetchFromAPI({
-          path: `orders/${order.id}`,
+          path: `/orders/${order.id}`,
           method: "delete",
         })
       )
