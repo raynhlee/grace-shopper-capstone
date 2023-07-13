@@ -24,6 +24,32 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
     });
     console.log(myCart);
     setCartData(myCart);
+
+    const calculateTotal = async() => {
+      myCart.forEach(element => {
+        console.log(element)
+        let priceNum = parseFloat(element.price)
+        newSubtotal += priceNum;
+      });
+      console.log(newSubtotal);
+     
+      console.log('cart subtotal: ', cartSubtotal)
+      
+      newSubtotal = newSubtotal.toFixed(2)
+      currentTax = parseFloat((newSubtotal * 0.0725)).toFixed(2) 
+      console.log('cart tax: ', currentTax);
+  
+      currentFinalPrice = parseFloat(currentTax) + parseFloat(newSubtotal) + 1;
+      console.log('final price: ', currentFinalPrice);
+      
+    }
+
+    calculateTotal()
+   
+    setCartSubtotal(newSubtotal);
+    setCartTax(currentTax);
+    setCartFinalPrice(currentFinalPrice);
+   
   };
 
   const onDelete = async () => {
@@ -31,35 +57,16 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
   };
 
   useEffect(() => {
-    setCartSubtotal(0)
     const loadCart = async () => {
       await getCart();
     };
     loadCart();
 
     
-
-    cartData.forEach(element => {
-      console.log(element)
-      let priceNum = parseFloat(element.price)
-      newSubtotal += priceNum;
-    });
-    console.log(newSubtotal);
-   
-    console.log('cart subtotal: ', cartSubtotal)
-    
-    newSubtotal = newSubtotal.toFixed(2)
-    currentTax = parseFloat((newSubtotal * 0.0725)).toFixed(2) 
-    console.log('cart tax: ', currentTax);
-
-    currentFinalPrice = parseFloat(currentTax) + parseFloat(newSubtotal);
-    console.log('final price: ', currentFinalPrice);
-
-    setCartSubtotal(newSubtotal);
-    setCartTax(currentTax);
-    setCartFinalPrice(currentFinalPrice);
  
   }, []);
+
+ 
 
   
 
