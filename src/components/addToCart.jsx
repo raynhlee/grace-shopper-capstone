@@ -8,8 +8,8 @@ const AddToCart = ({product, count, setCount, setProducts, user}) => {
         let newStock = product.stock - 1;
 
         console.log('count: ', count )
-    
-        if (count === 8) {
+        
+        if (count === 3) {
           //todo createOrder
           const order = await fetchFromAPI({
             path: "/orders",
@@ -21,7 +21,7 @@ const AddToCart = ({product, count, setCount, setProducts, user}) => {
               quantity: 1,
             }
           });
-          localStorage.setItem("orderid", order.id);
+          //localStorage.setItem("orderid", order.id);
           console.log('order: ', order )
          
 
@@ -39,6 +39,8 @@ const AddToCart = ({product, count, setCount, setProducts, user}) => {
             }
           );
         }
+        
+        /*
 
         if (count >= 2) {
           await fetchFromAPI({
@@ -46,7 +48,7 @@ const AddToCart = ({product, count, setCount, setProducts, user}) => {
             method: "PATCH",
           });
         }
-
+        */
 
       };
     

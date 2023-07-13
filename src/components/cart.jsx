@@ -21,7 +21,7 @@ function Cart({ user, cartData, setCartData }) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [cartData]);
 
   return (
     <>

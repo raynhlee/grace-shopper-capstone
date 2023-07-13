@@ -35,10 +35,10 @@ ordersRouter.get("/", async (req, res, next) => {
 });
 
 ordersRouter.post("/", async (req, res, next) => {
-  const { productId, price, quantity } = req.body;
+  const { productId, price, quantity, userId} = req.body;
 
   let orderData = {
-    userId: req.user.id,
+    userId,
     productId,
     price,
     quantity,
