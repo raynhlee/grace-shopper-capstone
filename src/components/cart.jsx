@@ -71,9 +71,11 @@ function Cart({ user, cartData, setCartData }) {
           justifyContent: "flex-end",
         }}
       >
+        { cartData.length >= 1 && 
         <Button size="large" color="primary" onClick={handleCheckout}>
           Checkout
         </Button>
+        }
       </div>
     </>
   );
