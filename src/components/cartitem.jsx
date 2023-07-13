@@ -12,7 +12,7 @@ import Avatar from "@mui/material/Avatar";
 
 function CartItem(props) {
   const { cardData } = props;
-  console.log("cardData: ", cardData);
+  //console.log("cardData: ", cardData);
 
   /*
   const productIdArray = [];
