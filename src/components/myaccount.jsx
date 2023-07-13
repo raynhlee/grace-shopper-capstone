@@ -1,44 +1,25 @@
 import React, {useState, useEffect} from "react";
-import { useReducer } from "react";
 import { fetchFromAPI } from "../api";
 
 const MyAccount = ({user}) => {
-    const [myInfo, setMyInfo] = useState([])
-    const [myOrders, setMyOrders] = useState([])
+  const [purchaseHistory, setPurchaseHistory] = useState([]);
     
+  const handlePurchaseHistory = async () => {
+    const data = await fetchFromAPI({
+      path: `/history/${user.username}`
+    });
 
-    const getMyOrders = async(event) => {
-
-        const data = await fetchFromAPI({
-            path: `/orders/${user.username}`
-        })
-
-        console.log(data)
-
+    if (data) {
+      setPurchaseHistory(data);
     }
+  }
 
-    useEffect(() => {
-        if(user){
-            return;
-        }
-        try {
-          Promise.all([fetchFromAPI({ path: `/users/me` })]).then(([data]) => {
-            setMyInfo(data);
-            console.log(data);
-          });
-          console.log("products: ", products);
-        } catch (error) {
-          console.log(error);
-        }
-      }, []);
 
-      useEffect( ()=>{
-           async function fetchData(){
-            await getMyOrders()
-           }
+console.log("purchaseHistory: ", purchaseHistory);
 
-           fetchData();
-      }, [] )
+  useEffect(() => {
+    handlePurchaseHistory();
+  }, []);
 
 return (
     <div id='my-account-main-div'>
