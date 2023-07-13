@@ -76,7 +76,7 @@ function App() {
         />
       </Route>
       <Route exact path='/products/:id'>
-        <SingleProduct />
+        <SingleProduct count={count} setCount={setCount} setProducts={setProducts} products={products} user={user}/>
       </Route>
        <Footer />
     </div>

@@ -34,15 +34,17 @@ const AddToCart = ({product, count, setCount, setProducts, user}) => {
     
         }
         
-        /*
+        
 
         if (count >= 2) {
-          await fetchFromAPI({
+          const cartPatchRequest = await fetchFromAPI({
             path: "/orders",
             method: "PATCH",
           });
+
+          console.log(cartPatchRequest);
         }
-        */
+        
 
       };
     

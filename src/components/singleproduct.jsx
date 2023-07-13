@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react"
 import { fetchFromAPI } from "../api";
 import { useParams } from "react-router-dom";
+import AddToCart from "./addToCart";
 
 
-const SingleProduct = () => {
+const SingleProduct = ({count, setCount, setProducts, products, user}) => {
     const {id} = useParams(); 
     
 
@@ -56,7 +57,7 @@ return(
                         </div>
                     </div>
                    
-                    <button id='single-product-add-to-cart'>Add to cart</button>
+                    <AddToCart count = {count} setCount={setCount} setProducts={setProducts} user={user} product={product} />
                 </div>
             </div>
         </div>
