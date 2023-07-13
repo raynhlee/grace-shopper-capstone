@@ -10,11 +10,9 @@ import { Link, useHistory } from "react-router-dom";
 
 import { fetchFromAPI } from "../api";
 
-function Cart({ user, cartData, setCartData }) {
+function Cart({ user, cartData, setCartData, cartSubtotal, setCartSubtotal, cartFinalPrice, setCartFinalPrice, cartTax, setCartTax }) {
   const history = useHistory();
-  const [cartSubtotal, setCartSubtotal] = useState(0);
-  const [cartFinalPrice, setCartFinalPrice] = useState(0);
-  const [cartTax, setCartTax] = useState(0);
+  
   
   let currentTax;
   let currentFinalPrice;
@@ -68,27 +66,6 @@ function Cart({ user, cartData, setCartData }) {
  
   }, []);
 
-  const handleCheckout = async (event) => {
-    
-    event.preventDefault();
-
-    Promise.all(
-      cartData.map((order) =>
-        fetchFromAPI({
-          path: `/orders/${order.id}`,
-          method: "delete",
-        })
-      )
-    );
-    setCartData([]);
-    swal(
-      "Thank you for your order! Confirmation email will be arriving shortly."
-    ).then(() => {
-      history.push("/");
-    });
-  };
-
-  
 
   return (
     <>
@@ -141,7 +118,7 @@ function Cart({ user, cartData, setCartData }) {
           <p>Total</p>
           <p>${cartFinalPrice}</p>
         </div>
-        <button id='check-out-button'>Check out</button>
+       <Link to="/cart/confirmorder"><button id='check-out-button'>Check out</button></Link>
       </div>
       </div>
       
