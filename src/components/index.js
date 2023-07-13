@@ -6,5 +6,6 @@ export { default as Products } from "./products";
 export { default as Footer } from "./footer";
 export { default as Cart } from "./cart";
 export { default as CartItem } from "./cartitem";
+export {default as MyAccount} from './myaccount';
 export {default as SingleProduct} from './singleproduct';
 export {default as ConfirmOrder} from './confirmorder';

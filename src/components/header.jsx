@@ -105,6 +105,9 @@ const Header = ({ token, setToken, setUser, setProductType, user, setCartData, s
                   >
                     Logout{" "}
                   </button>
+                  <Link to="/me">
+                    <p id="account-button">Account</p>
+                  </Link>
                 </div>
               ) : (
                 <Link to="/users/login">
