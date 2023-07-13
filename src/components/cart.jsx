@@ -18,6 +18,10 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
     setCartData(myCart);
   };
 
+  const onDelete = async () => {
+    getCart();
+  };
+
   useEffect(() => {
     const loadCart = async () => {
       await getCart();
@@ -53,7 +57,7 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
           cartData.map((item, index) => {
             return (
               <Grid key={index} wrap="wrap-reverse" style={{ margin: "1rem" }}>
-                <CartItem cardData={item} />
+                <CartItem cardData={item} onDelete={onDelete} />
               </Grid>
             );
           })}

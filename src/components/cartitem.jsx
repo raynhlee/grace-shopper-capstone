@@ -11,13 +11,19 @@ import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
 
 function CartItem(props) {
-  const { cardData } = props;
+  const { cardData, onDelete } = props;
 
-  const handleRemove = async (orderId) => {
-    await fetchFromAPI({
-      path: `/orders${orderId}`,
+  console.log("cardData: ", cardData);
+
+  const handleRemove = async () => {
+    const data = await fetchFromAPI({
+      path: `/orders/${cardData.id}`,
       method: "delete",
     });
+    console.log("data: ", data);
+    console.log("cardDataId: ", cardData.id);
+
+    onDelete();
 
     // Promise.all([
     //   fetchFromAPI({ path: "/orders", method: "update", body: {} }),

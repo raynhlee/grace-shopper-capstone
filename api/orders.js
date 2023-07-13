@@ -82,22 +82,10 @@ ordersRouter.delete("/:orderId", async (req, res, next) => {
   const { orderId } = req.params;
 
   try {
-    //todo new:
-    const orderByUser = await getOrderByUser(username);
-    //
-
     const orderToBeDeleted = await getOrderById(orderId);
 
-    if (orderToBeDeleted.orderId === req.user.id) {
-      const deletedOrder = await deleteOrder(orderToBeDeleted.id);
-      res.send(deletedOrder);
-    } else {
-      res.status(403).json({
-        error: "Unauthorized User",
-        name: "UnauthorizedUserError",
-        message: `User ${req.user.username} is not allowed to delete Order ${orderToBeDeleted.id}`,
-      });
-    }
+    const deletedOrder = await deleteOrder(orderToBeDeleted.id);
+    res.send(deletedOrder);
   } catch (error) {
     next(error);
   }
