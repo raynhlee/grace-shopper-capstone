@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
+import { fetchFromAPI } from "../api";
+
 
 const ConfirmOrder = ({cartData, setCartData, cartSubtotal,  cartFinalPrice, cartTax }) => {
-    
+    const history = useHistory();
 
-    const handleCheckout = async (event) => {
-    
-        event.preventDefault();
+    const handleCheckout = async () => {
     
         Promise.all(
           cartData.map((order) =>
