@@ -43,7 +43,6 @@ function CartItem(props) {
       </CardActionArea>
 
       <CardActions style={{ display: "flex", justifyContent: "flex-end" }}>
-        {/* //todo */}
         <Button onClick={() => handleRemove(cardData?.id)}>REMOVE</Button>
       </CardActions>
     </Card>

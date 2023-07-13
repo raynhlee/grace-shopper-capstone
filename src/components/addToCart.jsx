@@ -35,16 +35,6 @@ const AddToCart = ({
       id: product.id,
       stock: newStock,
     });
-
-    /*
-
-        if (count >= 2) {
-          await fetchFromAPI({
-            path: "/orders",
-            method: "PATCH",
-          });
-        }
-        */
   };
 
   return (
