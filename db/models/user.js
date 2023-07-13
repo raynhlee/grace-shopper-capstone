@@ -19,18 +19,18 @@ async function getAllUsers() {
   }
 }
 
-async function createUser({username, password, email}){
+async function createUser({username, password, email, isAdmin}){
 
     const SALT_COUNT = 10;
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
 
     try{
       const {rows: [user]} = await client.query(`
-      INSERT INTO users(email, username, password)
-      VALUES ($1, $2, $3)
+      INSERT INTO users(email, username, password, "isAdmin")
+      VALUES ($1, $2, $3, $4)
       RETURNING *;
       
-      `, [email, username, hashedPassword]);
+      `, [email, username, hashedPassword, isAdmin]);
 
       delete user.password;
       

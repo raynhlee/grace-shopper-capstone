@@ -25,7 +25,8 @@ async function buildTables() {
       id SERIAL PRIMARY KEY,
       username VARCHAR(255) UNIQUE NOT NULL,
       email VARCHAR(255) UNIQUE NOT NULL,
-      password VARCHAR(255) NOT NULL
+      password VARCHAR(255) NOT NULL,
+      "isAdmin" BOOLEAN DEFAULT false
     );
 
     CREATE TABLE products (
@@ -76,26 +77,31 @@ async function populateInitialData() {
         username: "boringuser1",
         password: "imveryboring",
         email: "boringperson@gmail.com",
+        isAdmin: true
       },
       {
         username: "brianmay",
         password: "crazybrian22",
         email: "brianfromqueen@gmail.com",
+        isAdmin: true
       },
       {
         username: "eagleeye",
         password: "blackshark92",
         email: "eagleshark@gmail.com",
+        isAdmin: false
       },
       {
         username: "northstar",
         password: "northernlights86",
         email: "northpole@gmail.com",
+        isAdmin: false
       },
       {
         username: "santaclausfan900",
         password: "mrsclaus4eva",
         email: "stnick@northpole.com",
+        isAdmin: false
       },
     ];
 
