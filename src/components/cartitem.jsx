@@ -13,15 +13,14 @@ import Avatar from "@mui/material/Avatar";
 function CartItem(props) {
   const { cardData, onDelete } = props;
 
-  console.log("cardData: ", cardData);
+ 
 
   const handleRemove = async () => {
     const data = await fetchFromAPI({
       path: `/orders/${cardData.id}`,
       method: "delete",
     });
-    console.log("data: ", data);
-    console.log("cardDataId: ", cardData.id);
+   
 
     onDelete();
 
@@ -31,17 +30,17 @@ function CartItem(props) {
   };
 
   return (
-    <Card style={{ boxShadow: 'none' }} id='cart-item-card'>
-      <CardActionArea>
+    <div style={{ boxShadow: 'none' }} id='cart-item-card'>
+      <div>
         <div style={{ display: "flex", gap: "1rem" }} id='cart-item-container'>
           <div id='cart-item-pic-name-delete'>
-          <Avatar src={cardData?.image} id='cart-item-image'/>
+          <img src={cardData?.image} id='cart-item-image'/>
           <div id='cart-item-name-delete-button'>
           <div>
-            <Typography id='cart-item-name'>
+            <div id='cart-item-name'>
               {cardData?.name || ""}
              
-            </Typography>
+            </div>
             </div>
             <div id='delete-cart-item-div'>
             <button id='add-to-cart-button' onClick={() => handleRemove(cardData?.id)}>Delete</button>
@@ -51,9 +50,9 @@ function CartItem(props) {
           </div>
           <p id='card-item-price'>${cardData.price}</p>
         </div>
-      </CardActionArea>
+      </div>
 
-    </Card>
+    </div>
   );
 }
 

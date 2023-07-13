@@ -10,6 +10,14 @@ import { Link, useHistory } from "react-router-dom";
 import { fetchFromAPI } from "../api";
 
 function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
+  const [cartSubtotal, setCartSubtotal] = useState(0);
+  const [cartFinalPrice, setCartFinalPrice] = useState(0);
+  const [cartTax, setCartTax] = useState(0);
+  
+  let currentTax;
+  let currentFinalPrice;
+  let newSubtotal = 0;
+
   const getCart = async () => {
     const myCart = await fetchFromAPI({
       path: `/orders/${user.username}`,
@@ -23,11 +31,37 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
   };
 
   useEffect(() => {
+    setCartSubtotal(0)
     const loadCart = async () => {
       await getCart();
     };
     loadCart();
+
+    
+
+    cartData.forEach(element => {
+      console.log(element)
+      let priceNum = parseFloat(element.price)
+      newSubtotal += priceNum;
+    });
+    console.log(newSubtotal);
+   
+    console.log('cart subtotal: ', cartSubtotal)
+    
+    newSubtotal = newSubtotal.toFixed(2)
+    currentTax = parseFloat((newSubtotal * 0.0725)).toFixed(2) 
+    console.log('cart tax: ', currentTax);
+
+    currentFinalPrice = parseFloat(currentTax) + parseFloat(newSubtotal);
+    console.log('final price: ', currentFinalPrice);
+
+    setCartSubtotal(newSubtotal);
+    setCartTax(currentTax);
+    setCartFinalPrice(currentFinalPrice);
+ 
   }, []);
+
+  
 
   const handleCheckout = async (e) => {
     e.preventDefault();
@@ -48,9 +82,14 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
     setCartData([]);
   };
 
+  
+
   return (
     <>
+    <h1 id='cart-header'>Cart</h1>
+    <h3 id='cart-subtotal'>Subtotal: ${cartSubtotal} </h3>
     <div id='cart-container'>
+     
       <div id='cart-main-div'>
         <h3 id='my-order'>My order</h3>
         {cartData.length > 1
@@ -73,11 +112,33 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
           justifyContent: "flex-end",
         }}
       >
-        <Button size="large" color="primary" onClick={handleCheckout}>
-          Checkout
-        </Button>
+       
+      </div>
+      <div id='order-summary-aside'>
+        <h3 id='order-summary-aside-header'>Order summary</h3>
+        <div id='order-summary-aside-subtotal-div'>
+          {cartData.length > 1
+            ? <p id='order-summary-aside-subtotal-label'>Subtotal ({cartData.length} items)</p>
+            : <p id='order-summary-aside-subtotal-label'>Subtotal (1 item)</p>
+          }
+          <p id='order-summary-aside-subtotal'>${cartSubtotal}</p>
+        </div>
+        <div id='order-summary-aside-subtotal-div'>
+          <p id='order-summary-aside-subtotal-label'>Regional fees</p>
+          <p id='order-summary-aside-subtotal'>$1</p>
+        </div>
+        <div id='order-summary-aside-subtotal-div'>
+          <p id='order-summary-aside-subtotal-label'>Estimated tax</p>
+          <p id='order-summary-aside-subtotal'>${cartTax}</p>
+        </div>
+        <div id='order-summary-aside-total-div'>
+          <p>Total</p>
+          <p>${cartFinalPrice}</p>
+        </div>
+        <button id='check-out-button'>Check out</button>
       </div>
       </div>
+      
       
     </>
   );
