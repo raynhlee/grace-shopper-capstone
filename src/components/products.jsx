@@ -6,6 +6,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import swal from "sweetalert";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Button from "@mui/material/Button";
 
@@ -19,8 +20,11 @@ function Products({
   user,
   productType,
 }) {
-
   const addToCart = async (product) => {
+    console.log("adding to cart");
+
+    swal("Added to cart!");
+
     setCount(count + 1);
     let newStock = product.stock - 1;
 
@@ -39,6 +43,14 @@ function Products({
       });
       localStorage.setItem("orderid", order.orderid);
 
+      //todo updateOrder
+      if (count >= 2) {
+        await fetchFromAPI({
+          path: "/orders",
+          method: "PUT",
+        });
+      }
+
       //todo updateProduct
       await fetchFromAPI({
         path: "/products",
@@ -48,7 +60,7 @@ function Products({
         },
       });
 
-      //todo getAllProducts
+      //todo getAllProducts; might not need this
       Promise.all([await fetchFromAPI({ path: "/products" })]).then(
         ([data]) => {
           setProducts(data);
@@ -57,7 +69,6 @@ function Products({
     }
   };
 
-  //todo need to filter through products based on type clicked
   useEffect(() => {
     try {
       Promise.all([fetchFromAPI({ path: "/products" })]).then(([data]) => {
