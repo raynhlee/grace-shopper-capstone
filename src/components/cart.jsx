@@ -1,31 +1,52 @@
 import React, { useEffect } from "react";
 
 import Button from "@mui/material/Button";
+import swal from "sweetalert";
 
 import Grid from "@mui/material/Grid";
 import CartItem from "./cartitem";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { fetchFromAPI } from "../api";
 
-function Cart({ user, cartData, setCartData }) {
-
-  const getCart = async() => {
+function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
+  const getCart = async () => {
     const myCart = await fetchFromAPI({
-      path: `/orders/${user.username}`
-    })
+      path: `/orders/${user.username}`,
+    });
     console.log(myCart);
     setCartData(myCart);
-  }
+  };
 
+  const onDelete = async () => {
+    getCart();
+  };
 
   useEffect(() => {
     const loadCart = async () => {
-        await getCart()
-    }
+      await getCart();
+    };
     loadCart();
-}, []);
+  }, []);
 
+  const handleCheckout = async (e) => {
+    e.preventDefault();
+    swal(
+      "Thank you for your order! Confirmation email will be arriving shortly."
+    ).then(() => {
+      history.replace("/");
+    });
+    //todo deleteOrder? might not need this
+    Promise.all(
+      cartData.map((order) =>
+        fetchFromAPI({
+          path: `orders/${order.id}`,
+          method: "delete",
+        })
+      )
+    );
+    setCartData([]);
+  };
 
   return (
     <>
@@ -36,7 +57,7 @@ function Cart({ user, cartData, setCartData }) {
           cartData.map((item, index) => {
             return (
               <Grid key={index} wrap="wrap-reverse" style={{ margin: "1rem" }}>
-                <CartItem cardData={item} />
+                <CartItem cardData={item} onDelete={onDelete} />
               </Grid>
             );
           })}
@@ -48,14 +69,9 @@ function Cart({ user, cartData, setCartData }) {
           justifyContent: "flex-end",
         }}
       >
-        <Button size="large" color="primary">
-          Edit Cart
+        <Button size="large" color="primary" onClick={handleCheckout}>
+          Checkout
         </Button>
-        <Link to="/checkout" style={{ textDecoration: "none" }}>
-          <Button size="large" color="primary">
-            Checkout
-          </Button>
-        </Link>
       </div>
     </>
   );

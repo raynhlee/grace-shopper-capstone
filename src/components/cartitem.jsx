@@ -11,18 +11,25 @@ import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
 
 function CartItem(props) {
-  const { cardData } = props;
-  //console.log("cardData: ", cardData);
+  const { cardData, onDelete } = props;
 
-  /*
-  const productIdArray = [];
+  console.log("cardData: ", cardData);
 
-  for (const key in obj) {
-    if (key === 'productId') {
-      productIdArray.push(obj[key]);
-    }
-  }
-*/
+  const handleRemove = async () => {
+    const data = await fetchFromAPI({
+      path: `/orders/${cardData.id}`,
+      method: "delete",
+    });
+    console.log("data: ", data);
+    console.log("cardDataId: ", cardData.id);
+
+    onDelete();
+
+    // Promise.all([
+    //   fetchFromAPI({ path: "/orders", method: "update", body: {} }),
+    // ]);
+  };
+
   return (
     <Card style={{ width: "100%" }}>
       <CardActionArea>
@@ -40,7 +47,8 @@ function CartItem(props) {
       </CardActionArea>
 
       <CardActions style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button>REMOVE</Button>
+        {/* //todo */}
+        <Button onClick={() => handleRemove(cardData?.id)}>REMOVE</Button>
       </CardActions>
     </Card>
   );

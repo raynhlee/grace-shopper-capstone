@@ -10,7 +10,7 @@ import {
   Footer,
   Cart,
   MyAccount,
-  SingleProduct
+  SingleProduct,
 } from "./components";
 
 function App() {
@@ -18,24 +18,31 @@ function App() {
   const [onSingleProductPage, setOnSngleProductPage] = useState(false);
   const [count, setCount] = React.useState(0);
   const [username, setUsername] = useState("");
-  const [token, setToken] = useState(localStorage.getItem('token'));
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   const [cartData, setCartData] = useState([]);
   const [productType, setProductType] = useState(null);
   const [singleProductId, setSingleProductId] = useState(null);
+  const [orderId, setOrderId] = useState(null);
 
   const nonfunctionalButton = () => {
-    alert('This feature is not currently available in your area :( ')
-  }
+    alert("This feature is not currently available in your area :( ");
+  };
 
   useEffect(() => {
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(user))
-  }, [token, user])
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [token, user]);
 
   return (
     <div className="App">
-      <Header token={token} setToken={setToken} setUser={setUser} setProductType={setProductType} user={user}/>
+      <Header
+        token={token}
+        setToken={setToken}
+        setUser={setUser}
+        setProductType={setProductType}
+        user={user}
+      />
       <Route path="/users/login">
         <Login
           username={username}
@@ -54,7 +61,8 @@ function App() {
       </Route>
       <Route exact path="/products">
         <Products
-          exact path="/products"
+          exact
+          path="/products"
           products={products}
           setProducts={setProducts}
           count={count}
@@ -62,6 +70,8 @@ function App() {
           user={user}
           productType={productType}
           setSingleProductId={setSingleProductId}
+          orderId={orderId}
+          setOrderId={setOrderId}
           setOnSngleProductPage={setOnSngleProductPage}
           onSingleProductPage={onSingleProductPage}
           nonfunctionalButton={nonfunctionalButton}
@@ -73,20 +83,29 @@ function App() {
           setCartData={setCartData}
           cartData={cartData}
           products={products}
+          orderId={orderId}
+          setOrderId={setOrderId}
         />
       </Route>
       <Route exact path="/">
         <DefaultHomepage />
       </Route>
-      <Route path='/me'>
-        <MyAccount
-        user={user}
+      <Route path="/me">
+        <MyAccount user={user} />
+      </Route>
+      <Route exact path="/products/:id">
+        <SingleProduct
+          nonfunctionalButton={nonfunctionalButton}
+          count={count}
+          setCount={setCount}
+          setProducts={setProducts}
+          products={products}
+          user={user}
+          setOnSngleProductPage={setOnSngleProductPage}
+          onSingleProductPage={onSingleProductPage}
         />
       </Route>
-      <Route exact path='/products/:id'>
-        <SingleProduct nonfunctionalButton={nonfunctionalButton} count={count} setCount={setCount} setProducts={setProducts} products={products} user={user} setOnSngleProductPage={setOnSngleProductPage} onSingleProductPage={onSingleProductPage}/>
-      </Route>
-       <Footer />
+      <Footer />
     </div>
   );
 }
