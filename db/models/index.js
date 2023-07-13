@@ -2,7 +2,8 @@ module.exports = {
   ...require('./user'),
   ...require('./product'),
   ...require('./reviews'),
-  ...require('./orders')
+  ...require('./orders'),
+  ...require('./orderHistory')
 };
 
 // then, in your API, you'll require the appropriate model
