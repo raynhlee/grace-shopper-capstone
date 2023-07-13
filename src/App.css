@@ -725,6 +725,7 @@ a {
   margin-top: 30px;
   margin-left: 50px;
   border-radius: 8px;
+  min-height: 200px;
 }
 
 #cart-container{
@@ -996,4 +997,17 @@ a {
   margin-top: 5px;
   margin-bottom: 5px;
   font-family: 'Helvetica';
+}
+
+#no-items-in-cart{
+  width: 60vw;
+  margin-left: 16px;
+  color: rgb(102, 102, 102);
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#my-order-and-cart-items{
+  margin-left: 15px;
 }
