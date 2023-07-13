@@ -10,20 +10,19 @@ import { Link, useHistory } from "react-router-dom";
 import { fetchFromAPI } from "../api";
 
 function Cart({ user, cartData, setCartData }) {
-  const history = useHistory();
+  const getCart = async () => {
+    const myCart = await fetchFromAPI({
+      path: `/orders/${user.username}`,
+    });
+    console.log(myCart);
+    setCartData(myCart);
+  };
+
   useEffect(() => {
-    try {
-      //todo getOrderByUser
-      Promise.all([
-        fetchFromAPI({ path: `/orders/${user.user.username}` }),
-      ]).then(([data]) => {
-        setCartData(data);
-        console.log("cartData: ", cartData);
-        console.log("data: ", data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    const loadCart = async () => {
+      await getCart();
+    };
+    loadCart();
   }, []);
 
   const handleCheckout = async (e) => {

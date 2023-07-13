@@ -11,6 +11,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Button from "@mui/material/Button";
 
 import { fetchFromAPI } from "../api";
+import AddToCart from "./addToCart";
+//todo make all product types route to /products?
 
 function Products({
   products,
@@ -143,15 +145,13 @@ function Products({
                       <Typography>${product.price}</Typography>
                       <p id="when-purchased-online">When purchased online</p>
                     </CardContent>
-
-                    <CardActions>
-                      <button
-                        onClick={() => addToCart(product)}
-                        id="add-to-cart-button"
-                      >
-                        Add to cart
-                      </button>
-                    </CardActions>
+                    <AddToCart
+                      product={product}
+                      count={count}
+                      setCount={setCount}
+                      setProducts={setProducts}
+                      user={user}
+                    />
                   </Card>
                 ))}
             </div>
