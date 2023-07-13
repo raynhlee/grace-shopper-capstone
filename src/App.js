@@ -42,6 +42,7 @@ function App() {
         setUser={setUser}
         setProductType={setProductType}
         user={user}
+        setCartData={setCartData}
       />
       <Route path="/users/login">
         <Login
