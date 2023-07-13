@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-const Header = ({ token, setToken, setUser, setProductType, user }) => {
+const Header = ({ token, setToken, setUser, setProductType, user, setCartData }) => {
   const history = useHistory();
   useEffect(() => {
     if (user) {
@@ -96,6 +96,7 @@ const Header = ({ token, setToken, setUser, setProductType, user }) => {
                       event.preventDefault();
                       setToken("");
                       setUser("");
+                      setCartData([]);
                       localStorage.removeItem("token");
                       localStorage.removeItem("user");
                       history.push("/");

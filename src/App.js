@@ -11,6 +11,7 @@ import {
   Cart,
   MyAccount,
   SingleProduct,
+  ConfirmOrder
 } from "./components";
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
   const [productType, setProductType] = useState(null);
   const [singleProductId, setSingleProductId] = useState(null);
   const [orderId, setOrderId] = useState(null);
+  const [cartSubtotal, setCartSubtotal] = useState(0);
+  const [cartFinalPrice, setCartFinalPrice] = useState(0);
+  const [cartTax, setCartTax] = useState(0);
 
   const nonfunctionalButton = () => {
     alert("This feature is not currently available in your area :( ");
@@ -42,6 +46,7 @@ function App() {
         setUser={setUser}
         setProductType={setProductType}
         user={user}
+        setCartData={setCartData}
       />
       <Route path="/users/login">
         <Login
@@ -77,7 +82,7 @@ function App() {
           nonfunctionalButton={nonfunctionalButton}
         />
       </Route>
-      <Route path="/cart">
+      <Route exact path="/cart">
         <Cart
           user={user}
           setCartData={setCartData}
@@ -85,6 +90,12 @@ function App() {
           products={products}
           orderId={orderId}
           setOrderId={setOrderId}
+          cartSubtotal={cartSubtotal}
+          setCartSubtotal={setCartSubtotal}
+          cartFinalPrice = {cartFinalPrice}
+          setCartFinalPrice={setCartFinalPrice}
+          cartTax = {cartTax}
+          setCartTax ={setCartTax}
         />
       </Route>
       <Route exact path="/">
@@ -103,6 +114,15 @@ function App() {
           user={user}
           setOnSngleProductPage={setOnSngleProductPage}
           onSingleProductPage={onSingleProductPage}
+        />
+      </Route>
+      <Route exact path = "/cart/confirmorder">
+        <ConfirmOrder 
+        cartData={cartData} 
+        setCartData={setCartData} 
+        cartSubtotal={cartSubtotal}
+        cartFinalPrice = {cartFinalPrice}
+        cartTax = {cartTax}
         />
       </Route>
       <Footer />

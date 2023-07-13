@@ -10,10 +10,9 @@ import { Link, useHistory } from "react-router-dom";
 
 import { fetchFromAPI } from "../api";
 
-function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
-  const [cartSubtotal, setCartSubtotal] = useState(0);
-  const [cartFinalPrice, setCartFinalPrice] = useState(0);
-  const [cartTax, setCartTax] = useState(0);
+function Cart({ user, cartData, setCartData, cartSubtotal, setCartSubtotal, cartFinalPrice, setCartFinalPrice, cartTax, setCartTax }) {
+  const history = useHistory();
+  
   
   let currentTax;
   let currentFinalPrice;
@@ -67,30 +66,6 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
  
   }, []);
 
- 
-
-  
-
-  const handleCheckout = async (e) => {
-    e.preventDefault();
-    swal(
-      "Thank you for your order! Confirmation email will be arriving shortly."
-    ).then(() => {
-      history.replace("/");
-    });
-    //todo deleteOrder? might not need this
-    Promise.all(
-      cartData.map((order) =>
-        fetchFromAPI({
-          path: `orders/${order.id}`,
-          method: "delete",
-        })
-      )
-    );
-    setCartData([]);
-  };
-
-  
 
   return (
     <>
@@ -99,11 +74,13 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
     <div id='cart-container'>
      
       <div id='cart-main-div'>
+        <div id='my-order-and-cart-items'>
         <h3 id='my-order'>My order</h3>
-        {cartData.length > 1
-          ? <p id='cart-items-in-cart-list'>{cartData.length} items</p>
-          : <p id='cart-items-in-cart-list'>1 item</p>
+        {cartData.length > 0
+          ? <p id='cart-items-in-cart-list'>{cartData.length} item(s)</p>
+          : <p id='no-items-in-cart'>No items currently in cart</p>
         }
+        </div>
         {cartData &&
           cartData.map((item, index) => {
             return (
@@ -112,15 +89,6 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
               </Grid>
             );
           })}
-      </div>
-      <div
-        style={{
-          position: "relative",
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-       
       </div>
       <div id='order-summary-aside'>
         <h3 id='order-summary-aside-header'>Order summary</h3>
@@ -143,7 +111,7 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
           <p>Total</p>
           <p>${cartFinalPrice}</p>
         </div>
-        <button id='check-out-button'>Check out</button>
+       <Link to="/cart/confirmorder"><button id='check-out-button'>Check out</button></Link>
       </div>
       </div>
       

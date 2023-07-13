@@ -1,15 +1,6 @@
 import React from "react";
 import { fetchFromAPI } from "../api";
 
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-
-import CardActionArea from "@mui/material/CardActionArea";
-import CardContent from "@mui/material/CardContent";
-import Avatar from "@mui/material/Avatar";
-
 function CartItem(props) {
   const { cardData, onDelete } = props;
 
@@ -23,10 +14,6 @@ function CartItem(props) {
    
 
     onDelete();
-
-    // Promise.all([
-    //   fetchFromAPI({ path: "/orders", method: "update", body: {} }),
-    // ]);
   };
 
   return (
@@ -51,7 +38,6 @@ function CartItem(props) {
           <p id='card-item-price'>${cardData.price}</p>
         </div>
       </div>
-
     </div>
   );
 }

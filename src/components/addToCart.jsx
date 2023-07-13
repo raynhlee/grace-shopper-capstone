@@ -1,5 +1,6 @@
 import React from "react";
 import { fetchFromAPI } from "../api";
+import swal from "sweetalert";
 
 const AddToCart = ({product, count, setCount, setProducts, user, onSingleProductPage}) => {
 
