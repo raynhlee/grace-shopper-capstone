@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-const Header = ({ token, setToken, setUser, setProductType, user, setCartData, setPurchaseHistory }) => {
+const Header = ({ token, setToken, setUser, setProductType, user, setCartData }) => {
   const history = useHistory();
   useEffect(() => {
     if (user) {
@@ -105,9 +105,6 @@ const Header = ({ token, setToken, setUser, setProductType, user, setCartData, s
                   >
                     Logout{" "}
                   </button>
-                  <Link to="/me">
-                    <p id="account-button">Account</p>
-                  </Link>
                 </div>
               ) : (
                 <Link to="/users/login">

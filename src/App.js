@@ -9,7 +9,6 @@ import {
   Register,
   Footer,
   Cart,
-  MyAccount,
   SingleProduct,
   ConfirmOrder
 } from "./components";
@@ -28,7 +27,6 @@ function App() {
   const [cartSubtotal, setCartSubtotal] = useState(0);
   const [cartFinalPrice, setCartFinalPrice] = useState(0);
   const [cartTax, setCartTax] = useState(0);
-  const [purchaseHistory, setPurchaseHistory] = useState([]);
 
   const nonfunctionalButton = () => {
     alert("This feature is not currently available in your area :( ");
@@ -48,7 +46,6 @@ function App() {
         setProductType={setProductType}
         user={user}
         setCartData={setCartData}
-        setPurchaseHistory={setPurchaseHistory}
       />
       <Route path="/users/login">
         <Login
@@ -103,13 +100,6 @@ function App() {
       <Route exact path="/">
         <DefaultHomepage />
       </Route>
-      <Route path="/me">
-        <MyAccount 
-        user={user} 
-        purchaseHistory={purchaseHistory}
-        setPurchaseHistory={setPurchaseHistory}
-        />
-      </Route>
       <Route exact path="/products/:id">
         <SingleProduct
           nonfunctionalButton={nonfunctionalButton}
@@ -129,7 +119,6 @@ function App() {
         cartSubtotal={cartSubtotal}
         cartFinalPrice = {cartFinalPrice}
         cartTax = {cartTax}
-        user = {user}
         />
       </Route>
       <Footer />

@@ -3,15 +3,10 @@ import { Link, useHistory } from "react-router-dom";
 import { fetchFromAPI } from "../api";
 
 
-const ConfirmOrder = ({cartData, setCartData, cartSubtotal,  cartFinalPrice, cartTax, user }) => {
+const ConfirmOrder = ({cartData, setCartData, cartSubtotal,  cartFinalPrice, cartTax }) => {
     const history = useHistory();
 
     const handleCheckout = async () => {
-
-       await fetchFromAPI({
-        path: `/history/${user.username}`,
-        method: 'post',
-      });
 
         Promise.all(
           cartData.map((order) =>
