@@ -123,6 +123,7 @@ function App() {
         cartSubtotal={cartSubtotal}
         cartFinalPrice = {cartFinalPrice}
         cartTax = {cartTax}
+        user = {user}
         />
       </Route>
       <Footer />
