@@ -34,7 +34,7 @@ ordersRouter.get("/", async (req, res, next) => {
   }
 });
 
-ordersRouter.post("/", requireUser, async (req, res, next) => {
+ordersRouter.post("/", async (req, res, next) => {
   const { productId, price, quantity } = req.body;
 
   let orderData = {

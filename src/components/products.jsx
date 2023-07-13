@@ -10,7 +10,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Button from "@mui/material/Button";
 
 import { fetchFromAPI } from "../api";
-
+import AddToCart from "./addToCart";
 //todo make all product types route to /products?
 
 function Products({
@@ -22,40 +22,7 @@ function Products({
   productType,
 }) {
 
-  const addToCart = async (product) => {
-    setCount(count + 1);
-    let newStock = product.stock - 1;
-
-    if (count === 1) {
-      //todo createOrder
-      const order = await fetchFromAPI({
-        path: "/orders",
-        method: "POST",
-        body: {
-          userId: user.id,
-          productId: product.id,
-          price: product.price,
-          quantity: 1,
-        },
-        token: user.token,
-      });
-      localStorage.setItem("orderid", order.orderid);
-
-      //todo updateProduct
-      await fetchFromAPI({
-        path: "/products",
-        id: product.id,
-        stock: newStock,
-      });
-
-      //todo getAllProducts
-      Promise.all([await fetchFromAPI({ path: "/products" })]).then(
-        ([data]) => {
-          setProducts(data);
-        }
-      );
-    }
-  };
+  
 
   //todo need to filter through products based on type clicked
   useEffect(() => {
@@ -125,13 +92,7 @@ function Products({
 
                   
                 </CardContent>
-
-                <CardActions>
-                  <button onClick={() => addToCart(product)}
-                    id='add-to-cart-button'>Add to cart</button>
-                  
-                </CardActions>
-                
+              <AddToCart product = {product} count = {count} setCount={setCount} setProducts={setProducts} user={user}/>
               </Card>
             ))}
         </div>

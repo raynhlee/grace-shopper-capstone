@@ -1,12 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { fetchFromAPI } from '../api';
 
-const CartFunctionComponent = () => {
+const AddToCart = ({product, count, setCount, setProducts, user}) => {
 
     const addToCart = async (product) => {
         setCount(count + 1);
         let newStock = product.stock - 1;
+
+        console.log('count: ', count )
     
-        if (count === 1) {
+        if (count === 8) {
           //todo createOrder
           const order = await fetchFromAPI({
             path: "/orders",
@@ -16,11 +19,12 @@ const CartFunctionComponent = () => {
               productId: product.id,
               price: product.price,
               quantity: 1,
-            },
-            token: user.token,
+            }
           });
-          localStorage.setItem("orderid", order.orderid);
-    
+          localStorage.setItem("orderid", order.id);
+          console.log('order: ', order )
+         
+
           //todo updateProduct
           await fetchFromAPI({
             path: "/products",
@@ -35,9 +39,22 @@ const CartFunctionComponent = () => {
             }
           );
         }
+
+        if (count >= 2) {
+          await fetchFromAPI({
+            path: "/orders",
+            method: "PATCH",
+          });
+        }
+
+
       };
     
+      return(
+        <button onClick={() => addToCart(product)}
+                    id='add-to-cart-button'>Add to cart</button>
+      )
 
 }
 
-export default CartFunctionComponent;
+export default AddToCart;
