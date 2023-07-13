@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 
 const ConfirmOrder = ({cartData, setCartData, cartSubtotal,  cartFinalPrice, cartTax }) => {
-    const [input, setInput] = useState('')
+    
 
     const handleCheckout = async (event) => {
     
