@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import AddToCart from "./addToCart";
 
 
-const SingleProduct = ({count, setCount, setProducts, products, user}) => {
+const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngleProductPage, onSingleProductPage}) => {
     const {id} = useParams(); 
     
 
@@ -28,6 +28,9 @@ const SingleProduct = ({count, setCount, setProducts, products, user}) => {
         loadProduct();
     }, []);
     
+    useEffect(() => {
+        setOnSngleProductPage(true);
+    }, [])
 
 return(
     <div id='single-product-main-div'>
@@ -57,7 +60,7 @@ return(
                         </div>
                     </div>
                    
-                    <AddToCart count = {count} setCount={setCount} setProducts={setProducts} user={user} product={product} />
+                    <AddToCart count = {count} setCount={setCount} setProducts={setProducts} user={user} product={product} onSingleProductPage={onSingleProductPage}/>
                 </div>
             </div>
         </div>

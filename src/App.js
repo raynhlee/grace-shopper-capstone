@@ -15,6 +15,7 @@ import {
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [onSingleProductPage, setOnSngleProductPage] = useState(false);
   const [count, setCount] = React.useState(0);
   const [username, setUsername] = useState("");
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -57,6 +58,8 @@ function App() {
           user={user}
           productType={productType}
           setSingleProductId={setSingleProductId}
+          setOnSngleProductPage={setOnSngleProductPage}
+          onSingleProductPage={onSingleProductPage}
         />
       </Route>
       <Route path="/cart">
@@ -76,7 +79,7 @@ function App() {
         />
       </Route>
       <Route exact path='/products/:id'>
-        <SingleProduct count={count} setCount={setCount} setProducts={setProducts} products={products} user={user}/>
+        <SingleProduct count={count} setCount={setCount} setProducts={setProducts} products={products} user={user} setOnSngleProductPage={setOnSngleProductPage} onSingleProductPage={onSingleProductPage}/>
       </Route>
        <Footer />
     </div>

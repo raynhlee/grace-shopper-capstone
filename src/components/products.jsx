@@ -20,6 +20,8 @@ function Products({
   setCount,
   user,
   productType,
+  setOnSngleProductPage,
+  onSingleProductPage
 }) {
 
   
@@ -41,6 +43,10 @@ function Products({
       console.log(error);
     }
   }, [productType]);
+
+  useEffect(() => {
+    setOnSngleProductPage(false);
+}, [])
 
   return (
     <>
@@ -92,7 +98,7 @@ function Products({
 
                   
                 </CardContent>
-              <AddToCart product = {product} count = {count} setCount={setCount} setProducts={setProducts} user={user}/>
+              <AddToCart product = {product} count = {count} setCount={setCount} setProducts={setProducts} user={user} onSingleProductPage={onSingleProductPage}/>
               </Card>
             ))}
         </div>
