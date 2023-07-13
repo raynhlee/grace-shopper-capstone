@@ -13,15 +13,14 @@ import Avatar from "@mui/material/Avatar";
 function CartItem(props) {
   const { cardData, onDelete } = props;
 
-  console.log("cardData: ", cardData);
+ 
 
   const handleRemove = async () => {
     const data = await fetchFromAPI({
       path: `/orders/${cardData.id}`,
       method: "delete",
     });
-    console.log("data: ", data);
-    console.log("cardDataId: ", cardData.id);
+   
 
     onDelete();
 
@@ -31,26 +30,29 @@ function CartItem(props) {
   };
 
   return (
-    <Card style={{ width: "100%" }}>
-      <CardActionArea>
-        <CardContent style={{ display: "flex", gap: "1rem" }}>
-          <Avatar src={cardData?.image} />
+    <div style={{ boxShadow: 'none' }} id='cart-item-card'>
+      <div>
+        <div style={{ display: "flex", gap: "1rem" }} id='cart-item-container'>
+          <div id='cart-item-pic-name-delete'>
+          <img src={cardData?.image} id='cart-item-image'/>
+          <div id='cart-item-name-delete-button'>
           <div>
-            <Typography>
+            <div id='cart-item-name'>
               {cardData?.name || ""}
-              <span>${cardData.price}</span>
-            </Typography>
-            <Typography>{cardData?.description || ""}</Typography>
-            <Typography>Quantity: {cardData?.quantity || ""}</Typography>
+             
+            </div>
+            </div>
+            <div id='delete-cart-item-div'>
+            <button id='add-to-cart-button' onClick={() => handleRemove(cardData?.id)}>Delete</button>
+            </div>
+            </div>
+          
           </div>
-        </CardContent>
-      </CardActionArea>
+          <p id='card-item-price'>${cardData.price}</p>
+        </div>
+      </div>
 
-      <CardActions style={{ display: "flex", justifyContent: "flex-end" }}>
-        {/* //todo */}
-        <Button onClick={() => handleRemove(cardData?.id)}>REMOVE</Button>
-      </CardActions>
-    </Card>
+    </div>
   );
 }
 

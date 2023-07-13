@@ -1,32 +1,30 @@
 import React from "react";
 import { fetchFromAPI } from "../api";
 
-const AddToCart = ({
-  product,
-  count,
-  setCount,
-  setProducts,
-  user,
-  onSingleProductPage,
-}) => {
-  const addToCart = async (product) => {
-    let newStock = product.stock - 1;
+const AddToCart = ({product, count, setCount, setProducts, user, onSingleProductPage}) => {
 
-    //todo createOrder
-    const order = await fetchFromAPI({
-      path: "/orders",
-      method: "POST",
-      body: {
-        userId: user.id,
-        productId: product.id,
-        price: product.price,
-        quantity: 1,
-      },
-    });
-    //localStorage.setItem("orderid", order.id);
-    setOrderId(order.newOrder.id);
-    console.log("orderId: ", order.newOrder.id);
-    console.log("order: ", order);
+    const addToCart = async (product) => {
+        
+        let newStock = product.stock - 1;
+
+      
+          //todo createOrder
+          const order = await fetchFromAPI({
+            path: "/orders",
+            method: "POST",
+            body: {
+              userId: user.id,
+              productId: product.id,
+              price: product.price,
+              quantity: 1,
+            }
+          });
+          //localStorage.setItem("orderid", order.id);
+          console.log('order: ', order )
+         
+          if(order){
+            alert('Item added to cart! :) ')
+          }
 
     //todo updateProduct
     await fetchFromAPI({
@@ -35,22 +33,21 @@ const AddToCart = ({
       stock: newStock,
     });
 
-    /*
-
-        if (count >= 2) {
-          await fetchFromAPI({
-            path: "/orders",
-            method: "PATCH",
-          });
-        }
-        */
+    
   };
 
-  return (
-    <button onClick={() => addToCart(product)} id="add-to-cart-button">
-      Add to cart
-    </button>
-  );
-};
+    
+      return(
+        <div>
+        { onSingleProductPage
+            ? <button onClick={() => addToCart(product)}
+            id='single-product-add-to-cart'>Add to cart</button>
+          : <button onClick={() => addToCart(product)}
+                    id='add-to-cart-button'>Add to cart</button>
+        }
+        </div>
+      )
+
+}
 
 export default AddToCart;
