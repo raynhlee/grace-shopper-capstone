@@ -29,8 +29,7 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
     loadCart();
   }, []);
 
-  const handleCheckout = async (e) => {
-    e.preventDefault();
+  const handleCheckout = async () => {
     swal(
       "Thank you for your order! Confirmation email will be arriving shortly."
     ).then(() => {

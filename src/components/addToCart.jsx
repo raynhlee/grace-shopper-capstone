@@ -1,5 +1,6 @@
 import React from "react";
 import { fetchFromAPI } from "../api";
+import swal from "sweetalert";
 
 const AddToCart = ({
   product,
@@ -11,7 +12,7 @@ const AddToCart = ({
 }) => {
   const addToCart = async (product) => {
     let newStock = product.stock - 1;
-
+    swal("Added to cart!");
     //todo createOrder
     const order = await fetchFromAPI({
       path: "/orders",
