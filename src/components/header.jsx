@@ -73,7 +73,9 @@ const Header = ({token, setToken, setUser, setProductType, user}) => {
                             
                         }
                         
+                       <Link to='/cart'>
                         <div id='cart'></div>
+                       </Link>
                     </div>
                 </div>
             </div>
