@@ -1,5 +1,5 @@
-import React from 'react';
-import { fetchFromAPI } from '../api';
+import React from "react";
+import { fetchFromAPI } from "../api";
 
 const AddToCart = ({product, count, setCount, setProducts, user, onSingleProductPage}) => {
 
@@ -26,26 +26,21 @@ const AddToCart = ({product, count, setCount, setProducts, user, onSingleProduct
             alert('Item added to cart! :) ')
           }
 
-          //todo updateProduct
-          await fetchFromAPI({
-            path: "/products",
-            id: product.id,
-            stock: newStock,
-          });
-    
-        
-        
-        
-       
+    //todo updateProduct
+    await fetchFromAPI({
+      path: "/products",
+      id: product.id,
+      stock: newStock,
+    });
 
-      };
+    
+  };
+
     
       return(
         <div>
         { onSingleProductPage
-            ? <button onClick={() => {
-              addToCart(product)
-            }}
+            ? <button onClick={() => addToCart(product)}
             id='single-product-add-to-cart'>Add to cart</button>
           : <button onClick={() => addToCart(product)}
                     id='add-to-cart-button'>Add to cart</button>

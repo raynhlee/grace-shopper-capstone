@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory, Route} from "react-router-dom";
+import { Link, useHistory, Route } from "react-router-dom";
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import swal from "sweetalert";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Button from "@mui/material/Button";
 
@@ -22,12 +23,59 @@ function Products({
   productType,
   setOnSngleProductPage,
   onSingleProductPage,
-  nonfunctionalButton
+  nonfunctionalButton,
+  orderId,
+  setOrderId,
 }) {
+  const addToCart = async (product) => {
+    console.log("adding to cart");
 
-  
+    swal("Added to cart!");
 
-  //todo need to filter through products based on type clicked
+    setCount(count + 1);
+    let newStock = product.stock - 1;
+
+    if (count === 1) {
+      //todo createOrder
+      const order = await fetchFromAPI({
+        path: "/orders",
+        method: "POST",
+        body: {
+          userId: user.id,
+          productId: product.id,
+          price: product.price,
+          quantity: 1,
+        },
+        token: user.token,
+      });
+      localStorage.setItem("orderid", order.orderid);
+
+      //todo updateOrder
+      if (count >= 2) {
+        await fetchFromAPI({
+          path: "/orders",
+          method: "PUT",
+        });
+      }
+
+      //todo updateProduct
+      await fetchFromAPI({
+        path: "/products",
+        body: {
+          id: product.id,
+          stock: newStock,
+        },
+      });
+
+      //todo getAllProducts; might not need this
+      Promise.all([await fetchFromAPI({ path: "/products" })]).then(
+        ([data]) => {
+          setProducts(data);
+        }
+      );
+    }
+  };
+
   useEffect(() => {
     try {
       Promise.all([fetchFromAPI({ path: "/products" })]).then(([data]) => {
@@ -47,68 +95,97 @@ function Products({
 
   useEffect(() => {
     setOnSngleProductPage(false);
-}, [])
+  }, []);
 
   return (
     <>
       <div>
-        <h1 id='product-page-header'>{productType}</h1>
-        <div id='products-div'>
-          <div id='how-are-shopping'>
-            <h2 id='how-shop-header'>How are you shopping today?</h2>
-            <button id='pickup-div' onClick={() => {nonfunctionalButton()}}>
+        <h1 id="product-page-header">{productType}</h1>
+        <div id="products-div">
+          <div id="how-are-shopping">
+            <h2 id="how-shop-header">How are you shopping today?</h2>
+            <button
+              id="pickup-div"
+              onClick={() => {
+                nonfunctionalButton();
+              }}
+            >
               <h3 id="pickup-method"> Pickup</h3>
-              <p id='pickup-desc'>In-store pickup, ready within 2 hours</p>
+              <p id="pickup-desc">In-store pickup, ready within 2 hours</p>
             </button>
-            <button id='pickup-div' onClick={() => {nonfunctionalButton()}}>
+            <button
+              id="pickup-div"
+              onClick={() => {
+                nonfunctionalButton();
+              }}
+            >
               <h3 id="pickup-method"> Same Day Delivery</h3>
-              <p id='pickup-desc'>Schedule contactless deliveries as soon as today</p>
+              <p id="pickup-desc">
+                Schedule contactless deliveries as soon as today
+              </p>
             </button>
-            <button id='pickup-div' onClick={() => {nonfunctionalButton()}}>
+            <button
+              id="pickup-div"
+              onClick={() => {
+                nonfunctionalButton();
+              }}
+            >
               <h3 id="pickup-method"> Shipping</h3>
-              <p id='pickup-desc'>Free with FretCard or $350 orders*</p>
+              <p id="pickup-desc">Free with FretCard or $350 orders*</p>
             </button>
-            <div id='exclusions-div'>
-            <p id='exclusions'>*Exclusions apply</p>
+            <div id="exclusions-div">
+              <p id="exclusions">*Exclusions apply</p>
             </div>
           </div>
           <div id="products-container">
-          <div>
-            <h3 id='num-results'>{products.length} results</h3>
+            <div>
+              <h3 id="num-results">{products.length} results</h3>
+            </div>
+            <div id="all-products">
+              {products.length &&
+                products.map((product, index) => (
+                  <Card
+                    key={index}
+                    id={index}
+                    style={{
+                      boxShadow: "none",
+                      borderRadius: "0px",
+                      width: "28%",
+                      marginBottom: "20px",
+                      marginLeft: "10px",
+                    }}
+                    className="product-card"
+                  >
+                    <CardMedia>
+                      <img
+                        className="product-image"
+                        src={product.image && product.image}
+                        alt={product.title}
+                        height={200}
+                      />
+                    </CardMedia>
+                    <CardContent>
+                      <Link to={`/products/${product.id}`}>
+                        <button id="product-title">{product.name}</button>
+                      </Link>
+                      <Typography>${product.price}</Typography>
+                      <p id="when-purchased-online">When purchased online</p>
+                    </CardContent>
+                    <AddToCart
+                      product={product}
+                      count={count}
+                      setCount={setCount}
+                      setProducts={setProducts}
+                      user={user}
+                      onSingleProductPage={onSingleProductPage}
+                    />
+                  </Card>
+                ))}
+            </div>
           </div>
-          <div id='all-products'>  
-          {products.length &&
-            products.map((product, index) => (
-              <Card
-                key={index}
-                id={index}
-                style={{ boxShadow: 'none', borderRadius:'0px', width: '28%', marginBottom: '20px', marginLeft: '10px'}}
-                className ='product-card' 
-              >
-                <CardMedia>
-                  <img className='product-image'
-                    src={product.image && product.image}
-                    alt={product.title}
-                    height={200}
-                  />
-                </CardMedia>
-                <CardContent>
-                  <Link to={`/products/${product.id}`}><button id='product-title' >{product.name}</button></Link>
-                  <Typography>${product.price}</Typography>
-                  <p id='when-purchased-online'>When purchased online</p>
-
-                  
-                </CardContent>
-              <AddToCart product = {product} count = {count} setCount={setCount} setProducts={setProducts} user={user} onSingleProductPage={onSingleProductPage}/>
-              </Card>
-            ))}
-        </div>
-        </div>
         </div>
       </div>
-      
     </>
-    
   );
 }
 
