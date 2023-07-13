@@ -9,7 +9,8 @@ import { Link, useHistory } from "react-router-dom";
 
 import { fetchFromAPI } from "../api";
 
-function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
+function Cart({ user, cartData, setCartData }) {
+  const history = useHistory();
   const getCart = async () => {
     const myCart = await fetchFromAPI({
       path: `/orders/${user.username}`,
@@ -30,11 +31,6 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
   }, []);
 
   const handleCheckout = async () => {
-    swal(
-      "Thank you for your order! Confirmation email will be arriving shortly."
-    ).then(() => {
-      history.replace("/");
-    });
     //todo deleteOrder? might not need this
     Promise.all(
       cartData.map((order) =>
@@ -45,6 +41,11 @@ function Cart({ user, cartData, setCartData, orderId, setOrderId }) {
       )
     );
     setCartData([]);
+    swal(
+      "Thank you for your order! Confirmation email will be arriving shortly."
+    ).then(() => {
+      history.push("/");
+    });
   };
 
   return (
