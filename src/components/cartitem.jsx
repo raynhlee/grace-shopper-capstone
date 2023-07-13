@@ -33,22 +33,26 @@ function CartItem(props) {
   return (
     <Card style={{ boxShadow: 'none' }} id='cart-item-card'>
       <CardActionArea>
-        <CardContent style={{ display: "flex", gap: "1rem" }}>
+        <div style={{ display: "flex", gap: "1rem" }} id='cart-item-container'>
+          <div id='cart-item-pic-name-delete'>
           <Avatar src={cardData?.image} id='cart-item-image'/>
+          <div id='cart-item-name-delete-button'>
           <div>
             <Typography id='cart-item-name'>
               {cardData?.name || ""}
-              <span>${cardData.price}</span>
+             
             </Typography>
-            <Typography>Quantity: {cardData?.quantity || ""}</Typography>
+            </div>
+            <div id='delete-cart-item-div'>
+            <button id='add-to-cart-button' onClick={() => handleRemove(cardData?.id)}>Delete</button>
+            </div>
+            </div>
+          
           </div>
-        </CardContent>
+          <p id='card-item-price'>${cardData.price}</p>
+        </div>
       </CardActionArea>
 
-      <CardActions style={{ display: "flex", justifyContent: "flex-end" }}>
-        {/* //todo */}
-        <Button onClick={() => handleRemove(cardData?.id)}>REMOVE</Button>
-      </CardActions>
     </Card>
   );
 }

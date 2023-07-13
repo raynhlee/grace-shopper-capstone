@@ -760,4 +760,34 @@ a {
   font-family: 'Helvetica';
   color: rgb(51, 51, 51);
   font-size: 16px;
+  width: 40vw;
+  margin-left: 30px;
+}
+
+#card-item-price{
+  color: rgb(51, 51, 51);
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 36px;
+  margin-right: 15px;
+}
+
+#cart-item-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+#cart-item-pic-name-delete{
+  display: flex;
+  margin-top: 30px;
+}
+
+#delete-cart-item-div{
+  margin-left: 22px;
+  margin-top: 10px;
+}
+
+#cart-item-name-delete-button{
+  display: flex;
+  flex-direction: column;
 }
