@@ -1081,3 +1081,11 @@ a {
   margin-top: 30px; 
   
 }
+
+#admin {
+  color: #3fe60c;
+}
+
+#user {
+  color: red;
+}

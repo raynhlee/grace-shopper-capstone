@@ -31,8 +31,8 @@ const ViewAllUsers = () => {
                         <p> User ID: {user.id}</p>
                         {
                             user.isAdmin
-                            ? <p>User status: Admin</p>
-                            : <p>User status: User</p>
+                            ? <p>Role: <span id='admin'>Admin</span> </p>
+                            : <p>Role: <span id='user'>User</span></p>
                         }
                     </div>
                 )
