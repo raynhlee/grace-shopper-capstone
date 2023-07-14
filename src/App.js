@@ -111,6 +111,7 @@ function App() {
           setProducts={setProducts}
           products={products}
           user={user}
+          token={token}
           setOnSngleProductPage={setOnSngleProductPage}
           onSingleProductPage={onSingleProductPage}
         />

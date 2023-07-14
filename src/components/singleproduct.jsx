@@ -4,7 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import AddToCart from "./addToCart";
 
 
-const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngleProductPage, onSingleProductPage, nonfunctionalButton}) => {
+const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngleProductPage, onSingleProductPage, nonfunctionalButton, token}) => {
     const {id} = useParams(); 
     const [product, setProduct] = useState(null)
     const history = useHistory()
@@ -74,7 +74,7 @@ return(
                         </button>
                     </div>
                    
-                    <AddToCart count = {count} setCount={setCount} setProducts={setProducts} user={user} product={product} onSingleProductPage={onSingleProductPage}/>
+                    <AddToCart count = {count} setCount={setCount} setProducts={setProducts} user={user} product={product} onSingleProductPage={onSingleProductPage} token={token} />
                     {
                         user.isAdmin 
                         ? <button id='single-product-add-to-cart' style={{marginTop: '0px'}} onClick={()=>{
