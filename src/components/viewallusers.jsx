@@ -26,9 +26,9 @@ const ViewAllUsers = () => {
             users && users.map((user) => {
                 return (
                     <div key={user.id} id='user-info'>
+                        <p> User ID: {user.id}</p>
                         <p>Username: {user.username}</p>
                         <p>Email: {user.email}</p>
-                        <p> User ID: {user.id}</p>
                         {
                             user.isAdmin
                             ? <p>Role: <span id='admin'>Admin</span> </p>
