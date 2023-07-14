@@ -12,7 +12,6 @@ async function buildTables() {
     console.log("Dropping all tables...");
     // drop tables in correct order
     await client.query(`
-      DROP TABLE IF EXISTS "orderHistory";
       DROP TABLE IF EXISTS reviews;
       DROP TABLE IF EXISTS orders;
       DROP TABLE IF EXISTS products;
@@ -53,12 +52,6 @@ async function buildTables() {
       "productId" INTEGER REFERENCES products(id),
       UNIQUE ("creatorId", "productId"),
       description TEXT NOT NULL
-    );
-
-    CREATE TABLE "orderHistory" (
-      id SERIAL PRIMARY KEY,
-      "orderId" INTEGER REFERENCES orders(id),
-      username VARCHAR(255) REFERENCES users(username)
     );
     `);
     console.log("Finished building tables!");
