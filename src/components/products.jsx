@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link, useHistory, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import swal from "sweetalert";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import Button from "@mui/material/Button";
 
 import { fetchFromAPI } from "../api";
 import AddToCart from "./addToCart";
@@ -24,8 +20,6 @@ function Products({
   setOnSngleProductPage,
   onSingleProductPage,
   nonfunctionalButton,
-  orderId,
-  setOrderId,
   token
 }) {
   
