@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from "react"
 import { fetchFromAPI } from "../api";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import AddToCart from "./addToCart";
 
 
 const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngleProductPage, onSingleProductPage, nonfunctionalButton}) => {
     const {id} = useParams(); 
-    
-
     const [product, setProduct] = useState(null)
+    const history = useHistory()
 
     const getProduct = async() => {
         
@@ -31,6 +30,21 @@ const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngle
     useEffect(() => {
         setOnSngleProductPage(true);
     }, [])
+
+    const deleteProduct = async () => {
+        const data = await fetchFromAPI({
+          path: `/products/${id}`,
+          method: "delete",
+        });
+        if(data){
+            alert('product was deleted')
+           
+            
+        }
+
+        history.push('/');
+
+      };
 
 return(
     <div id='single-product-main-div'>
@@ -61,6 +75,14 @@ return(
                     </div>
                    
                     <AddToCart count = {count} setCount={setCount} setProducts={setProducts} user={user} product={product} onSingleProductPage={onSingleProductPage}/>
+                    {
+                        user.isAdmin 
+                        ? <button id='single-product-add-to-cart' style={{marginTop: '0px'}} onClick={()=>{
+                            console.log('button')
+                            deleteProduct()
+                        }}>Delete product</button>
+                        : null
+                    }
                 </div>
             </div>
         </div>
