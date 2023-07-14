@@ -228,6 +228,12 @@ a {
   margin-right:35px;
 }
 
+#register-username-input{
+  height: 22px;
+  padding: 9px 8px;
+ 
+}
+
 #register-main-div{
   display: flex;
   flex-direction: column;
@@ -238,6 +244,7 @@ a {
 #register-form{
   display: flex;
   flex-direction: column;
+  margin-left: 40px;
 }
 
 #register-username-div{
