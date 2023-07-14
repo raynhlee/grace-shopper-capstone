@@ -2,7 +2,7 @@ import React from "react";
 import { fetchFromAPI } from "../api";
 import swal from "sweetalert";
 
-const AddToCart = ({product, count, setCount, setProducts, user, onSingleProductPage}) => {
+const AddToCart = ({product, count, setCount, setProducts, user, onSingleProductPage, token}) => {
 
     const addToCart = async (product) => {
         
@@ -41,9 +41,21 @@ const AddToCart = ({product, count, setCount, setProducts, user, onSingleProduct
       return(
         <div>
         { onSingleProductPage
-            ? <button onClick={() => addToCart(product)}
+            ? <button onClick={() => {
+              if(!token){
+                alert('You must be signed in to add items to your cart.')
+                return;
+              }
+              addToCart(product)
+            }}
             id='single-product-add-to-cart'>Add to cart</button>
-          : <button onClick={() => addToCart(product)}
+          : <button onClick={() => {
+            if(!token){
+              alert('You must be signed in to add items to your cart.')
+              return;
+            }
+            addToCart(product)
+          }}
                     id='add-to-cart-button'>Add to cart</button>
         }
         </div>

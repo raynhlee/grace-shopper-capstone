@@ -33,7 +33,7 @@ const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngle
 
     const deleteProduct = async () => {
         const data = await fetchFromAPI({
-          path: `/products/${id}`,
+          path: `/products/${product.id}`,
           method: "delete",
         });
         if(data){

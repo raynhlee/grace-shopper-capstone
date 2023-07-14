@@ -26,6 +26,7 @@ function Products({
   nonfunctionalButton,
   orderId,
   setOrderId,
+  token
 }) {
   const addToCart = async (product) => {
     console.log("adding to cart");
@@ -79,6 +80,7 @@ function Products({
   useEffect(() => {
     try {
       Promise.all([fetchFromAPI({ path: "/products" })]).then(([data]) => {
+        console.log('products: ', data);
         let filteredProducts = [];
         data.map((product, index) => {
           if (product.type === productType) {
@@ -87,7 +89,7 @@ function Products({
         });
         setProducts(filteredProducts);
       });
-      console.log("products: ", products);
+      
     } catch (error) {
       console.log(error);
     }
@@ -184,6 +186,7 @@ function Products({
                       setProducts={setProducts}
                       user={user}
                       onSingleProductPage={onSingleProductPage}
+                      token = {token}
                     />
                   </Card>
                 ))}

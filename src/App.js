@@ -81,6 +81,7 @@ function App() {
           setOnSngleProductPage={setOnSngleProductPage}
           onSingleProductPage={onSingleProductPage}
           nonfunctionalButton={nonfunctionalButton}
+          token = {token}
         />
       </Route>
       <Route exact path="/cart">
