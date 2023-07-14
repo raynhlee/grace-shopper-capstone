@@ -64,14 +64,17 @@ ordersRouter.post("/", async (req, res, next) => {
 
 ordersRouter.patch("/:orderId", async (req, res, next) => {
   const { orderId } = req.params;
-  const { quantity, price } = req.body;
 
   try {
-    const updatedOrder = await updateOrder({
-      orderId,
-      quantity,
-      price,
-    });
+    const orderToUpdate = await getOrderById(orderId);
+    console.log("orderToUpdate: ", orderToUpdate);
+
+    const orderFields = {
+      quantity: orderToUpdate.quantity,
+    }
+
+    const updatedOrder = await updateOrder(orderId, orderFields);
+    console.log("updatedOrder: ", updatedOrder);
     res.send(updatedOrder);
   } catch (error) {
     next(error);

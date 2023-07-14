@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { fetchFromAPI } from "../api";
 
 function CartItem(props) {
   const { cardData, onDelete } = props;
+  const [quantity, setQuantity] = useState(0);
 
  
 
   const handleRemove = async () => {
-    const data = await fetchFromAPI({
+    await fetchFromAPI({
       path: `/orders/${cardData.id}`,
       method: "delete",
     });
    
+
+    onDelete();
+  };
+
+  const requestBody = {
+   quantity: quantity
+  }
+
+  const handleEdit = async () => {
+    await fetchFromAPI({
+      path: `/orders/${cardData.id}`,
+      method: "patch",
+      body: requestBody
+    });
 
     onDelete();
   };
@@ -31,6 +46,16 @@ function CartItem(props) {
             </div>
             <div id='delete-cart-item-div'>
             <button id='add-to-cart-button' onClick={() => handleRemove(cardData?.id)}>Delete</button>
+            <form onSubmit={handleEdit}>
+              <input
+                type="text"
+                name="quantity"
+                id="edit-order-input"
+                value={quantity}
+                onChange={(event) => {setQuantity(event.target.value)}}
+              />
+              <button type="submit" id="edit-order-submin">Submit</button>
+            </form>
             </div>
             </div>
           

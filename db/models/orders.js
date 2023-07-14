@@ -76,7 +76,7 @@ async function getOrderByUser({ username }) {
 
 async function updateOrder({ id, ...fields }) {
   const setString = Object.keys(fields)
-    .map((key, idx) => `"${key}" = $${idx + 1}`)
+    .map((key, idx) => `"${key}" = "$${idx + 1}"`)
     .join(", ");
 
   if (setString.length === 0) {
