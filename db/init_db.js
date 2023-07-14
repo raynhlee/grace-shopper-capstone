@@ -12,7 +12,6 @@ async function buildTables() {
     console.log("Dropping all tables...");
     // drop tables in correct order
     await client.query(`
-      DROP TABLE IF EXISTS "orderHistory";
       DROP TABLE IF EXISTS reviews;
       DROP TABLE IF EXISTS orders;
       DROP TABLE IF EXISTS products;
@@ -25,7 +24,8 @@ async function buildTables() {
       id SERIAL PRIMARY KEY,
       username VARCHAR(255) UNIQUE NOT NULL,
       email VARCHAR(255) UNIQUE NOT NULL,
-      password VARCHAR(255) NOT NULL
+      password VARCHAR(255) NOT NULL,
+      "isAdmin" BOOLEAN DEFAULT false
     );
 
     CREATE TABLE products (
@@ -53,12 +53,6 @@ async function buildTables() {
       UNIQUE ("creatorId", "productId"),
       description TEXT NOT NULL
     );
-
-    CREATE TABLE "orderHistory" (
-      id SERIAL PRIMARY KEY,
-      "orderId" INTEGER REFERENCES orders(id),
-      username VARCHAR(255) REFERENCES users(username)
-    );
     `);
     console.log("Finished building tables!");
   } catch (error) {
@@ -76,26 +70,31 @@ async function populateInitialData() {
         username: "boringuser1",
         password: "imveryboring",
         email: "boringperson@gmail.com",
+        isAdmin: true
       },
       {
         username: "brianmay",
         password: "crazybrian22",
         email: "brianfromqueen@gmail.com",
+        isAdmin: true
       },
       {
         username: "eagleeye",
         password: "blackshark92",
         email: "eagleshark@gmail.com",
+        isAdmin: false
       },
       {
         username: "northstar",
         password: "northernlights86",
         email: "northpole@gmail.com",
+        isAdmin: false
       },
       {
         username: "santaclausfan900",
         password: "mrsclaus4eva",
         email: "stnick@northpole.com",
+        isAdmin: false
       },
     ];
 
