@@ -28,55 +28,7 @@ function Products({
   setOrderId,
   token
 }) {
-  const addToCart = async (product) => {
-    console.log("adding to cart");
-
-    swal("Added to cart!");
-
-    setCount(count + 1);
-    let newStock = product.stock - 1;
-
-    if (count === 1) {
-      //todo createOrder
-      const order = await fetchFromAPI({
-        path: "/orders",
-        method: "POST",
-        body: {
-          userId: user.id,
-          productId: product.id,
-          price: product.price,
-          quantity: 1,
-        },
-        token: user.token,
-      });
-      localStorage.setItem("orderid", order.orderid);
-
-      //todo updateOrder
-      if (count >= 2) {
-        await fetchFromAPI({
-          path: "/orders",
-          method: "PUT",
-        });
-      }
-
-      //todo updateProduct
-      await fetchFromAPI({
-        path: "/products",
-        body: {
-          id: product.id,
-          stock: newStock,
-        },
-      });
-
-      //todo getAllProducts; might not need this
-      Promise.all([await fetchFromAPI({ path: "/products" })]).then(
-        ([data]) => {
-          setProducts(data);
-        }
-      );
-    }
-  };
-
+  
   useEffect(() => {
     try {
       Promise.all([fetchFromAPI({ path: "/products" })]).then(([data]) => {
