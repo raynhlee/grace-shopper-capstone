@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Card from "@mui/material/Card";
@@ -22,6 +22,10 @@ function Products({
   nonfunctionalButton,
   token
 }) {
+
+  const [productName, setProductName] = useState('');
+
+  
   
   useEffect(() => {
     try {
@@ -35,7 +39,16 @@ function Products({
         });
         setProducts(filteredProducts);
       });
-      
+      if (productType === 'acoustic'){
+        setProductName('Acoustic Guitars');
+      } else if (productType === 'electric'){
+        setProductName('Electric Guitars');
+      } else if (productType === 'amps'){
+        setProductName('Amps');
+      } else if (productType === 'picks'){
+        setProductName('Guitar Picks');
+      }
+
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +67,7 @@ function Products({
           : null
           
         }
-        <h1 id="product-page-header">{productType}</h1>
+        <h1 id="product-page-header">{productName}</h1>
         <div id="products-div">
           <div id="how-are-shopping">
             <h2 id="how-shop-header">How are you shopping today?</h2>
