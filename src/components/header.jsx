@@ -42,7 +42,7 @@ const Header = ({ token, setToken, setUser, setProductType, user, setCartData })
           <div id="nav-bar">
             <div className="dropdown">
               <button id="categories" className="dropbtn">
-                Categories
+                Products
               </button>
               <div className="dropdown-content">
                 <Link to="/products">
