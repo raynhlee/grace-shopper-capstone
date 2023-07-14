@@ -10,7 +10,8 @@ import {
   Footer,
   Cart,
   SingleProduct,
-  ConfirmOrder
+  ConfirmOrder,
+  PostNewProduct
 } from "./components";
 
 function App() {
@@ -120,6 +121,9 @@ function App() {
         cartFinalPrice = {cartFinalPrice}
         cartTax = {cartTax}
         />
+      </Route>
+      <Route path = '/admin/newproduct'>
+        <PostNewProduct />
       </Route>
       <Footer />
     </div>

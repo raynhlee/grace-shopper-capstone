@@ -1013,3 +1013,31 @@ a {
 #my-order-and-cart-items{
   margin-left: 15px;
 }
+
+#new-product-button{
+  margin-left: 30px;
+  margin-top: 15px;
+}
+
+#new-product-button:hover{
+  border: solid 2px black;
+}
+
+#new-product-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+#new-product-form{
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  justify-content: center;
+}
+
+#new-product-input{
+  margin-bottom: 20px;
+}

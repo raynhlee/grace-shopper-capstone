@@ -8,3 +8,4 @@ export { default as Cart } from "./cart";
 export { default as CartItem } from "./cartitem";
 export {default as SingleProduct} from './singleproduct';
 export {default as ConfirmOrder} from './confirmorder';
+export {default as PostNewProduct} from './postnewproduct';

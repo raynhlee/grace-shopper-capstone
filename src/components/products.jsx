@@ -100,6 +100,12 @@ function Products({
   return (
     <>
       <div>
+      {
+          user.isAdmin 
+          ? <Link to='/admin/newproduct'><button id='new-product-button'>Post a new product</button></Link>
+          : null
+          
+        }
         <h1 id="product-page-header">{productType}</h1>
         <div id="products-div">
           <div id="how-are-shopping">
