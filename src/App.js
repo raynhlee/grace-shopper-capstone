@@ -11,7 +11,8 @@ import {
   Cart,
   SingleProduct,
   ConfirmOrder,
-  PostNewProduct
+  PostNewProduct,
+  ViewAllUsers
 } from "./components";
 
 function App() {
@@ -124,6 +125,9 @@ function App() {
       </Route>
       <Route path = '/admin/newproduct'>
         <PostNewProduct />
+      </Route>
+      <Route path = '/admin/viewallusers'>
+        <ViewAllUsers />
       </Route>
       <Footer />
     </div>

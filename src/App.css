@@ -1041,3 +1041,29 @@ a {
 #new-product-input{
   margin-bottom: 20px;
 }
+
+#view-all-users{
+  color: white;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-bottom: 13px;
+
+}
+
+#view-all-users:hover{
+  text-decoration: underline;
+}
+
+#user-info{
+  border: solid 1px black;
+  padding-left: 30px;
+  margin-bottom: 10px;
+}
+
+#all-users-map{
+  display: flex;
+  flex-direction: column;
+  margin-left: 20vw;
+  width: 50vw;
+  margin-top: 30px; 
+}

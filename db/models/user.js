@@ -8,7 +8,8 @@ async function getAllUsers() {
     SELECT
       id,
       username,
-      email
+      email,
+      "isAdmin"
     FROM 
       users
     `);

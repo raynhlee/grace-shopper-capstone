@@ -28,6 +28,11 @@ const Header = ({ token, setToken, setUser, setProductType, user, setCartData })
         ) : (
           <p>40% all electric guitars! Prices as marked</p>
         )}
+        {
+          user.isAdmin
+          ? <Link  id="view-all-users" to='/admin/viewallusers'><p></p>View all users</Link>
+          : null
+        }
       </div>
       <div id="header-main-div">
         <div id="header-main-section">
@@ -97,7 +102,6 @@ const Header = ({ token, setToken, setUser, setProductType, user, setCartData })
                       setToken("");
                       setUser("");
                       setCartData([]);
-                      setPurchaseHistory([]);
                       localStorage.removeItem("token");
                       localStorage.removeItem("user");
                       history.push("/");
@@ -111,6 +115,7 @@ const Header = ({ token, setToken, setUser, setProductType, user, setCartData })
                   <p id="sign-in"> Sign in</p>
                 </Link>
               )}
+              
 
               <Link to="/cart">
                 <div id="cart"></div>
