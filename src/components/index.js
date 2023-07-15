@@ -10,3 +10,4 @@ export {default as SingleProduct} from './singleproduct';
 export {default as ConfirmOrder} from './confirmorder';
 export {default as PostNewProduct} from './postnewproduct';
 export {default as ViewAllUsers} from './viewallusers';
+export {default as SearchProducts} from './searchproducts'

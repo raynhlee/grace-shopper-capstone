@@ -12,7 +12,8 @@ import {
   SingleProduct,
   ConfirmOrder,
   PostNewProduct,
-  ViewAllUsers
+  ViewAllUsers,
+  SearchProducts
 } from "./components";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
   const [cartSubtotal, setCartSubtotal] = useState(0);
   const [cartFinalPrice, setCartFinalPrice] = useState(0);
   const [cartTax, setCartTax] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('')
 
   const nonfunctionalButton = () => {
     alert("This feature is not currently available in your area :( ");
@@ -48,6 +50,8 @@ function App() {
         setProductType={setProductType}
         user={user}
         setCartData={setCartData}
+        setSearchTerm = {setSearchTerm}
+        searchTerm = {searchTerm}
       />
       <Route path="/users/login">
         <Login
@@ -67,8 +71,7 @@ function App() {
       </Route>
       <Route exact path="/products">
         <Products
-          exact
-          path="/products"
+          
           products={products}
           setProducts={setProducts}
           count={count}
@@ -130,6 +133,17 @@ function App() {
       </Route>
       <Route path = '/admin/viewallusers'>
         <ViewAllUsers />
+      </Route>
+      <Route exact path = '/searchproducts'>
+        <SearchProducts 
+        setOnSngleProductPage = {setOnSngleProductPage}
+        onSingleProductPage={onSingleProductPage}
+        searchTerm = {searchTerm} 
+        count={count}
+        setCount={setCount}
+        setProducts={setProducts}
+        user={user}
+        token = {token}/>
       </Route>
       <Footer />
     </div>

@@ -6,7 +6,8 @@ const {
   getAllProducts,
   updateProduct,
   deleteProduct,
-  getProductById
+  getProductById,
+  getProductByName
 } = require("../db");
 
 productsRouter.get("/", async (req, res, next) => {
@@ -22,6 +23,16 @@ productsRouter.get("/:id", async (req, res, next) => {
   const {id} = req.params;
   try {
     const getProduct = await getProductById(id);
+    res.send(getProduct);
+  } catch (error) {
+    next(error)
+  }
+}) 
+
+productsRouter.get("/:name", async (req, res, next) => {
+  const {name} = req.params;
+  try {
+    const getProduct = await getProductByName(name);
     res.send(getProduct);
   } catch (error) {
     next(error)

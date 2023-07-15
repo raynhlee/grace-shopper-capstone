@@ -22,7 +22,7 @@ a {
 
 #header-main-section{
   display: flex;
-  width: 100vw;
+  width: 97vw;
   justify-content: space-between;
 }
 
@@ -32,6 +32,26 @@ a {
   margin-right: 20px;
   width: 80vw;
   margin-top: 40px;
+}
+
+#search-button{
+  background-color: rgb(204, 0, 0);
+  color: white;
+  font-weight: 700;
+  border-radius: 4px;
+  font-size: 12px;
+  height: 30px;
+  width: 80px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-family: 'Helvetica';
+  margin-bottom: 10px;
+  margin-left: 8px;
+  margin-top: 10px;
+}
+
+#search-bar-div{
+  display: flex;
 }
 
 #search-bar{
@@ -726,7 +746,7 @@ a {
 }
 
 #cart-page {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 #cart-main-div{
