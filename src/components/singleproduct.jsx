@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react"
 import { fetchFromAPI } from "../api";
 import { useParams, useHistory } from "react-router-dom";
 import AddToCart from "./addToCart";
+import Swal from "sweetalert2";
 
 
 const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngleProductPage, onSingleProductPage, nonfunctionalButton, token}) => {
@@ -37,9 +38,10 @@ const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngle
           method: "delete",
         });
         if(data){
-            alert('product was deleted')
-           
-            
+            Swal.fire({
+                icon: 'success',
+                title: 'Product Successfuly Deleted'
+            });
         }
 
         history.push('/products');
