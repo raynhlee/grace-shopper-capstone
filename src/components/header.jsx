@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-const Header = ({ token, setToken, setUser, setProductType, user, setCartData }) => {
+const Header = ({ token, setToken, setUser, setProductType, user, setCartData, setSearchTerm, searchTerm }) => {
+
+  
   const history = useHistory();
+
   useEffect(() => {
     if (user) {
       return;
@@ -16,6 +19,13 @@ const Header = ({ token, setToken, setUser, setProductType, user, setCartData })
       console.log(error);
     }
   }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSearchTerm(searchTerm);
+    history.push('/searchproducts');
+    
+  }
 
   return (
     <div id="header-container">
@@ -85,12 +95,17 @@ const Header = ({ token, setToken, setUser, setProductType, user, setCartData })
                 </Link>
               </div>
             </div>
-            <form id="search-bar-div">
+            <form id="search-bar-div" onSubmit={handleSubmit}>
               <input
                 id="search-bar"
                 type="text"
                 placeholder="What can we help you find?"
+                value={searchTerm}
+                onChange={(event) =>{
+                  setSearchTerm(event.target.value);
+                } }
               ></input>
+             <button type='submit' id='search-button'>Search</button> 
             </form>
             <div id="header-account-buttons-div">
               {token ? (
