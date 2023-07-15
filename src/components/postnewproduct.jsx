@@ -36,8 +36,11 @@ const PostNewProduct = () => {
         if (product) {
             Swal.fire({
                 icon: 'success',
+                iconColor: '#cc0000',
                 title: 'Success',
-                text: 'New product was successfuly added'
+                text: 'New product was successfuly added',
+                showConfirmButton: false,
+                timer: 2000
             });
         }
 
