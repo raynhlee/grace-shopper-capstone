@@ -31,7 +31,10 @@ const Login = ({username, setUsername, setToken, setUser}) => {
         if(!token) {
             Swal.fire({
                 icon: 'error',
-                title: 'Invalid Username or Password'
+                iconColor: '#cc0000',
+                title: 'Incorrect Username or Password',
+                showConfirmButton: false,
+                timer: 2000
             })
             setPassword('');
         }
