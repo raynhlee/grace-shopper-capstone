@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import "./App.css";
+import Swal from 'sweetalert2';
 import {
   Header,
   DefaultHomepage,
@@ -33,7 +34,11 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
 
   const nonfunctionalButton = () => {
-    alert("This feature is not currently available in your area :( ");
+    Swal.fire({
+      icon: 'error',
+      title: 'No Stores Found',
+      text: "This feature is not currently available in your area."
+    });
   };
 
   useEffect(() => {

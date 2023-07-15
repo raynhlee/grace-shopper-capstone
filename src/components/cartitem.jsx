@@ -7,7 +7,7 @@ function CartItem(props) {
  
 
   const handleRemove = async () => {
-    const data = await fetchFromAPI({
+      await fetchFromAPI({
       path: `/orders/${cardData.id}`,
       method: "delete",
     });

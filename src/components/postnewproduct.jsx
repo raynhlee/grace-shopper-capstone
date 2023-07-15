@@ -1,8 +1,10 @@
 import React, {useState} from "react";
+import { useHistory } from "react-router-dom";
 import { fetchFromAPI } from "../api";
+import Swal from 'sweetalert2';
 
 const PostNewProduct = () => {
-
+    const history = useHistory();
     const [name, setName] = useState('')
     const [desc, setDesc] = useState('')
     const [price, setPrice] = useState('')
@@ -31,6 +33,17 @@ const PostNewProduct = () => {
 
         console.log(product);
 
+        if (product) {
+            Swal.fire({
+                icon: 'success',
+                iconColor: '#cc0000',
+                title: 'Success',
+                text: 'New product was successfuly added',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        }
+
         setName('');
         setDesc('');
         setPrice('');
@@ -38,7 +51,7 @@ const PostNewProduct = () => {
         setType('');
         setImageLink('');
        
-
+        history.push('/products');
     }
 
 

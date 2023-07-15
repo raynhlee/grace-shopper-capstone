@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { fetchFromAPI } from "../api";
 import { Link, useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = ({username, setUsername, setToken, setUser}) => {
     const history = useHistory()
@@ -28,7 +29,14 @@ const Login = ({username, setUsername, setToken, setUser}) => {
         const {token} = data;
 
         if(!token) {
-            alert('Invalid username or password')
+            Swal.fire({
+                icon: 'error',
+                iconColor: '#cc0000',
+                title: 'Incorrect Username or Password',
+                showConfirmButton: false,
+                timer: 2000
+            })
+            setPassword('');
         }
 
         
@@ -47,13 +55,8 @@ const Login = ({username, setUsername, setToken, setUser}) => {
             
             console.log('thank you for logging in')
             
-        }
-
-      
             history.push('/')
-        
-
-        
+        }
     }
 
     return(

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { fetchFromAPI } from "../api";
+import Swal from 'sweetalert2';
 
 const Register = ({username, setUsername, setToken, setUser}) => {
     const history = useHistory();
@@ -16,7 +17,11 @@ const Register = ({username, setUsername, setToken, setUser}) => {
         if(passwordToCheck === confirmPassword){
             setPassword(confirmPassword);
         } else {
-            alert('Passwords do not match')
+            Swal.fire({
+                icon: 'error',
+                title: 'Passwords Do Not Match',
+                showConfirmButton: false
+            })
         }
         
         const requestBody = {
@@ -36,7 +41,13 @@ const Register = ({username, setUsername, setToken, setUser}) => {
         const {token} = data;
 
         if(!token) {
-            alert('Invalid username or password')
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid Username or Password',
+                text: 'Please try again',
+                showConfirmButton: false,
+                timer: 2000
+            });
         }
 
         if (token) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { fetchFromAPI } from "../api";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const AddToCart = ({product, count, setCount, setProducts, user, onSingleProductPage, token}) => {
 
@@ -24,7 +24,13 @@ const AddToCart = ({product, count, setCount, setProducts, user, onSingleProduct
           console.log('order: ', order )
          
           if(order){
-            alert('Item added to cart! :) ')
+            Swal.fire({
+              icon: 'success',
+              iconColor: '#cc0000',
+              title: 'Item added to cart',
+              showConfirmButton: false,
+              timer: 2000
+            });
           }
 
     //todo updateProduct
@@ -43,20 +49,28 @@ const AddToCart = ({product, count, setCount, setProducts, user, onSingleProduct
         { onSingleProductPage
             ? <button onClick={() => {
               if(!token){
-                alert('You must be signed in to add items to your cart.')
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'You must be signed in to add items to your cart.'
+                });
                 return;
               }
-              addToCart(product)
+              addToCart(product);
             }}
             id='single-product-add-to-cart'>Add to cart</button>
           : <button onClick={() => {
             if(!token){
-              alert('You must be signed in to add items to your cart.')
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You must be signed in to add items to your cart.'
+              });
               return;
             }
             addToCart(product)
           }}
-                    id='add-to-cart-button'>Add to cart</button>
+          id='add-to-cart-button'>Add to cart</button>
         }
         </div>
       )
