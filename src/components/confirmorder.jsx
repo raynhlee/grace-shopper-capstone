@@ -20,8 +20,11 @@ const ConfirmOrder = ({cartData, setCartData, cartSubtotal,  cartFinalPrice, car
         setCartData([]);
         Swal.fire({
           icon: 'success',
+          iconColor: '#cc0000',
           title: 'Order Confirmed',
-          text: "Thank you for your order! Confirmation email will be arriving shortly."
+          text: "Thank you for your order! Confirmation email will be arriving shortly.",
+          showConfirmButton: false,
+          timer: 2000
         }).then(() => {
           history.push("/");
         });

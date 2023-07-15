@@ -8,6 +8,7 @@ import CartItem from "./cartitem";
 import { Link, useHistory } from "react-router-dom";
 
 import { fetchFromAPI } from "../api";
+import { red } from "@mui/material/colors";
 
 function Cart({ user, cartData, setCartData, cartSubtotal, setCartSubtotal, cartFinalPrice, setCartFinalPrice, cartTax, setCartTax }) {
   const history = useHistory();
@@ -54,8 +55,11 @@ function Cart({ user, cartData, setCartData, cartSubtotal, setCartSubtotal, cart
   const onDelete = async () => {
     Swal.fire({
       icon: 'success',
+      iconColor: '#cc0000',
       title: 'Success',
-      text: 'Product has been removed from your cart'
+      text: 'Product has been removed from your cart',
+      showConfirmButton: false,
+      timer: 2000
     });
     getCart();
   };

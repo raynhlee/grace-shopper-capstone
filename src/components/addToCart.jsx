@@ -26,7 +26,10 @@ const AddToCart = ({product, count, setCount, setProducts, user, onSingleProduct
           if(order){
             Swal.fire({
               icon: 'success',
+              iconColor: '#cc0000',
               title: 'Item added to cart',
+              showConfirmButton: false,
+              timer: 2000
             });
           }
 
