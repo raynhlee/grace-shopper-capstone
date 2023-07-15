@@ -40,7 +40,10 @@ const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngle
         if(data){
             Swal.fire({
                 icon: 'success',
-                title: 'Product Successfuly Deleted'
+                iconColor: '#cc0000',
+                title: 'Product Successfuly Deleted',
+                showConfirmButton: false,
+                timer: 2000
             });
         }
 

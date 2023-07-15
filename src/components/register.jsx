@@ -45,7 +45,8 @@ const Register = ({username, setUsername, setToken, setUser}) => {
                 icon: 'error',
                 title: 'Invalid Username or Password',
                 text: 'Please try again',
-                showConfirmButton: false
+                showConfirmButton: false,
+                timer: 2000
             });
         }
 
