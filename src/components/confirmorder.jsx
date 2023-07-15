@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { fetchFromAPI } from "../api";
+import Swal from 'sweetalert2';
 
 
 const ConfirmOrder = ({cartData, setCartData, cartSubtotal,  cartFinalPrice, cartTax }) => {
@@ -17,9 +18,11 @@ const ConfirmOrder = ({cartData, setCartData, cartSubtotal,  cartFinalPrice, car
           )
         );
         setCartData([]);
-        swal(
-          "Thank you for your order! Confirmation email will be arriving shortly."
-        ).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Order Confirmed',
+          text: "Thank you for your order! Confirmation email will be arriving shortly."
+        }).then(() => {
           history.push("/");
         });
       };
