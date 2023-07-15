@@ -66,7 +66,7 @@ const AddToCart = ({product, count, setCount, setProducts, user, onSingleProduct
             }
             addToCart(product)
           }}
-                    id='add-to-cart-button'>Add to cart</button>
+          id='add-to-cart-button'>Add to cart</button>
         }
         </div>
       )
