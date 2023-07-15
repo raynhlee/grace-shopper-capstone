@@ -53,6 +53,7 @@ const AddToCart = ({product, count, setCount, setProducts, user, onSingleProduct
                 });
                 return;
               }
+              addToCart(product);
             }}
             id='single-product-add-to-cart'>Add to cart</button>
           : <button onClick={() => {
