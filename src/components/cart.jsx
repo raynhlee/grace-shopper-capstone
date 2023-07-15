@@ -68,7 +68,7 @@ function Cart({ user, cartData, setCartData, cartSubtotal, setCartSubtotal, cart
 
 
   return (
-    <>
+    <div id='cart-page'>
     <h1 id='cart-header'>Cart</h1>
     <h3 id='cart-subtotal'>Subtotal: ${cartSubtotal} </h3>
     <div id='cart-container'>
@@ -116,7 +116,7 @@ function Cart({ user, cartData, setCartData, cartSubtotal, setCartSubtotal, cart
       </div>
       
       
-    </>
+    </div>
   );
 }
 

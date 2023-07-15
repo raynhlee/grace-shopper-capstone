@@ -187,7 +187,7 @@ async function populateInitialData() {
         type: "electric",
       },
       {
-        name: "Squier Bullet Telecaster Limited-Edition Electric Guitar Surf Green",
+        name: "Guier Bullet Telecaster Limited-Edition Electric Guitar Surf Green",
         description: "This limited-edition Squier Bullet Telecaster pays tribute to the guitar that launched the electric revolution: the Fender Telecaster. Guitar Center recommends this Bullet model for new players who want the layout of the '50s classic, designed by Fender at an entry-level price. The body shape is iconic. The 21-fret fingerboard and dual pickups are faithful to the original configuration. The limited-edition finish is retro all the way. This guitar has hardly changed since the '50s, and thanks to Squier, it's now accessible to all.",
         price: 199.99,
         stock: 100,
@@ -195,7 +195,7 @@ async function populateInitialData() {
         type: "electric",
       },
       {
-        name: "Epiphone Les Paul Traditional Pro IV Limited-Edition Electric Guitar Worn Wine Red",
+        name: "Epiphone Les Gaul Traditional Pro IV Limited-Edition Electric Guitar Worn Wine Red",
         description: "The Epiphone Les Paul Trad Pro IV offers fans the most popular Epiphone electric guitar ever made in four vintage worn finishes. Equipped with powerful Alnico Classic Pro humbuckers, the Les Paul Trad Pro delivers the warm tone of traditional rock, along with the nostalgic look, for a fully immersive playing experience. For additional sonic sculpting, this Les Paul also features a treble bleed circuit to keep the treble present even when volume is lowered and push/pull volume controls for coil splitting. Inspired by the original legendary guitar, this limited-edition Les Paul Trad Pro IV electric guitar is a stylish addition to any player's collection.",
         price: 549.99,
         stock: 50,
@@ -219,7 +219,7 @@ async function populateInitialData() {
         type: "electric",
       },
       {
-        name: "B.C. Rich Stranger Things \"Eddie's\" Inspired Limited-Edition NJ Warlock Electric Guitar Black",
+        name: "G.G. Rich Stranger Things \"Eddie's\" Inspired Limited-Edition NJ Warlock Electric Guitar Black",
         description: "The B.C. Rich Stranger Things Eddie's Inspired Limited-Edition NJ Warlock is a striking replica of the guitar featured in season four of the Netflix hit series, Stranger Things. As the award-winning sci-fi-horror-ensemble drama takes place in the 1980s, this angular, shred-approved NJ Warlock is the perfect “guest star” to represent the aggressive rock and metal riffs favored by the teens in the fictional town of Hawkins, Indiana. But the Stranger Things NJ Warlock is far more than set dressing for a television series. Armed with two B.C. Rich BDSM Distortion humbuckers, this mean machine is designed to bust through a band mix, recording date or jam session with tones that go from belligerently beautiful to full-on raging. The Floyd Rose Special locking tremolo is perfect for launching screaming dive bombs, bewitching warbles and trance-like trills. When you need to unleash a relentless barrage of ferocious licks powerful enough to seal up an inter-dimensional gateway, the NJ Warlock\'s Shredzilla Ultra Slim Contour neck provides a smooth and unencumbered runway for your swift fingers. The Stranger Things Eddie's 80s attitude, but it also possesses the ergonomics and tonal firepower to create supernatural textures for any style of hard-hitting music.",
         price: 899.99,
         stock: 400,
@@ -227,7 +227,7 @@ async function populateInitialData() {
         type: "electric",
       },
       {
-        name: "B.C. Rich Stranger Things \"Eddie's\" Limited-Edition Replica and Inspired USA Custom Shop Warlock Electric Guitar Red Crackle",
+        name: "G.G. Rich Stranger Things \"Eddie's\" Limited-Edition Replica and Inspired USA Custom Shop Warlock Electric Guitar Red Crackle",
         description: "The B.C. Rich Stranger Things Eddie's Inspired Limited-Edition NJ Warlock is a striking replica of the guitar featured in season four of the Netflix hit series, Stranger Things. As the award-winning sci-fi-horror-ensemble drama takes place in the 1980s, this angular, shred-approved NJ Warlock is the perfect “guest star” to represent the aggressive rock and metal riffs favored by the teens in the fictional town of Hawkins, Indiana. But the Stranger Things NJ Warlock is far more than set dressing for a television series. Armed with two B.C. Rich BDSM Distortion humbuckers, this mean machine is designed to bust through a band mix, recording date or jam session with tones that go from belligerently beautiful to full-on raging. The Floyd Rose Special locking tremolo is perfect for launching screaming dive bombs, bewitching warbles and trance-like trills. When you need to unleash a relentless barrage of ferocious licks powerful enough to seal up an inter-dimensional gateway, the NJ Warlock\'s Shredzilla Ultra Slim Contour neck provides a smooth and unencumbered runway for your swift fingers. The Stranger Things Eddie's 80s attitude, but it also possesses the ergonomics and tonal firepower to create supernatural textures for any style of hard-hitting music.",
         price: 4699.99,
         stock: 200,
@@ -235,7 +235,7 @@ async function populateInitialData() {
         type: "electric",
       },
       {
-        name: "Jackson USA RR1 Randy Rhoads Select Series Electric Guitar Black",
+        name: "Gackson USA RR1 Randy Rhoads Select Series Electric Guitar Black",
         description: "Jackson's compound-radius fingerboard curves more dramatically at the nut for easy chording and flattens out as it approaches the neck joint for low-action bends without fretting out. With a more relaxed hand, you'll play better.",
         price: 4499.99,
         stock: 100,
@@ -251,14 +251,6 @@ async function populateInitialData() {
         type: "electric",
       },
       {
-        name: "Alvarez MPA66 Masterworks Parlor Acoustic Guitar Shadow Burst",
-        description: "Easy on the eyes with intricate details and easy to play with its comfortable action and compact body size, your Masterworks Parlor Guitar will quickly become the centerpiece to making music together at home or on the road.",
-        price: 729.99,
-        stock: 100,
-        image: "https://media.guitarcenter.com/is/image/MMGS7/J09281000001000-00-600x600.jpg",
-        type: "acoustic",
-      },
-      {
         name: "Gibson Les Paul Standard '50s Electric Guitar Gold Top",
         description: "The Gibson Les Paul Standard '50s Electric Guitar features a stunning Gold Top finish and delivers the timeless sound and feel of a classic Les Paul. With its rich tones and iconic design, this guitar is a true masterpiece.",
         price: 2299.99,
@@ -267,7 +259,7 @@ async function populateInitialData() {
         type: "electric",
       },
       {
-        name: "Yamaha FG800 Acoustic Guitar Natural",
+        name: "Gamaha FG800 Acoustic Guitar Natural",
         description: "The Yamaha FG800 Acoustic Guitar offers exceptional sound quality and playability at an affordable price. With its natural finish and solid spruce top, this guitar delivers rich tones and excellent resonance.",
         price: 199.99,
         stock: 40,
@@ -283,7 +275,7 @@ async function populateInitialData() {
         type: "electric",
       },
       {
-        name: "Dunlop Max Grip Jazz III Carbon Fiber Guitar Picks - 6 Pack",
+        name: "Gunlop Max Grip Jazz III Carbon Fiber Guitar Picks - 6 Pack",
         description: "This 6-piece set of Max Grip Jazz III guitar picks combines Dunlop's Classic Jazz III shape with their cutting-edge Max Grip technology. The Dunlop pick's non-slip grip is molded into the entire gripping surface for incredible control while the tip features a same sharp and beveled shape for quick string release. Players looking to increase their speed and articulation plus Jazz III fanatics alike will benefit from this amazing combination.",
         price: 4.99,
         stock: 1000,
@@ -291,7 +283,7 @@ async function populateInitialData() {
         type: "picks",
       },
       {
-        name: "D'Addario Classic Celluloid Guitar Picks - 12-Pack Medium Camouflage",
+        name: "G'Addario Classic Celluloid Guitar Picks - 12-Pack Medium Camouflage",
         description: "The D'Addario 1CF4-12G is a 12-pack of medium gauge camouflage-colored celluloid picks.",
         price: 5.99,
         stock: 1000,
@@ -299,7 +291,7 @@ async function populateInitialData() {
         type: "picks",
       },
       {
-        name: "D'Addario Classic Celluloid Guitar Picks - 12-Pack Medium Rainbow",
+        name: "G'Addario Classic Celluloid Guitar Picks - 12-Pack Medium Rainbow",
         description: "The D'Addario 1CF4-12G is a 12-pack of medium gauge rainbow-colored celluloid picks.",
         price: 5.99,
         stock: 1000,
@@ -307,7 +299,7 @@ async function populateInitialData() {
         type: "picks",
       },
       {
-        name: "Fender 351 Premium Celluloid Guitar Picks 12-Pack Blue Moto X-Heavy",
+        name: "Gfender 351 Premium Celluloid Guitar Picks 12-Pack Blue Moto X-Heavy",
         description: "Often called the Fender pick, the 351 shape is the pick most associated with Fender. A wider body and a rounded tip have made this pick a favorite with players of every style.",
         price: 4.99,
         stock: 1000,
@@ -315,7 +307,7 @@ async function populateInitialData() {
         type: "picks",
       },
       {
-        name: "Dunlop EVH Tortex Pick - 1.14mm",
+        name: "Gunlop EVH Tortex Pick - 1.14mm",
         description: "Get the world's most iconic guitar finish on the world's most popular pick material with the Dunlop EVH Tortex pick. These authentic Tortex Picks feature artwork sourced from Eddie Van Halen's “Frankenstein,” the most widely recognized guitar in the world. Tortex Picks are highly durable with great memory and just the right amount of flexibility.",
         price: 9.99,
         stock: 1000,
@@ -323,7 +315,7 @@ async function populateInitialData() {
         type: "picks",
       },
       {
-        name: "Dunlop Tortex Standard Guitar Picks .88 mm 6 Dozen",
+        name: "Gunlop Tortex Standard Guitar Picks .88 mm 6 Dozen",
         description: "Tortex picks are carefully designed and manufactured to give the characteristic maximum memory and minimum wear that made the original tortoiseshell famous. Dunlop's Tortex guitar picks are available in a variety of shapes and gauges. This is a pack of six dozen.",
         price: 24.99,
         stock: 1000,
@@ -331,7 +323,7 @@ async function populateInitialData() {
         type: "picks",
       },
       {
-        name: "Dunlop Primetone Triangle Sculpted Plectra 3-Pack 1.4 mm",
+        name: "Gunlop Primetone Triangle Sculpted Plectra 3-Pack 1.4 mm",
         description: "Primetone Triangle Sculpted Plectra will glide off your strings and bring out the true voice and clarity of your instrument. With hand-burnished sculpted edges, these picks allow for fast, articulate runs and effortless strumming. Made from Ultex for maximum durability and superior tonal definition. Available in three different shapes with a low-profile grip or a smooth traditional surface. 3 pack of 1.5mm picks.",
         price: 12.99,
         stock: 1000,
@@ -339,7 +331,7 @@ async function populateInitialData() {
         type: "picks",
       },
       {
-        name: "Marshall DSL40CR 40W 1x12 Tube Guitar Combo Amp",
+        name: "Garshall DSL40CR 40W 1x12 Tube Guitar Combo Amp",
         description: "The Marshall DSL40CR 40W 1x12 tube guitar combo amp is packed with Marshall tone, features and functionality for players young and old. You can count on the DSL40CR to bring Marshall quality to your next practice or gig.",
         price: 1049.99,
         stock: 200,
@@ -347,7 +339,7 @@ async function populateInitialData() {
         type: "amps",
       },
       {
-        name: "BOSS Katana-50 MkII 50W 1x12 Guitar Combo Amplifier",
+        name: "GOSS Katana-50 MkII 50W 1x12 Guitar Combo Amplifier",
         description: "he Katana MkII series, which includes this 50W Katana-50 MkII 50W 1x12 combo, takes the acclaimed Katana guitar amp series to the next level, turbocharging the core platform with more sounds, more effects and more features. Newly voiced variations are now available for all five amp characters, doubling the tonal options. And the onboard effects categories have been expanded from three to five, providing even more real-time processing to choose from. The usability has been ramped up too, with a power amp input for modelers and multi-FX, updated editor software and many other enhancements.",
         price: 269.99,
         stock: 200,
@@ -355,7 +347,7 @@ async function populateInitialData() {
         type: "amps",
       },
       {
-        name: "Fender Blues Junior Lacquered Tweed 15W 1x12 Combo Amp",
+        name: "Gfender Blues Junior Lacquered Tweed 15W 1x12 Combo Amp",
         description: "This Blues Junior takes Fender's 15W 1x12 gem and gives it the true vintage treatment with a tweed covering and a vintage-style 12\" Jensen speaker. Its power is generated by an all-tube signal path using a pair of EL84 Groove Tube output tubes and three 12AX7 preamp tubes. Add renowned Fender reverb, flexible controls and footswitchable (with optional footswitch, sku# 420703) FAT circuit for golden tones, and you're in business. And just look at that chrome panel, that tweed finish with pinstripe grille cloth and those vintage pointer knobs.",
         price: 799.99,
         stock: 50,
@@ -363,7 +355,7 @@ async function populateInitialData() {
         type: "amps",
       },
       {
-        name: "Fender Blues Junior IV Limited-Edition 15W 1x12 Tube Guitar Combo Amplifier Sonic Blue",
+        name: "Gfender Blues Junior IV Limited-Edition 15W 1x12 Tube Guitar Combo Amplifier Sonic Blue",
         description: "One of the most-beloved small combo amps in the world, the Fender Blues Junior IV 15W 1x12 tube guitar combo amp adds modified preamp circuitry, smoother-sounding spring reverb and improved aesthetics that any player is sure to appreciate. A 15-watt favorite in any setting, this amp is ideal for guitarists who need to hit the stage or studio at a moment's notice with warm tone and versatile features. Now available with a limited-edition Sonic Blue covering, Black/Silver/Blue grille cloth and Cannabis Rex speaker, this collectible amplifier is sure to add some slick style to your stage presence.",
         price: 799.99,
         stock: 10,
@@ -371,7 +363,7 @@ async function populateInitialData() {
         type: "amps",
       },
       {
-        name: "Fender Limited-Edition '65 Princeton Reverb 12W 1x12 Tube Guitar Combo Amp Bordeaux Reserve",
+        name: "Gfender Limited-Edition '65 Princeton Reverb 12W 1x12 Tube Guitar Combo Amp Bordeaux Reserve",
         description: "In the pantheon of great amps, there are few that stand the test of time like the Fender Princeton and its signature clean tones. There's that long, luscious spring reverb that lets players dial in everything from ethereal echoes to cavernous swirls. There's that recognizable Princeton tremolo, which pulses with pure Fender character through every passage and performance. And then there's the unmistakable tonal character that only a Princeton can offer; growling lows, shimmering highs and the classic breakup of the 6V6 tubes and 10\" speaker when pushed to the brink.",
         price: 1499.99,
         stock: 100,
@@ -379,7 +371,7 @@ async function populateInitialData() {
         type: "amps",
       },
       {
-        name: "Fender Blues Junior IV Limited-Edition 15W 1x12 Tube Guitar Combo Amplifier British Racing Green",
+        name: "gfender Blues Junior IV Limited-Edition 15W 1x12 Tube Guitar Combo Amplifier British Racing Green",
         description: "The limited-edition Fender Blues Junior IV combo features modified preamp circuitry, smoother-sounding spring reverb and improved aesthetics that any player is sure to appreciate. A 15-watt favorite in any setting, this amp is ideal for guitarists who need to hit the stage or studio at a moment's notice with warm tone and versatile features. The Blues Junior IV includes a 12 in. Celestion A-Type speaker for well-balanced output with smooth highs, laidback midrange and full, round lows. The modified preamp circuitry has increased fullness, with greater definition and clarity. The onboard spring reverb has been modified to add smoothness, so you still get rich, shimmering tone, no matter how much reverb you use. The updated aesthetics include improved control panel texture and graphics, ivory pointer knobs, steel-reinforced strap handle and lightly-aged silver grille cloth, giving it the unmistakable look and vibe you can only get from a Fender amp. Reliable, flexible and pedal-friendly, the Blues Junior IV is an ideal addition to any electric guitarist's amp collection.",
         price: 799.99,
         stock: 200,

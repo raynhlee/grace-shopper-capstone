@@ -10,7 +10,9 @@ import {
   Footer,
   Cart,
   SingleProduct,
-  ConfirmOrder
+  ConfirmOrder,
+  PostNewProduct,
+  ViewAllUsers
 } from "./components";
 
 function App() {
@@ -79,6 +81,7 @@ function App() {
           setOnSngleProductPage={setOnSngleProductPage}
           onSingleProductPage={onSingleProductPage}
           nonfunctionalButton={nonfunctionalButton}
+          token = {token}
         />
       </Route>
       <Route exact path="/cart">
@@ -108,6 +111,7 @@ function App() {
           setProducts={setProducts}
           products={products}
           user={user}
+          token={token}
           setOnSngleProductPage={setOnSngleProductPage}
           onSingleProductPage={onSingleProductPage}
         />
@@ -120,6 +124,12 @@ function App() {
         cartFinalPrice = {cartFinalPrice}
         cartTax = {cartTax}
         />
+      </Route>
+      <Route path = '/admin/newproduct'>
+        <PostNewProduct />
+      </Route>
+      <Route path = '/admin/viewallusers'>
+        <ViewAllUsers />
       </Route>
       <Footer />
     </div>

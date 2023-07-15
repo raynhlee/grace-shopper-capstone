@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link, useHistory, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import swal from "sweetalert";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import Button from "@mui/material/Button";
 
 import { fetchFromAPI } from "../api";
 import AddToCart from "./addToCart";
@@ -24,61 +20,13 @@ function Products({
   setOnSngleProductPage,
   onSingleProductPage,
   nonfunctionalButton,
-  orderId,
-  setOrderId,
+  token
 }) {
-  const addToCart = async (product) => {
-    console.log("adding to cart");
-
-    swal("Added to cart!");
-
-    setCount(count + 1);
-    let newStock = product.stock - 1;
-
-    if (count === 1) {
-      //todo createOrder
-      const order = await fetchFromAPI({
-        path: "/orders",
-        method: "POST",
-        body: {
-          userId: user.id,
-          productId: product.id,
-          price: product.price,
-          quantity: 1,
-        },
-        token: user.token,
-      });
-      localStorage.setItem("orderid", order.orderid);
-
-      //todo updateOrder
-      if (count >= 2) {
-        await fetchFromAPI({
-          path: "/orders",
-          method: "PUT",
-        });
-      }
-
-      //todo updateProduct
-      await fetchFromAPI({
-        path: "/products",
-        body: {
-          id: product.id,
-          stock: newStock,
-        },
-      });
-
-      //todo getAllProducts; might not need this
-      Promise.all([await fetchFromAPI({ path: "/products" })]).then(
-        ([data]) => {
-          setProducts(data);
-        }
-      );
-    }
-  };
-
+  
   useEffect(() => {
     try {
       Promise.all([fetchFromAPI({ path: "/products" })]).then(([data]) => {
+        console.log('products: ', data);
         let filteredProducts = [];
         data.map((product, index) => {
           if (product.type === productType) {
@@ -87,7 +35,7 @@ function Products({
         });
         setProducts(filteredProducts);
       });
-      console.log("products: ", products);
+      
     } catch (error) {
       console.log(error);
     }
@@ -100,6 +48,12 @@ function Products({
   return (
     <>
       <div>
+      {
+          user.isAdmin 
+          ? <Link to='/admin/newproduct'><button id='new-product-button'>Post a new product</button></Link>
+          : null
+          
+        }
         <h1 id="product-page-header">{productType}</h1>
         <div id="products-div">
           <div id="how-are-shopping">
@@ -178,6 +132,7 @@ function Products({
                       setProducts={setProducts}
                       user={user}
                       onSingleProductPage={onSingleProductPage}
+                      token = {token}
                     />
                   </Card>
                 ))}

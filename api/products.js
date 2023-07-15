@@ -30,13 +30,14 @@ productsRouter.get("/:id", async (req, res, next) => {
 
 productsRouter.post("/", async (req, res, next) => {
   try {
-    const { name, description, price, stock, type } = req.body;
+    const { name, description, price, stock, type, image } = req.body;
     const postProduct = await createProduct({
       name,
       description,
       price,
       stock,
-      type
+      type,
+      image
     });
     res.send(postProduct);
   } catch (error) {
@@ -67,7 +68,7 @@ productsRouter.delete("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const deletedProduct = await deleteProduct({ id });
+    const deletedProduct = await deleteProduct( id );
     res.send(deletedProduct);
   } catch (error) {
     next(error);

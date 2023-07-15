@@ -172,12 +172,13 @@ a {
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
-
+  height: 80vh;
 }
 
 #login-form{
   display: flex;
   flex-direction: column;
+  margin-left: 30px;
 }
 
 #login-username-div{
@@ -225,7 +226,14 @@ a {
   padding-left: 35px;
   margin-top: 30px;
   font-size: large;
-  margin-right:35px;
+  margin-right:10px;
+  
+}
+
+#register-username-input{
+  height: 22px;
+  padding: 9px 8px;
+ 
 }
 
 #register-main-div{
@@ -238,6 +246,7 @@ a {
 #register-form{
   display: flex;
   flex-direction: column;
+  margin-left: 40px;
 }
 
 #register-username-div{
@@ -716,6 +725,10 @@ a {
    margin-bottom: 10px;
 }
 
+#cart-page {
+  height: 100vh;
+}
+
 #cart-main-div{
   display: flex;
   flex-wrap: wrap;
@@ -1012,4 +1025,67 @@ a {
 
 #my-order-and-cart-items{
   margin-left: 15px;
+}
+
+#new-product-button{
+  margin-left: 30px;
+  margin-top: 15px;
+}
+
+#new-product-button:hover{
+  border: solid 2px black;
+}
+
+#new-product-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+#new-product-form{
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  justify-content: center;
+}
+
+#new-product-input{
+  margin-bottom: 20px;
+}
+
+#view-all-users{
+  color: white;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-bottom: 13px;
+
+}
+
+#view-all-users:hover{
+  text-decoration: underline;
+}
+
+#user-info{
+  border: solid 1px black;
+  padding-left: 30px;
+  margin-bottom: 10px;
+}
+
+#all-users-map{
+  display: flex;
+  flex-direction: column;
+  margin-left: 20vw;
+  width: 50vw;
+  margin-top: 30px; 
+  
+}
+
+#admin {
+  color: rgb(0, 131, 0);
+}
+
+#user {
+  color: red;
 }

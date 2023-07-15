@@ -60,17 +60,17 @@ const Register = ({username, setUsername, setToken, setUser}) => {
 
     return(
         <div id='register-main-div'>
-            <h2>Sign into your guitarget account</h2>
+            <h2>Create a guitarget account</h2>
             <form id='register-form' onSubmit={handleSubmit}>
                 <div id='register-username-div'>
                     <label htmlFor="username" >Username</label>
-                    <input required type='text' name='username' id='login-username-input' value={username} onChange={(event) => {
+                    <input required type='text' name='username'  id='login-password-input' value={username} onChange={(event) => {
                         setUsername(event.target.value)
                     }}></input>
                 </div>
                 <div id='register-email-div'>
                     <label htmlFor="email" >Email</label>
-                    <input required type='text' name='username' id='login-username-input' value={email} onChange={(event) => {
+                    <input required type='text' name='username'  id='login-password-input' value={email} onChange={(event) => {
                         setEmail(event.target.value)
                     }}></input>
                 </div>
