@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 
-import Button from "@mui/material/Button";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 import Grid from "@mui/material/Grid";
 import CartItem from "./cartitem";
@@ -53,6 +52,11 @@ function Cart({ user, cartData, setCartData, cartSubtotal, setCartSubtotal, cart
   };
 
   const onDelete = async () => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Product has been removed from your cart'
+    });
     getCart();
   };
 
@@ -61,9 +65,6 @@ function Cart({ user, cartData, setCartData, cartSubtotal, setCartSubtotal, cart
       await getCart();
     };
     loadCart();
-
-    
- 
   }, []);
 
 
