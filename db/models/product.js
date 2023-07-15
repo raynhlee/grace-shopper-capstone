@@ -95,7 +95,7 @@ async function deleteProduct(id) {
       rows: [res],
     } = await client.query(
       `
-        DELETE products
+        DELETE FROM products
         WHERE id = $1
         RETURNING *
         `,

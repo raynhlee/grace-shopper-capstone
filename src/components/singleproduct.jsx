@@ -42,7 +42,7 @@ const SingleProduct = ({count, setCount, setProducts, products, user, setOnSngle
             
         }
 
-        history.push('/');
+        history.push('/products');
 
       };
 
