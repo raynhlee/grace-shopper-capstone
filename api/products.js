@@ -1,5 +1,6 @@
 const express = require("express");
 const productsRouter = express.Router();
+const { requireUser, requireAdmin } = require('./utils');
 
 const {
   createProduct,
@@ -39,7 +40,7 @@ productsRouter.get("/:name", async (req, res, next) => {
   }
 }) 
 
-productsRouter.post("/", async (req, res, next) => {
+productsRouter.post("/", requireUser, requireAdmin, async (req, res, next) => {
   try {
     const { name, description, price, stock, type, image } = req.body;
     const postProduct = await createProduct({

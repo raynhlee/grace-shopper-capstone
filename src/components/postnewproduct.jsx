@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { fetchFromAPI } from "../api";
 import Swal from 'sweetalert2';
 
-const PostNewProduct = () => {
+const PostNewProduct = ({ token }) => {
     const history = useHistory();
     const [name, setName] = useState('')
     const [desc, setDesc] = useState('')
@@ -27,8 +27,8 @@ const PostNewProduct = () => {
         const product = await fetchFromAPI({
             path: '/products',
             method: 'post',
-            body: requestBody
-
+            body: requestBody,
+            token
         })
 
         console.log(product);
