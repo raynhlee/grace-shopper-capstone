@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
 import { fetchFromAPI } from '../api';
 
-const ViewAllUsers = () => {
+const ViewAllUsers = ({ token }) => {
     const [users, setUsers] = useState([])
 
     const getAllUsers = async() => {
         const data = await fetchFromAPI({
-            path: '/users'
+            path: '/users',
+            token
         })
-
+    
         if(data){
             console.log(data)
             setUsers(data)

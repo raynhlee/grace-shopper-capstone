@@ -1,7 +1,7 @@
 const express = require("express");
 const usersRouter = express.Router();
 const jwt = require('jsonwebtoken');
-const { requireUser } = require('./utils');
+const { requireUser, requireAdmin } = require('./utils');
 const {
     getAllUsers,
     createUser,
@@ -13,7 +13,7 @@ const {
 } = require('../db');
 
 // GET /api/users
-usersRouter.get('/', async (req, res, next) => {
+usersRouter.get('/', requireUser, requireAdmin, async (req, res, next) => {
     try {
         const allUsers = await getAllUsers();
         res.send(allUsers);

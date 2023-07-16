@@ -137,7 +137,7 @@ function App() {
         <PostNewProduct />
       </Route>
       <Route path = '/admin/viewallusers'>
-        <ViewAllUsers />
+        <ViewAllUsers token={token} />
       </Route>
       <Route exact path = '/searchproducts'>
         <SearchProducts 
