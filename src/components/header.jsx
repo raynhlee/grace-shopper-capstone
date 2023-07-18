@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { fetchFromAPI } from '../api';
 
 const Header = ({ token, setToken, setUser, setProductType, user, setCartData, setSearchTerm, searchTerm }) => {
 
@@ -33,13 +34,13 @@ const Header = ({ token, setToken, setUser, setProductType, user, setCartData, s
         {token ? (
           <div id="red-stripe">
             <p> Store location closest to you: San Jose</p>
-            <p id="hello">Hello, {user.username}</p>
+            { user?.username && <p id="hello">Hello, {user?.username}</p>}
           </div>
         ) : (
           <p>40% all electric guitars! Prices as marked</p>
         )}
         {
-          user.isAdmin
+          user?.isAdmin
           ? <Link  id="view-all-users" to='/admin/viewallusers'><p></p>View all users</Link>
           : null
         }

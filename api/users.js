@@ -116,7 +116,7 @@ usersRouter.post('/login', async (req, res, next) => {
 });
 
 // GET /api/users/me
-usersRouter.get('/me', requireUser, async (req, res, next) => {
+usersRouter.get('/me', async (req, res, next) => {
     try {
         const verifiedUser = await getUserById(req.user.id);
         console.log("verifiedUser: ", verifiedUser);
@@ -130,7 +130,7 @@ usersRouter.get('/me', requireUser, async (req, res, next) => {
 });
 
 // GET /api/users/:username/orders
-usersRouter.get('/:username/orders', requireUser, async (req, res, next) => {
+usersRouter.get('/:username/orders', async (req, res, next) => {
     const { username } = req.params;
 
     try {
